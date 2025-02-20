@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('index-active','active')
+@section('settings-active','active')
 
 @section('title','Home')
 

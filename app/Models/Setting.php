@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Setting extends Model
 {
     //
 
@@ -14,7 +13,7 @@ class Admin extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'admins';
+    protected $table = 'settings';
 
     /**
      * The primary key associated with the table.
@@ -49,13 +48,7 @@ class Admin extends Authenticatable
      *
      * @var array
      */
-    protected $guarded = [];
-        /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $guard = 'admin';
+    protected $guarded = ['id'];
 
     /**
     * The attributes that should be cast.

@@ -40,9 +40,15 @@ Route::prefix('/')->name('front.')->group(function (){
 /**
  *  Admin Routes
  */
-Route::prefix('/admin')->name('admin.')->group(function (){
-    // ========================================== admin index
-    Route::view('', 'admin.index')->name('index');
-    // ========================================== admin index
-    Route::view('login', 'admin.auth.login')->name('login');
+Route::prefix('/admin/')->name('admin.')->group(function (){
+    Route::middleware('auth:admin')->group(function () {
+        // ========================================== Admin index
+        Route::view('', 'admin.index')->name('index');
+        Route::view('settings', 'admin.settings.index')->name('settings.index');
+        // ========================================== settings index
+        // Route::view('settings', 'admin.settings.index')->name('settings');
+    });
+
+    // ========================================== login index
+    Route::view('/login', 'admin.auth.login')->middleware('guest:admin')->name('login');
 });

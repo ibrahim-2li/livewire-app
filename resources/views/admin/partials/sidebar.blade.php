@@ -56,7 +56,7 @@
             </g>
           </svg>
         </span>
-        <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+        <span class="app-brand-text demo menu-text fw-bolder ms-2">Dashboard</span>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -68,10 +68,18 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
-      <li class="menu-item active">
+      <li class="menu-item @yield('index-active')">
         <a href="{{route('admin.index')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
+        </a>
+      </li>
+
+       <!-- Settings -->
+       <li class="menu-item @yield('settings-active')">
+        <a href="{{route('admin.settings.index')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-cog"></i>
+          <div data-i18n="Analytics">Settings</div>
         </a>
       </li>
 
