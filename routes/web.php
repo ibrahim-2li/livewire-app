@@ -44,11 +44,15 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
     Route::middleware('auth:admin')->group(function () {
         // ========================================== Admin index
         Route::view('', 'admin.index')->name('index');
-        Route::view('settings', 'admin.settings.index')->name('settings.index');
         // ========================================== settings index
-        // Route::view('settings', 'admin.settings.index')->name('settings');
+        Route::view('settings', 'admin.settings.index')->name('settings.index');
+            // ========================================== Skills index
+            Route::view('skills', 'admin.skills.index')->name('skills.index');
     });
 
     // ========================================== login index
     Route::view('/login', 'admin.auth.login')->middleware('guest:admin')->name('login');
+});
+Route::get('/admin/error',function(){
+    return view('admin.error');
 });
