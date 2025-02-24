@@ -22,7 +22,7 @@
                 </div>
                 <a href="{{route('front.contact')}}" class="nav-item nav-link @yield('contact-active')">Contact</a>
             </div>
-            <a href="{{route('admin.login')}}" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
+            <a href="{{route('admin.index')}}" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
         </div>
     </nav>
 

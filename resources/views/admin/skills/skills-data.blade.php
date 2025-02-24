@@ -1,6 +1,6 @@
 <div>
     <!--/ Model !-->
-  @livewire('admin.skills.skills-create')
+    @livewire('admin.skills.skills-create')
     <input type="text" class="form-control w-25" placeholder="Search" wire:model.live='serarch'>
 
     @if (count($data) > 0)
@@ -25,11 +25,18 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                    <a class="dropdown-item" href="#"
+                                        wire:click.prevent="$dispatch('skillUpdate',{id: {{ $record->id }}})"><i
                                             class="bx bx-edit-alt me-1"></i>
                                         Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                    <a class="dropdown-item" href="#"
+                                        wire:click.prevent="$dispatch('skillDelete',{id: {{ $record->id }}})"><i
+                                            class="bx bx-trash me-1"></i>
                                         Delete</a>
+                                    <a class="dropdown-item" href="#"
+                                        wire:click.prevent="$dispatch('skillShow',{id: {{ $record->id }}})"><i
+                                            class="bx bx-show me-1"></i>
+                                        Show</a>
                                 </div>
                             </div>
                         </td>
