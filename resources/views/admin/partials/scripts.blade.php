@@ -30,4 +30,8 @@
                 }
             });
         });
+        window.addEventListener('createModalToggle', event => {
+            $('#createModal').modal('toggle');
+        });
+
     </script>
