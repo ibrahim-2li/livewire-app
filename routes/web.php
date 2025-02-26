@@ -36,7 +36,6 @@ Route::prefix('/')->name('front.')->group(function (){
     Route::view('testimonials', 'front.testimonials')->name('testimonials');
 });
 
-
 /**
  *  Admin Routes
  */
@@ -47,7 +46,9 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
         // ========================================== settings index
         Route::view('settings', 'admin.settings.index')->name('settings.index');
             // ========================================== Skills index
-            Route::view('skills', 'admin.skills.index')->name('skills.index');
+        Route::view('skills', 'admin.skills.index')->name('skills.index');
+                        // ========================================== Skills index
+        Route::view('subscribers', 'admin.subscribers.index')->name('subscribers.index');
     });
 
     // ========================================== login index

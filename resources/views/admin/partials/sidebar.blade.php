@@ -91,5 +91,12 @@
         </a>
       </li>
 
+             <!-- Subscribers -->
+      <li class="menu-item @yield('subscribers-active')">
+        <a href="{{route('admin.subscribers.index')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-crown"></i>
+          <div data-i18n="Analytics">Subscribers</div>
+        </a>
+      </li>
     </ul>
   </aside>
