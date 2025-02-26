@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('counters', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('count');
-            $table->string('icon');
+            $table->string('name')->nullable();
+            $table->integer('count')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

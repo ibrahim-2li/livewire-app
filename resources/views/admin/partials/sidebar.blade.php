@@ -74,18 +74,9 @@
           <div data-i18n="Analytics">Dashboard</div>
         </a>
       </li>
-
-       <!-- Settings -->
-       <li class="menu-item @yield('settings-active')">
-        <a href="{{route('admin.settings.index')}}" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-cog"></i>
-          <div data-i18n="Analytics">Settings</div>
-        </a>
-      </li>
-
        <!-- Skills -->
        <li class="menu-item @yield('skills-active')">
-        <a href="{{route('admin.skills.index')}}" class="menu-link">
+        <a href="{{route('admin.skills')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-analyse"></i>
           <div data-i18n="Analytics">Skills</div>
         </a>
@@ -93,10 +84,27 @@
 
              <!-- Subscribers -->
       <li class="menu-item @yield('subscribers-active')">
-        <a href="{{route('admin.subscribers.index')}}" class="menu-link">
+        <a href="{{route('admin.subscribers')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-crown"></i>
           <div data-i18n="Analytics">Subscribers</div>
         </a>
       </li>
+
+                   <!-- Subscribers -->
+      <li class="menu-item @yield('counters-active')">
+        <a href="{{route('admin.counters')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+          <div data-i18n="Analytics">Counters</div>
+        </a>
+      </li>
+
+       <!-- Settings -->
+       <li class="menu-item @yield('settings-active')">
+        <a href="{{route('admin.settings')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-cog"></i>
+          <div data-i18n="Analytics">Settings</div>
+        </a>
+      </li>
+
     </ul>
   </aside>

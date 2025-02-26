@@ -44,11 +44,13 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
         // ========================================== Admin index
         Route::view('', 'admin.index')->name('index');
         // ========================================== settings index
-        Route::view('settings', 'admin.settings.index')->name('settings.index');
+        Route::view('settings', 'admin.settings.index')->name('settings');
             // ========================================== Skills index
-        Route::view('skills', 'admin.skills.index')->name('skills.index');
+        Route::view('skills', 'admin.skills.index')->name('skills');
+                        // ========================================== subscribers index
+        Route::view('subscribers', 'admin.subscribers.index')->name('subscribers');
                         // ========================================== Skills index
-        Route::view('subscribers', 'admin.subscribers.index')->name('subscribers.index');
+        Route::view('counters', 'admin.counters.index')->name('counters');
     });
 
     // ========================================== login index
