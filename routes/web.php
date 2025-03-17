@@ -45,17 +45,20 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
         Route::view('', 'admin.index')->name('index');
         // ========================================== settings index
         Route::view('settings', 'admin.settings.index')->name('settings');
-            // ========================================== Skills index
+        // ========================================== Skills index
         Route::view('skills', 'admin.skills.index')->name('skills');
-                        // ========================================== subscribers index
+        // ========================================== subscribers index
         Route::view('subscribers', 'admin.subscribers.index')->name('subscribers');
-                        // ========================================== Skills index
+        // ========================================== counters index
         Route::view('counters', 'admin.counters.index')->name('counters');
+        // ========================================== Services index
+        Route::view('services', 'admin.services.index')->name('services');
     });
 
     // ========================================== login index
     Route::view('/login', 'admin.auth.login')->middleware('guest:admin')->name('login');
 });
-Route::get('/admin/error',function(){
+Route::fallback(function () {
     return view('admin.error');
 });
+

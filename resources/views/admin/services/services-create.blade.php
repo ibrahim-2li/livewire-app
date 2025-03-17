@@ -1,4 +1,4 @@
-<x-create-modal title='Create Counter'>
+<x-create-modal title='Create Services'>
     <div class="col mb-0">
         <label for="emailBasic" class="form-label">Name</label>
         <input type="text" class="form-control" placeholder="Counter Name"
@@ -6,10 +6,10 @@
             @include('admin.errors',['property'=>'name'])
     </div>
     <div class="col mb-0">
-        <label class="form-label">Count</label>
-        <input type="number" min="1" max="1000000" class="form-control"
-            placeholder="10" wire:model='count' />
-            @include('admin.errors',['property'=>'count'])
+        <label class="form-label">Description</label>
+        <input type="text" class="form-control"
+            placeholder="Description" wire:model='description' />
+            @include('admin.errors',['property'=>'description'])
     </div>
     <div class="col mb-0">
         <label class="form-label">Icon</label>

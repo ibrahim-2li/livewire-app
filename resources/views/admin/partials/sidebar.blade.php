@@ -90,11 +90,19 @@
         </a>
       </li>
 
-                   <!-- Subscribers -->
+        <!-- Counters -->
       <li class="menu-item @yield('counters-active')">
         <a href="{{route('admin.counters')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-cube-alt"></i>
           <div data-i18n="Analytics">Counters</div>
+        </a>
+      </li>
+
+      <!-- Services -->
+      <li class="menu-item @yield('services-active')">
+        <a href="{{route('admin.services')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-wrench"></i>
+          <div data-i18n="Analytics">Services</div>
         </a>
       </li>
 
