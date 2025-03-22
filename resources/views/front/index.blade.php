@@ -9,7 +9,7 @@
 
 @section('content')
 
-         <!-- Video Modal Start -->
+    <!-- Video Modal Start -->
     <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
@@ -20,16 +20,14 @@
                 <div class="modal-body">
                     <!-- 16:9 aspect ratio -->
                     <div class="ratio ratio-16x9">
-                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
-                            allow="autoplay"></iframe>
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
+                            allowscriptaccess="always" allow="autoplay"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Video Modal End -->
-
-
     <!-- About Start -->
     <div class="container-xxl py-6" id="about">
         <div class="container">
@@ -42,7 +40,8 @@
                         </div>
                         <h3 class="lh-base mb-0">of working experience as a web designer & developer</h3>
                     </div>
-                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
+                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum
+                        amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
                     <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Afordable Prices</p>
                     <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>High Quality Product</p>
                     <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>On Time Project Delivery</p>
@@ -51,27 +50,88 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="row g-3 mb-4">
                         <div class="col-sm-6">
-                            <img class="img-fluid rounded" src="{{ asset('front-assets')}}/img/about-1.jpg" alt="">
+                            <img class="img-fluid rounded" src="{{ asset('front-assets') }}/img/about-1.jpg" alt="">
                         </div>
                         <div class="col-sm-6">
-                            <img class="img-fluid rounded" src="{{ asset('front-assets')}}/img/about-2.jpg" alt="">
+                            <img class="img-fluid rounded" src="{{ asset('front-assets') }}/img/about-2.jpg" alt="">
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-3">
                         <h5 class="border-end pe-3 me-3 mb-0">Happy Clients</h5>
                         <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">1234</h2>
                     </div>
-                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam amet diam ipsum clita labore dolor duo clita.</p>
+                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam amet
+                        diam ipsum clita labore dolor duo clita.</p>
                     <div class="d-flex align-items-center mb-3">
                         <h5 class="border-end pe-3 me-3 mb-0">Projects Completed</h5>
                         <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">1234</h2>
                     </div>
-                    <p class="mb-0">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam amet diam ipsum clita labore dolor duo clita.</p>
+                    <p class="mb-0">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam amet
+                        diam ipsum clita labore dolor duo clita.</p>
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
+
+
+    <!-- ======= Clients Section ======= -->
+    {{-- <section id="clients" class="clients section-bg">
+        <div class="container">
+
+            <div class="section-title aos-init" data-aos="fade-up">
+                <h2>Clients</h2>
+                <p>They trusted us</p>
+            </div>
+
+            <div class="owl-carousel clients-carousel owl-loaded owl-drag aos-init" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="owl-stage-outer">
+                    <div class="owl-stage"
+                        style="transform: translate3d(-1380px, 0px, 0px); transition: 0.25s; width: 2760px;">
+                        <div class="owl-item cloned" style="width: 172.5px;"><img src="assets/img/clients/client-5.png"
+                                alt=""></div>
+                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-6.png"
+                                alt=""></div>
+                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-7.png"
+                                alt=""></div>
+                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-8.png"
+                                alt=""></div>
+                        <div class="owl-item" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-1.png"
+                                alt=""></div>
+                        <div class="owl-item" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-2.png"
+                                alt=""></div>
+                        <div class="owl-item" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-3.png"
+                                alt=""></div>
+                        <div class="owl-item" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-4.png"
+                                alt=""></div>
+                        <div class="owl-item active" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-5.png"
+                                alt=""></div>
+                        <div class="owl-item active" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-6.png"
+                                alt=""></div>
+                        <div class="owl-item active" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-7.png"
+                                alt=""></div>
+                        <div class="owl-item active" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-8.png"
+                                alt=""></div>
+                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-1.png"
+                                alt=""></div>
+                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-2.png"
+                                alt=""></div>
+                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-3.png"
+                                alt=""></div>
+                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-4.png"
+                                alt=""></div>
+                    </div>
+                </div>
+                <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span
+                            aria-label="Previous">‹</span></button><button type="button" role="presentation"
+                        class="owl-next"><span aria-label="Next">›</span></button></div>
+                <div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button
+                        role="button" class="owl-dot active"><span></span></button></div>
+            </div>
+        </div>
+    </section> --}}
+    <!-- End Clients Section -->
 
 
     <!-- Expertise Start -->
@@ -80,7 +140,8 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <h1 class="display-5 mb-5">Skills & Experience</h1>
-                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum clita dolor duo clita sit.</p>
+                    <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum
+                        amet diam ipsum clita dolor duo clita sit.</p>
                     <h3 class="mb-4">My Skills</h3>
                     <div class="row align-items-center">
                         <div class="col-md-6">
@@ -90,7 +151,8 @@
                                     <h6 class="font-weight-bold">95%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="skill mb-4">
@@ -99,7 +161,8 @@
                                     <h6 class="font-weight-bold">85%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="skill mb-4">
@@ -108,7 +171,8 @@
                                     <h6 class="font-weight-bold">90%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +183,8 @@
                                     <h6 class="font-weight-bold">90%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="skill mb-4">
@@ -128,7 +193,8 @@
                                     <h6 class="font-weight-bold">95%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="95"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             <div class="skill mb-4">
@@ -137,7 +203,8 @@
                                     <h6 class="font-weight-bold">85%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="85"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
@@ -146,10 +213,12 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
                         <li class="nav-item w-50">
-                            <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill" href="#tab-1">Experience</button>
+                            <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill"
+                                href="#tab-1">Experience</button>
                         </li>
                         <li class="nav-item w-50">
-                            <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill" href="#tab-2">Education</button>
+                            <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill"
+                                href="#tab-2">Education</button>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -237,7 +306,8 @@
                         <div class="ms-sm-4">
                             <h4 class="mb-3">Creative Design</h4>
                             <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>
-                            <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>
+                            <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo
+                                clita sit sed sit dolor eos.</span>
                         </div>
                     </div>
                 </div>
@@ -249,7 +319,8 @@
                         <div class="ms-sm-4">
                             <h4 class="mb-3">Graphic Design</h4>
                             <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>
-                            <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>
+                            <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo
+                                clita sit sed sit dolor eos.</span>
                         </div>
                     </div>
                 </div>
@@ -261,7 +332,8 @@
                         <div class="ms-sm-4">
                             <h4 class="mb-3">Web Design</h4>
                             <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>
-                            <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>
+                            <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo
+                                clita sit sed sit dolor eos.</span>
                         </div>
                     </div>
                 </div>
@@ -273,7 +345,8 @@
                         <div class="ms-sm-4">
                             <h4 class="mb-3">UI/UX Design</h4>
                             <h6 class="mb-3">Start from <span class="text-primary">$199</span></h6>
-                            <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo clita sit sed sit dolor eos.</span>
+                            <span>Stet lorem dolor diam amet vero eos. No stet est diam amet diam ipsum. Clita dolor duo
+                                clita sit sed sit dolor eos.</span>
                         </div>
                     </div>
                 </div>
@@ -301,55 +374,67 @@
             <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-4 col-md-6 portfolio-item first">
                     <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('front-assets')}}/img/project-1.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-1.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-1.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                                    class="fa fa-link"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item second">
                     <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('front-assets')}}/img/project-2.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-2.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-2.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                                    class="fa fa-link"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item first">
                     <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('front-assets')}}/img/project-3.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-3.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-3.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                                    class="fa fa-link"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item second">
                     <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('front-assets')}}/img/project-4.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-4.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-4.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-4.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                                    class="fa fa-link"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item first">
                     <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('front-assets')}}/img/project-5.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-5.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-5.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-5.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                                    class="fa fa-link"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 portfolio-item second">
                     <div class="portfolio-img rounded overflow-hidden">
-                        <img class="img-fluid" src="{{ asset('front-assets')}}/img/project-6.jpg" alt="">
+                        <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-6.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-6.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-6.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
+                                    class="fa fa-link"></i></a>
                         </div>
                     </div>
                 </div>
@@ -373,7 +458,7 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative">
-                        <img class="img-fluid rounded" src="{{ asset('front-assets')}}/img/team-1.jpg" alt="">
+                        <img class="img-fluid rounded" src="{{ asset('front-assets') }}/img/team-1.jpg" alt="">
                         <div class="team-text bg-white rounded-end p-4">
                             <div>
                                 <h5>Full Name</h5>
@@ -385,7 +470,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item position-relative">
-                        <img class="img-fluid rounded" src="{{ asset('front-assets')}}/img/team-2.jpg" alt="">
+                        <img class="img-fluid rounded" src="{{ asset('front-assets') }}/img/team-2.jpg" alt="">
                         <div class="team-text bg-white rounded-end p-4">
                             <div>
                                 <h5>Full Name</h5>
@@ -397,7 +482,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item position-relative">
-                        <img class="img-fluid rounded" src="{{ asset('front-assets')}}/img/team-3.jpg" alt="">
+                        <img class="img-fluid rounded" src="{{ asset('front-assets') }}/img/team-3.jpg" alt="">
                         <div class="team-text bg-white rounded-end p-4">
                             <div>
                                 <h5>Full Name</h5>
@@ -420,45 +505,57 @@
             <div class="row justify-content-center">
                 <div class="col-lg-3 d-none d-lg-block">
                     <div class="testimonial-left h-100">
-                        <img class="img-fluid wow fadeIn" data-wow-delay="0.1s" src="{{ asset('front-assets')}}/img/testimonial-1.jpg" alt="">
-                        <img class="img-fluid wow fadeIn" data-wow-delay="0.3s" src="{{ asset('front-assets')}}/img/testimonial-2.jpg" alt="">
-                        <img class="img-fluid wow fadeIn" data-wow-delay="0.5s" src="{{ asset('front-assets')}}/img/testimonial-3.jpg" alt="">
+                        <img class="img-fluid wow fadeIn" data-wow-delay="0.1s"
+                            src="{{ asset('front-assets') }}/img/testimonial-1.jpg" alt="">
+                        <img class="img-fluid wow fadeIn" data-wow-delay="0.3s"
+                            src="{{ asset('front-assets') }}/img/testimonial-2.jpg" alt="">
+                        <img class="img-fluid wow fadeIn" data-wow-delay="0.5s"
+                            src="{{ asset('front-assets') }}/img/testimonial-3.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="owl-carousel testimonial-carousel">
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="{{ asset('front-assets')}}/img/testimonial-1.jpg" alt="">
+                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto"
+                                    src="{{ asset('front-assets') }}/img/testimonial-1.jpg" alt="">
                                 <div class="testimonial-icon">
                                     <i class="fa fa-quote-left text-primary"></i>
                                 </div>
                             </div>
-                            <p class="fs-5 fst-italic">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
+                            <p class="fs-5 fst-italic">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore
+                                dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.
+                            </p>
                             <hr class="w-25 mx-auto">
                             <h5>Client Name</h5>
                             <span>Profession</span>
                         </div>
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="{{ asset('front-assets')}}/img/testimonial-2.jpg" alt="">
+                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto"
+                                    src="{{ asset('front-assets') }}/img/testimonial-2.jpg" alt="">
                                 <div class="testimonial-icon">
                                     <i class="fa fa-quote-left text-primary"></i>
                                 </div>
                             </div>
-                            <p class="fs-5 fst-italic">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
+                            <p class="fs-5 fst-italic">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore
+                                dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.
+                            </p>
                             <hr class="w-25 mx-auto">
                             <h5>Client Name</h5>
                             <span>Profession</span>
                         </div>
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="{{ asset('front-assets')}}/img/testimonial-3.jpg" alt="">
+                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto"
+                                    src="{{ asset('front-assets') }}/img/testimonial-3.jpg" alt="">
                                 <div class="testimonial-icon">
                                     <i class="fa fa-quote-left text-primary"></i>
                                 </div>
                             </div>
-                            <p class="fs-5 fst-italic">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
+                            <p class="fs-5 fst-italic">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore
+                                dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.
+                            </p>
                             <hr class="w-25 mx-auto">
                             <h5>Client Name</h5>
                             <span>Profession</span>
@@ -467,9 +564,12 @@
                 </div>
                 <div class="col-lg-3 d-none d-lg-block">
                     <div class="testimonial-right h-100">
-                        <img class="img-fluid wow fadeIn" data-wow-delay="0.1s" src="{{ asset('front-assets')}}/img/testimonial-1.jpg" alt="">
-                        <img class="img-fluid wow fadeIn" data-wow-delay="0.3s" src="{{ asset('front-assets')}}/img/testimonial-2.jpg" alt="">
-                        <img class="img-fluid wow fadeIn" data-wow-delay="0.5s" src="{{ asset('front-assets')}}/img/testimonial-3.jpg" alt="">
+                        <img class="img-fluid wow fadeIn" data-wow-delay="0.1s"
+                            src="{{ asset('front-assets') }}/img/testimonial-1.jpg" alt="">
+                        <img class="img-fluid wow fadeIn" data-wow-delay="0.3s"
+                            src="{{ asset('front-assets') }}/img/testimonial-2.jpg" alt="">
+                        <img class="img-fluid wow fadeIn" data-wow-delay="0.5s"
+                            src="{{ asset('front-assets') }}/img/testimonial-3.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -509,7 +609,9 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form
+                        with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done.
+                        <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
                     <form>
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -553,9 +655,9 @@
         <div class="container-xxl pt-5 px-0">
             <div class="bg-dark">
                 <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                frameborder="0" style="width: 100%; height: 450px; border:0;" allowfullscreen="" aria-hidden="false"
-                tabindex="0"></iframe>
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                    frameborder="0" style="width: 100%; height: 450px; border:0;" allowfullscreen="" aria-hidden="false"
+                    tabindex="0"></iframe>
             </div>
         </div>
     </div>
