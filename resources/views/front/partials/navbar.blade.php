@@ -1,29 +1,28 @@
- <!-- Navbar & Hero Start -->
-    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-        <a href="{{route('front.index')}}" class="navbar-brand p-0">
-            <h1 class="m-0">DGital</h1>
-            <!-- <img src="{{ asset('front-assets')}}/img/logo.png" alt="Logo"> -->
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="fa fa-bars"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-                <a href="{{route('front.index')}}" class="nav-item nav-link @yield('index-active')">Home</a>
-                <a href="{{route('front.about')}}" class="nav-item nav-link @yield('about-active')">About</a>
-                <a href="{{route('front.services')}}" class="nav-item nav-link @yield('services-active')">Service</a>
-                <a href="{{route('front.projects')}}" class="nav-item nav-link @yield('projects-active')">Project</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle @yield('team-testimonials-active')" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="{{route('front.team')}}" class="dropdown-item">Our Team</a>
-                        <a href="{{route('front.testimonials')}}" class="dropdown-item">Testimonial</a>
-                    </div>
-                </div>
-                <a href="{{route('front.contact')}}" class="nav-item nav-link @yield('contact-active')">Contact</a>
-            </div>
-            <a href="{{route('admin.index')}}" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
+<nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+    <a href="index.html" class="navbar-brand d-block d-lg-none">
+        <h1 class="text-primary fw-bold m-0">ProMan</h1>
+    </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-0">
+            <a href="#home" class="nav-item nav-link active">Home</a>
+            <a href="#about" class="nav-item nav-link">About</a>
+            <a href="#skill" class="nav-item nav-link">Skills</a>
+            <a href="#service" class="nav-item nav-link">Services</a>
         </div>
-    </nav>
-
-<!-- Navbar & Hero End -->
+        {{-- <a href="index.html" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">
+            <h1 class="text-primary fw-bold m-0">ProMan</h1>
+        </a> --}}
+        <div class="navbar-nav me-auto py-0">
+            <a href="#project" class="nav-item nav-link">Projects</a>
+            <a href="#team" class="nav-item nav-link">Team</a>
+            <a href="#testimonial" class="nav-item nav-link">Testimonial</a>
+            <a href="#contact" class="nav-item nav-link">Contact</a>
+             <a href="{{ route('admin.index') }}" class="navbar-brand bg-secondary py-4 px-3 mx-3 d-none d-lg-block">
+            <h5 class="text-primary fw-bold m-0">Log in</h5>
+        </a>
+        </div>
+    </div>
+</nav>

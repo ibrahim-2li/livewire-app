@@ -20,7 +20,7 @@
         </div>
         @livewire('admin.counters.counters-update')
         @livewire('admin.counters.counters-delete')
-        {{-- @livewire('admin.counters.counters-show') --}}
+        @livewire('admin.counters.counters-show')
     </div>
 
 @endsection

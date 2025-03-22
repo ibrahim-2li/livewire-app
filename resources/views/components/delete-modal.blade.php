@@ -19,7 +19,7 @@
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                             Close
                         </button>
-                        <button type="submit" class="btn btn-danger">Save changes</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </form>

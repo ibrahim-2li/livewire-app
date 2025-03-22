@@ -22,18 +22,18 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->name('front.')->group(function (){
     // ========================================== index
     Route::view('', 'front.index')->name('index');
-    // ========================================== about
-    Route::view('about', 'front.about')->name('about');
-    // ========================================== contact
-    Route::view('contact', 'front.contact')->name('contact');
-    // ========================================== projects
-    Route::view('projects', 'front.projects')->name('projects');
-    // ========================================== services
-    Route::view('services', 'front.services')->name('services');
-    // ========================================== team
-    Route::view('team', 'front.team')->name('team');
-    // ========================================== testimonials
-    Route::view('testimonials', 'front.testimonials')->name('testimonials');
+    // // ========================================== about
+    // Route::view('about', 'front.about')->name('about');
+    // // ========================================== contact
+    // Route::view('contact', 'front.contact')->name('contact');
+    // // ========================================== projects
+    // Route::view('projects', 'front.projects')->name('projects');
+    // // ========================================== services
+    // Route::view('services', 'front.services')->name('services');
+    // // ========================================== team
+    // Route::view('team', 'front.team')->name('team');
+    // // ========================================== testimonials
+    // Route::view('testimonials', 'front.testimonials')->name('testimonials');
 });
 
 /**
@@ -53,6 +53,8 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
         Route::view('counters', 'admin.counters.index')->name('counters');
         // ========================================== Services index
         Route::view('services', 'admin.services.index')->name('services');
+        // ========================================== Messages index
+        Route::view('messages', 'admin.messages.index')->name('messages');
     });
 
     // ========================================== login index
