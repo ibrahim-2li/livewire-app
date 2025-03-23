@@ -114,6 +114,22 @@
         </a>
       </li>
 
+       <!-- Categories -->
+       <li class="menu-item @yield('categories-active')">
+        <a href="{{route('admin.categories')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-category"></i>
+          <div data-i18n="Analytics">Categories</div>
+        </a>
+      </li>
+
+      <!-- Projects -->
+      <li class="menu-item @yield('projects-active')">
+        <a href="{{route('admin.projects')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-folder-minus"></i>
+          <div data-i18n="Analytics">Projects</div>
+        </a>
+      </li>
+
        <!-- Settings -->
        <li class="menu-item @yield('settings-active')">
         <a href="{{route('admin.settings')}}" class="menu-link">

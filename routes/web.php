@@ -55,6 +55,10 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
         Route::view('services', 'admin.services.index')->name('services');
         // ========================================== Messages index
         Route::view('messages', 'admin.messages.index')->name('messages');
+        // ========================================== Categories index
+        Route::view('categories', 'admin.categories.index')->name('categories');
+        // ========================================== Projects index
+        Route::view('projects', 'admin.projects.index')->name('projects');
     });
 
     // ========================================== login index

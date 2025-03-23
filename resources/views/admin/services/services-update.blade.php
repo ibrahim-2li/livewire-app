@@ -1,7 +1,7 @@
 <x-update-modal title='Update Services'>
     <div class="col mb-0">
         <label for="emailBasic" class="form-label">Name</label>
-        <input type="text" class="form-control" placeholder="Counter Name"
+        <input type="text" class="form-control" placeholder="Services Name"
             wire:model='name' />
             @include('admin.errors',['property'=>'name'])
     </div>

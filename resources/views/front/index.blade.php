@@ -75,65 +75,6 @@
     <!-- About End -->
 
 
-    <!-- ======= Clients Section ======= -->
-    {{-- <section id="clients" class="clients section-bg">
-        <div class="container">
-
-            <div class="section-title aos-init" data-aos="fade-up">
-                <h2>Clients</h2>
-                <p>They trusted us</p>
-            </div>
-
-            <div class="owl-carousel clients-carousel owl-loaded owl-drag aos-init" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="owl-stage-outer">
-                    <div class="owl-stage"
-                        style="transform: translate3d(-1380px, 0px, 0px); transition: 0.25s; width: 2760px;">
-                        <div class="owl-item cloned" style="width: 172.5px;"><img src="assets/img/clients/client-5.png"
-                                alt=""></div>
-                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-6.png"
-                                alt=""></div>
-                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-7.png"
-                                alt=""></div>
-                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-8.png"
-                                alt=""></div>
-                        <div class="owl-item" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-1.png"
-                                alt=""></div>
-                        <div class="owl-item" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-2.png"
-                                alt=""></div>
-                        <div class="owl-item" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-3.png"
-                                alt=""></div>
-                        <div class="owl-item" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-4.png"
-                                alt=""></div>
-                        <div class="owl-item active" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-5.png"
-                                alt=""></div>
-                        <div class="owl-item active" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-6.png"
-                                alt=""></div>
-                        <div class="owl-item active" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-7.png"
-                                alt=""></div>
-                        <div class="owl-item active" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-8.png"
-                                alt=""></div>
-                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-1.png"
-                                alt=""></div>
-                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-2.png"
-                                alt=""></div>
-                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-3.png"
-                                alt=""></div>
-                        <div class="owl-item cloned" style="width: 172.5px;"><img src="{{ asset('front-assets')}}/img/clients/client-4.png"
-                                alt=""></div>
-                    </div>
-                </div>
-                <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span
-                            aria-label="Previous">‹</span></button><button type="button" role="presentation"
-                        class="owl-next"><span aria-label="Next">›</span></button></div>
-                <div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button
-                        role="button" class="owl-dot active"><span></span></button></div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- End Clients Section -->
-
-
     <!-- Expertise Start -->
     <div class="container-xxl py-6 pb-5" id="skill">
         <div class="container">
