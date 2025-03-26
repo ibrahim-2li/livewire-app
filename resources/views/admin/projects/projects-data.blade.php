@@ -17,8 +17,10 @@
                 @foreach ($data as $record)
                     <tr>
                         <td><strong>{{ $record->name }}</strong></td>
-                        <td><strong>{{ $record->name }}</strong></td>
-                        <td><strong>{{ $record->name }}</strong></td>
+                        <td><strong>{{ $record->category?->name }}</strong></td>
+                        <td>
+                        <img src="{{ asset($record->image) }}" width="auto" height="45px">
+                        </td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

@@ -18,8 +18,8 @@
                 @livewire('admin.projects.projects-data')
             </div>
         </div>
-        {{-- @livewire('admin.projects.projects-update')
-        @livewire('admin.projects.projects-delete')
+        @livewire('admin.projects.projects-update')
+        {{-- @livewire('admin.projects.projects-delete')
         @livewire('admin.projects.projects-show') --}}
     </div>
 

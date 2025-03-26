@@ -317,7 +317,7 @@
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-1.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-1.jpg"
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="{{ asset('front-assets') }}/img/project-1.jpg"
                                 data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
                                     class="fa fa-link"></i></a>
@@ -328,7 +328,7 @@
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-2.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-2.jpg"
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="{{ asset('front-assets') }}/img/project-2.jpg"
                                 data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
                                     class="fa fa-link"></i></a>
@@ -339,7 +339,7 @@
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-3.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-3.jpg"
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="{{ asset('front-assets') }}/img/project-3.jpg"
                                 data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
                                     class="fa fa-link"></i></a>
@@ -350,7 +350,7 @@
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-4.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-4.jpg"
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="{{ asset('front-assets') }}/img/project-4.jpg"
                                 data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
                                     class="fa fa-link"></i></a>
@@ -361,7 +361,7 @@
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-5.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-5.jpg"
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="{{ asset('front-assets') }}/img/project-5.jpg"
                                 data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
                                     class="fa fa-link"></i></a>
@@ -372,7 +372,7 @@
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="{{ asset('front-assets') }}/img/project-6.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-6.jpg"
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="{{ asset('front-assets') }}/img/project-6.jpg"
                                 data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i
                                     class="fa fa-link"></i></a>
