@@ -8,12 +8,13 @@ use App\Livewire\Admin\Skills\SkillsData;
 
 class SkillsCreate extends Component
 {
-    public $name,$progress;
+    public $name, $color, $progress;
 
     public function rules ()
     {
         return [
             'name' => 'required',
+            'color' => 'nullable',
             'progress' => 'required|numeric',
         ];
     }
@@ -22,7 +23,7 @@ class SkillsCreate extends Component
     {
         $data = $this->validate();
         Skill::create($data);
-        $this->reset(['name','progress']);
+        $this->reset(['name','color','progress']);
         $this->dispatch('createModalToggle');
         $this->dispatch('refreshData')->to(SkillsData::class);
     }

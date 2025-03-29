@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class SkillsUpdate extends Component
 {
-    public $skill, $name ,$progress;
+    public $skill, $name , $color ,$progress;
     protected $listeners = ['skillUpdate'];
 
     public function skillUpdate($id)
@@ -15,6 +15,7 @@ class SkillsUpdate extends Component
         $this->skill = Skill::find($id);
 
         $this->name = $this->skill->name;
+        $this->color = $this->skill->color;
         $this->progress = $this->skill->progress;
         $this->resetValidation();
 
@@ -25,6 +26,7 @@ class SkillsUpdate extends Component
     {
         return [
             'name' => 'required',
+            'color' => 'nullable',
             'progress' => 'required|numeric',
         ];
     }

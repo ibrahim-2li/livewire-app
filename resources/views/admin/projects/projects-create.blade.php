@@ -28,7 +28,7 @@
             @endforeach
         @endif
         </select>
-        @include('admin.errors',['property'=>'category'])
+        @include('admin.errors',['property'=>'category_id'])
     </div>
 
     <div class="d-flex justify-content-center align-items-center">

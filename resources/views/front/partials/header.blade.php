@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <img class="img-fluid" src="{{ asset('front-assets')}}/img/profile2.png" alt="">
+                <img class="img-fluid" src="{{ asset('front-assets')}}/img/hero.webp" alt="">
             </div>
         </div>
     </div>

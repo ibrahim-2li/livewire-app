@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class SkillsShow extends Component
 {
-    public $name ,$progress;
+    public $name ,$color ,$progress;
     protected $listeners = ['skillShow'];
 
     public function skillShow($id)
@@ -15,6 +15,7 @@ class SkillsShow extends Component
         $record = Skill::find($id);
 
         $this->name = $record->name;
+        $this->color = $record->color;
         $this->progress = $record->progress;
 
 

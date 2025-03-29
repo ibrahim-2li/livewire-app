@@ -7,8 +7,9 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th width="45%">Name</th>
-                    <th width="45%">Progress</th>
+                    <th width="30%">Name</th>
+                    <th width="30%">Color</th>
+                    <th width="30%">Progress</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -16,8 +17,14 @@
                 @foreach ($data as $record)
                     <tr>
                         <td><strong>{{ $record->name }}</strong></td>
+                        <td>
+                            <span class="badge bg-{{ $record->color !== null ? $record->color :  'primary'}}">#color
+                            </span>
+                            </td>
                         <td>{{ $record->progress }}%</td>
-
+                        {{-- <span class="{{$record->status == '0' ? 'badge bg-success' : 'badge bg-danger'}}">
+                            {{$record->status == '0' ? 'New' : 'Read'}}</td>
+                        </span> --}}
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

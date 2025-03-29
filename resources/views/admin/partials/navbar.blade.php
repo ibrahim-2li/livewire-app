@@ -23,7 +23,7 @@
                 <ul class="navbar-nav flex-row align-items-center ms-auto">
                     <!-- Place this tag where you want the button to render. -->
                     <li class="nav-item lh-1 me-3">
-                    <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
+                    {{-- <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
                         <!-- Language -->
                         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                             data-bs-toggle="dropdown">
@@ -45,11 +45,11 @@
                             </li>
 
                         </ul>
-                    </li>
+                    </li> --}}
                     <!-- Language -->
 
                     <!-- Dark-ligth -->
-                    <li class="nav-item dropdown me-2 me-xl-0">
+                    {{-- <li class="nav-item dropdown me-2 me-xl-0">
                         <a class="nav-link dropdown-toggle hide-arrow" id="nav-theme" href="javascript:void(0);"
                             data-bs-toggle="dropdown" aria-label="Toggle theme (light)" aria-expanded="false">
                             <i class="bx-sun icon-base bx icon-md theme-icon-active"></i>
@@ -77,7 +77,7 @@
                                 </button>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     <!--/ Dark-ligth -->
 
@@ -211,7 +211,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
+                                    <span class="fw-semibold d-block">{{Auth::guard('admin')->user()->name}}</span>
                                     <small class="text-muted">Admin</small>
                                 </div>
                             </div>
@@ -227,20 +227,13 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('admin.settings') }}">
                             <i class="bx bx-cog me-2"></i>
                             <span class="align-middle">Settings</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                            <span class="d-flex align-items-center align-middle">
-                                <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                                <span class="flex-grow-1 align-middle">Billing</span>
-                                <span
-                                    class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                            </span>
-                        </a>
+
                     </li>
                     <li>
                         <div class="dropdown-divider"></div>

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
+            $table->string('color')->nullable();
             $table->integer('progress')->nullable();
             $table->timestamps();
         });

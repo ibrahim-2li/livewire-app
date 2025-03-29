@@ -7,7 +7,7 @@
     <div class="demo-vertical-spacing">
       <div class="progress" style="height: 20px">
         <div
-          class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+          class="progress-bar progress-bar-striped progress-bar-animated bg-{{ $color }}"
           role="progressbar"
           style="width: {{$progress}}%"
           aria-valuenow="{{$progress}}"
