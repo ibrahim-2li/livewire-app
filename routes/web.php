@@ -43,8 +43,6 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
     Route::middleware('auth:admin')->group(function () {
         // ========================================== Admin index
         Route::view('', 'admin.index')->name('index');
-        // ========================================== settings index
-        Route::view('settings', 'admin.settings.index')->name('settings');
         // ========================================== Skills index
         Route::view('skills', 'admin.skills.index')->name('skills');
         // ========================================== subscribers index
@@ -59,6 +57,10 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
         Route::view('categories', 'admin.categories.index')->name('categories');
         // ========================================== Projects index
         Route::view('projects', 'admin.projects.index')->name('projects');
+         // ========================================== settings index
+         Route::view('account', 'admin.account.index')->name('account');
+        // ========================================== settings index
+        Route::view('settings', 'admin.settings.index')->name('settings');
     });
 
     // ========================================== login index

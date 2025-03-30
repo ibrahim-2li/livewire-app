@@ -14,7 +14,7 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
                         <div class="bg-icon flex-shrink-0 mb-3">
-                            <i class="{{ $service->icon }}"></i>
+                            <i class="{{ $service->icon }} fa-lg"></i>
                         </div>
                         <div class="ms-sm-4">
                             <h4 class="mb-3">{{ $service->name }}</h4>

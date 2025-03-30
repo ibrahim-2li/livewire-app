@@ -15,6 +15,8 @@ class AdminSeeder extends Seeder
     {
         Admin::updateOrcreate(['email' => 'admin@admin.com'],[
             'name' => 'admin',
+            'address' => 'Riyadh KSA',
+            'phone' => '500000000',
             'password'=> bcrypt('123456789'),
         ]);
     }

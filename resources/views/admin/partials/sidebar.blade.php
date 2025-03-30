@@ -74,6 +74,11 @@
           <div data-i18n="Analytics">Dashboard</div>
         </a>
       </li>
+
+      <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Components</span>
+      </li>
+
        <!-- Skills -->
        <li class="menu-item @yield('skills-active')">
         <a href="{{route('admin.skills')}}" class="menu-link">
@@ -127,6 +132,18 @@
         <a href="{{route('admin.projects')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-folder-minus"></i>
           <div data-i18n="Analytics">Projects</div>
+        </a>
+      </li>
+
+      <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Configration</span>
+      </li>
+
+      <!-- Account -->
+      <li class="menu-item @yield('account-active')">
+        <a href="{{route('admin.account')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-user me-1"></i>
+          <div data-i18n="Analytics">Account Settings</div>
         </a>
       </li>
 
