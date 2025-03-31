@@ -3,6 +3,7 @@ namespace App\Livewire\Admin\Account;
 
 use App\Models\Admin;
 use Livewire\Component;
+use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,9 +14,9 @@ class UpdateAccount extends Component
     public Admin $user;
     public $newAvatar; // Separate property for file upload
 
-    public function mount()
+    public function mount(Request $request)
     {
-        $this->user = Admin::find(1);
+        $this->user = $request->user();
     }
 
     public function rules()
