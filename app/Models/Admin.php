@@ -3,10 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
+
+    protected function avatar(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value ? asset('/' . $value) : asset('storage/avatar/default.png')
+        );
+    }
     //
 
      /**

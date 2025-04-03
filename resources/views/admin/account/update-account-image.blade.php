@@ -1,6 +1,6 @@
 <div class="card-body">
     <div class="d-flex align-items-start align-items-sm-center gap-4">
-        <img src="{{ $user->avatar ? asset($user->avatar) : asset('storage/avatar/default-avatar.png') }}"
+        <img src="{{ $user->avatar }}"
      alt="user-avatar"
      class="d-block rounded"
      height="100"

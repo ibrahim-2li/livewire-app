@@ -9,7 +9,7 @@
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">Name</label>
-                                <input class="form-control" type="text" wire:model='user.name'  placeholder="Name" autofocus />
+                                <input class="form-control" type="text" wire:model='user.name'  placeholder="Name" />
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label class="form-label">E-mail</label>

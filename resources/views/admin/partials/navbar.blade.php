@@ -195,7 +195,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="{{ asset(Auth::guard('admin')->user()->avatar ? asset(Auth::guard('admin')->user()->avatar) : asset('storage/avatar/default-avatar.png')) }}" alt
+                        <img src="{{ asset(Auth::guard('admin')->user()->avatar) }}" alt
                             class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
@@ -206,7 +206,7 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ asset(Auth::guard('admin')->user()->avatar ? asset(Auth::guard('admin')->user()->avatar) : asset('storage/avatar/default-avatar.png')) }}" alt
+                                        <img src="{{ asset(Auth::guard('admin')->user()->avatar) }}" alt
                                             class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
