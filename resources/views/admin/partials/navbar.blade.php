@@ -81,7 +81,8 @@
 
                     <!--/ Dark-ligth -->
 
-                    <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">
+                    <!-- Notification -->
+                    {{-- <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">
                         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                             data-bs-toggle="dropdown">
                             <span class="position-relative">
@@ -90,7 +91,6 @@
                             </span>
                         </a>
 
-                        <!-- Notification -->
                         <ul class="dropdown-menu dropdown-menu-end p-0" data-bs-popper="static">
                             <li class="dropdown-menu-header border-bottom">
                                 <div class="dropdown-header d-flex align-items-center py-3">
@@ -185,7 +185,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <!-- / Notification -->
 
             </li>
@@ -232,9 +232,7 @@
                             <span class="align-middle">Settings</span>
                         </a>
                     </li>
-                    <li>
-
-                    </li>
+                        @livewire('admin.components.message-component')
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
