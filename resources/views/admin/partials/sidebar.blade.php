@@ -75,9 +75,9 @@
         </a>
       </li>
 
-      <li class="menu-header small text-uppercase">
+      {{-- <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Components</span>
-      </li>
+      </li> --}}
 
        <!-- Skills -->
        <li class="menu-item @yield('skills-active')">
@@ -132,6 +132,14 @@
         <a href="{{route('admin.projects')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-folder-minus"></i>
           <div data-i18n="Analytics">Projects</div>
+        </a>
+      </li>
+
+      <!-- Members -->
+      <li class="menu-item @yield('members-active')">
+        <a href="{{route('admin.members')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+          <div data-i18n="Analytics">Members</div>
         </a>
       </li>
 

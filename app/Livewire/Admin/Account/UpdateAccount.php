@@ -45,20 +45,20 @@ class UpdateAccount extends Component
     {
         $this->validate();
 
-        // Handle avatar upload
-        if ($this->newAvatar) {
-            // Delete old avatar if exists
-            if ($this->user->avatar) {
-                Storage::delete(str_replace('storage/', 'public/', $this->user->avatar));
-            }
+        // // Handle avatar upload
+        // if ($this->newAvatar) {
+        //     // Delete old avatar if exists
+        //     if ($this->user->avatar) {
+        //         Storage::delete(str_replace('storage/', 'public/', $this->user->avatar));
+        //     }
 
-            // Save new avatar
-            $imageName = time() . '.' . $this->newAvatar->getClientOriginalExtension();
-            $this->newAvatar->storeAs('public/images', $imageName);
-            $this->user->avatar = 'storage/images/' . $imageName;
-        }
+        //     // Save new avatar
+        //     $imageName = time() . '.' . $this->newAvatar->getClientOriginalExtension();
+        //     $this->newAvatar->storeAs('public/images', $imageName);
+        //     $this->user->avatar = 'storage/images/' . $imageName;
+        // }
 
-        $this->user->save();
+        $this->user->update();
 
         session()->flash('message', 'Account Updated Successfully!');
     }
