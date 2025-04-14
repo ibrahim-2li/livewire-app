@@ -1,12 +1,13 @@
 <div class="container-xxl py-6 pb-5" id="team">
     <div class="container">
+        @if(count($teams) > 0)
         <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="col-lg-6">
                 <h1 class="display-5 mb-0">Team Members</h1>
             </div>
         </div>
         <div class="row g-4">
-            @if(count($teams) > 0)
+
                @foreach ($teams as $team )
                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item position-relative">
@@ -36,7 +37,7 @@
             </div>
 
                @endforeach
+            </div>
             @endif
-        </div>
     </div>
 </div>

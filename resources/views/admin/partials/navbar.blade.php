@@ -232,7 +232,13 @@
                             <span class="align-middle">Settings</span>
                         </a>
                     </li>
+                    <a class="dropdown-item" href="{{ route('admin.messages') }}">
+                        <span class="d-flex align-items-center align-middle">
+                          <i class="flex-shrink-0 bx bx-message me-2"></i>
+                          <span class=" mx-1 flex-grow-1 align-middle">Messages</span>
                         @livewire('admin.components.message-component')
+                    </span>
+                </a>
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>

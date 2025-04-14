@@ -19,7 +19,7 @@
             </div>
         </div>
         @livewire('admin.members.members-update')
-      {{--   @livewire('admin.members.members-delete')--}}
+        @livewire('admin.members.members-delete')
        @livewire('admin.members.members-show')
     </div>
 

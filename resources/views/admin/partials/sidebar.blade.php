@@ -115,7 +115,8 @@
        <li class="menu-item @yield('messages-active')">
         <a href="{{route('admin.messages')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-message"></i>
-          <div data-i18n="Analytics">Messages</div>
+          <div data-i18n="Analytics">Messages </div>
+          @livewire('admin.components.message-component')
         </a>
       </li>
 

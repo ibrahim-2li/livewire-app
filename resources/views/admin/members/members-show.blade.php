@@ -1,6 +1,6 @@
-<x-show-modal-md title="Member Details">
+<x-show-modal title="Member Details">
 
-        <div class="mx-10 d-flex justify-content-end diaplay-inline">
+        <div class="mx-auto d-flex justify-content-end diaplay-inline">
             <div>
                 <h5>{{ $name }}</h5>
                 <span>{{ $position }}</span>
@@ -19,6 +19,6 @@
                     @endif
                 </div>
             </div>
-            <img class="mx-2"  src="{{  asset($image) }}" width="auto" height="350px">
+            <img class="mx-auto"  src="{{  asset($image) }}" width="auto" height="300px">
     </div>
-</x-show-modal-md>
+</x-show-modal>
