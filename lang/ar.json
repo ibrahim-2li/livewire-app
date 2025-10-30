@@ -105,7 +105,24 @@
     "Validation complete": "اكتمل التحقق",
     "Validating QR data...": "جارٍ التحقق من بيانات الرمز...",
     "Processing scanned data...": "جارٍ معالجة البيانات الممسوحة...",
-    "QR Code detected! Processing...": "تم اكتشاف رمز الاستجابة السريعة! جارٍ المعالجة..."
-
+    "QR Code detected! Processing...": "تم اكتشاف رمز الاستجابة السريعة! جارٍ المعالجة...",
+    "Account Setting": "إعدادات الحساب",
+    "Allowed JPG, GIF or PNG. Max size of 800K": "مسموح بصيغ JPG أو GIF أو PNG. الحد الأقصى للحجم 800 كيلوبايت",
+    "Reset": "إعادة تعيين",
+    "Upload new photo": "رفع صورة جديدة",
+    "Are you sure you want to delete this account? This action cannot be undone!": "هل أنت متأكد أنك تريد حذف هذا الحساب؟ لا يمكن التراجع عن هذا الإجراء!",
+    "Confirm Deletion": "تأكيد الحذف",
+    "I confirm my account deactivation": "أؤكد إلغاء تنشيط حسابي",
+    "Once you delete your account, there is no going back. Please be certain.": "بمجرد حذف حسابك، لا يمكنك استعادته. يرجى التأكد من قرارك.",
+    "Are you sure you want to delete your account?": "هل أنت متأكد أنك تريد حذف حسابك؟",
+    "Delete Account": "حذف الحساب",
+    "Cancel": "إلغاء",
+    "Profile Details": "تفاصيل الحساب",
+    "Instgram": "إنستغرام",
+    "Facebook": "فيس بوك",
+    "Twitter": "تويتر",
+    "LinkedIn": "لنكد إن",
+    "Address": "العنوان",
+    "Submit": "حفظ"
 
 }

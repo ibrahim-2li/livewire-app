@@ -105,6 +105,26 @@
     "Validation complete": "Validation complete",
     "Validating QR data...": "Validating QR data...",
     "Processing scanned data...": "Processing scanned data...",
-    "QR Code detected! Processing...": "QR Code detected! Processing..."
+    "QR Code detected! Processing...": "QR Code detected! Processing...",
+    "Account Setting": "Account Setting",
+    "Allowed JPG, GIF or PNG. Max size of 800K": "Allowed JPG, GIF or PNG. Max size of 800K",
+    "Reset": "Reset",
+    "Upload new photo": "",
+    "Are you sure you want to delete this account? This action cannot be undone!": "Are you sure you want to delete this account? This action cannot be undone!",
+    "Confirm Deletion":"Confirm Deletion",
+    "I confirm my account deactivation": "I confirm my account deactivation",
+    "Once you delete your account, there is no going back. Please be certain.":"Once you delete your account, there is no going back. Please be certain.",
+    "Are you sure you want to delete your account?":"Are you sure you want to delete your account?",
+    "Delete Account": "Delete Account",
+    "Cancel": "Cancel",
+    "Profile Details": "Profile Details",
+    "Instgram": "Instgram",
+    "Facebook": "Facebook",
+    "Twitter": "Twitter",
+    "LinkedIn": "LinkedIn",
+    "Address": "Address",
+    "Submit": "Submit"
+
+
 
 }

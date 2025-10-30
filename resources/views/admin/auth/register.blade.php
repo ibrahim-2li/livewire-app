@@ -23,7 +23,7 @@
                 <div class="flex items-center">
                     <a href="{{ route('events.index') }}" class="text-2xl font-bold text-orange-600">
                         <i class="fas fa-calendar-alt ml-2"></i>
-                        منصة الأحداث
+                        @lang('Events')
                     </a>
                 </div>
                 <div class="flex items-center space-x-4 space-x-reverse">
@@ -115,14 +115,14 @@
                             <div>
 
                             </div>
-                            <div class=<label for="phone" class="block text-sm font-medium text-gray-700 mb-2">رقم
-                                الهاتف</label>
+                            <div class=<label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                                @lang('Phone Number') : like 00966512345678</label>
 
                                 <div class="input-group input-group-merge">
-                                    <span class="input-group-text">KSA (+966)</span>
-                                    <input type="number" id="phone" name="phone" value="{{ old('phone') }}"
+                                    <input type="text" maxlength="14" pattern="\d{14}" inputmode="numeric"
+                                        id="phone" name="phone" value="{{ old('phone') }}"
                                         class="form-control form-control w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                                        placeholder="500 000 000" max="999999999" required />
+                                        placeholder="500 000 000" required />
                                 </div>
                                 {{-- <span class="input-group-text">KSA (+966)</span>
                                 <input minlength="10" maxlength="10" type="number" id="phone_numbe" name="phone_numbe" wire:model='phone'

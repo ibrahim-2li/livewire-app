@@ -66,6 +66,7 @@ class Event extends Model
         'location',
         'qr_token',
         'is_active',
+        'map',
     ];
 
     protected static function boot()

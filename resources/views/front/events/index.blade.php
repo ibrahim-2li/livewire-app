@@ -201,8 +201,8 @@
                             <!-- Attendees Count -->
                             <div class="flex items-center justify-between pt-4 border-t border-gray-200">
                                 <div class="flex items-center text-gray-600">
-                                    <i class="fas fa-users text-orange-500 ml-2"></i>
-                                    <span class="text-sm">{{ $event->total_attendees }} مشارك</span>
+                                    {{-- <i class="fas fa-users text-orange-500 ml-2"></i> --}}
+                                    {{-- <span class="text-sm">{{ $event->total_attendees }} مشارك</span> --}}
                                 </div>
                                 <div class="text-xs text-gray-500">
                                     {{ $event->start_date->diffForHumans() }}

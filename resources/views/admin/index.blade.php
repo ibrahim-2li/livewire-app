@@ -403,7 +403,7 @@
             </h4>
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">@lang('Welcome') {{ auth('admin')->user()->name }}</h5>
+                    <h5 class="card-title">@lang('Welcome') , {{ auth('admin')->user()->name }}</h5>
                     <p class="card-text">@lang('You are logged in as a user. You can scan QR codes to check in for events.')</p>
                     <div class="mt-0 mb-3 d-flex justify-content-end diaplay-inline">
                         <!-- QR Scanner Button -->

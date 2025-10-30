@@ -9,6 +9,11 @@
         <input type="text" class="form-control" placeholder="@lang('Event Location')" wire:model='location' />
         @include('admin.errors', ['property' => 'location'])
     </div>
+    <div class="col-md-6 mb-0">
+        <label class="form-label">@lang('Map')</label>
+        <input type="text" class="form-control" placeholder="@lang('Event Direction')" wire:model='map' />
+        @include('admin.errors', ['property' => 'map'])
+    </div>
     {{-- <div class="col-md-6 mb-0">
         <label class="form-label">Image</label>
         <input type="file" class="form-control" wire:model='image' />

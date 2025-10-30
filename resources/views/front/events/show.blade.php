@@ -164,7 +164,9 @@
                                         <button
                                             class="mt-2 text-blue-600 hover:text-blue-500 transition-colors duration-300">
                                             <i class="fas fa-directions mr-1"></i>
-                                            Get Directions
+                                            <a href="https://maps.app.goo.gl/9CJStLS45EB4cqvn8" target="blank">
+                                                Get Directions
+                                            </a>
                                         </button>
                                     </div>
                                 </div>
@@ -292,7 +294,9 @@
                     <!-- Share -->
 
                     <div class="bg-white backdrop-blur-lg rounded-2xl p-6 border border-gray-200 shadow-lg mt-4">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">شارك الحدث</h3>
+
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4"> تابعنا على</h3>
+
                         <div class="flex space-x-3">
                             <div></div>
                             <button
