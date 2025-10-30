@@ -123,8 +123,18 @@
     "Twitter": "Twitter",
     "LinkedIn": "LinkedIn",
     "Address": "Address",
-    "Submit": "Submit"
-
-
+    "Submit": "Submit",
+    "Contact Us": "Contact Us",
+    "We welcome your contact with us. Please fill out the form below, and we will respond to you as soon as possible.": "We welcome your contact with us. Please fill out the form below, and we will respond to you as soon as possible.",
+    "Send Message": "Send Message",
+    "Leave a message here": "Leave a message here",
+    "Your Email": "Leave a message here",
+    "Your Name": "Your Name",
+    "Name is required": "Name is required",
+    "Email is required": "Email is required",
+    "Email must be valid": "Email must be valid",
+    "Subject is required": "Subject is required",
+    "Message body is required": "Message body is required",
+    "Message Send Successfully": "Message Send Successfully"
 
 }

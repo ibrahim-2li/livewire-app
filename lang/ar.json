@@ -3,6 +3,7 @@
     "My Profile": "الملف الشخصي",
     "Settings": "الاعدادات",
     "Messages": "الرسائل",
+    "Message": "الرسالة",
     "Log Out": "تسجيل خروج",
     "Account Settings": "إعدادات الحساب",
     "Configration": "الإعدادات",
@@ -14,7 +15,7 @@
     "Events": "الفعاليات",
     "Dashboard": "لوحة التحكم",
     "Home": "الصفحة الرئيسية",
-    "Go to QR Code": "الانتقال إلى رمز الاستجابة السريعة",
+    "Go to QR Code": "QR الانتقال إلى رموز",
     "You are logged in as a user. You can scan QR codes to check in for events.": "أنت مسجل الدخول كمستخدم. يمكنك مسح رموز الاستجابة السريعة لتسجيل الحضور في الفعاليات.",
     "Arrived At": "وقت الوصول",
     "Attendee Email": "البريد الإلكتروني للحاضر",
@@ -61,7 +62,7 @@
     "Show": "عرض",
     "Total Attendances": "إجمالي الحضور",
     "Total Check-ins": "إجمالي تسجيلات الحضور",
-    "Subject": "موضوع الرسالة",
+    "Subject": "عنوان الرسالة",
     "Gender": "الجنس",
     "Phone": "الهاتف",
     "Phone Number": "رقم الهاتف",
@@ -123,6 +124,19 @@
     "Twitter": "تويتر",
     "LinkedIn": "لنكد إن",
     "Address": "العنوان",
-    "Submit": "حفظ"
+    "Submit": "حفظ",
+    "Contact Us": "تواصل معنا",
+    "We welcome your contact with us. Please fill out the form below, and we will respond to you as soon as possible.": "نرحب بتواصلك معنا، يرجى تعبئة النموذج أدناه وسنقوم بالرد عليك في أقرب وقت ممكن.",
+    "Send Message": "إرسال الرسالة",
+    "Leave a message here": "اكتب رسالتك هنا",
+    "Your Email": "بريدك الإلكتروني",
+    "Your Name": "اسمك",
+    "Name is required": "حقل الاسم مطلوب",
+    "Email is required": "البريد الإلكتروني مطلوب",
+    "Email must be valid": "يجب أن يكون البريد الإلكتروني صالحًا",
+    "Subject is required": "الموضوع مطلوب",
+    "Message body is required": "نص الرسالة مطلوب",
+    "Message Send Successfully": "تم إرسال الرسالة بنجاح"
+
 
 }

@@ -110,7 +110,7 @@
                     </span>
                     <br>
                     <span class="bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-                        الأحداث المذهلة
+                        {{ $settings->name }}
                     </span>
                 </h1>
                 <p class="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
@@ -224,7 +224,9 @@
             </div>
 
             <!-- Call to Action -->
-            <div class="text-center mt-16">
+
+
+            {{-- <div class="text-center mt-16">
                 <div class="bg-white backdrop-blur-lg rounded-2xl p-8 border border-gray-200 shadow-lg">
                     <h2 class="text-3xl font-bold text-gray-900 mb-4">لا تفوت الفرصة!</h2>
                     <p class="text-gray-700 mb-6 max-w-2xl mx-auto">
@@ -243,7 +245,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         @else
             <!-- No Events State -->
             <div class="text-center py-16">
@@ -266,25 +268,81 @@
 
     <!-- Footer -->
     <footer class="bg-gray-50 backdrop-blur-lg border-t border-gray-200 mt-20">
+        <div class="text-center mt-16">
+            <div class="bg-white backdrop-blur-lg rounded-2xl p-8 border border-gray-200 shadow-lg max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">@lang('Contact Us')</h2>
+                <p class="text-gray-700 mb-6">
+                    @lang('We welcome your contact with us. Please fill out the form below, and we will respond to you as soon as possible.')
+                </p>
+                @livewire('front.components.contact-component')
+                {{-- @livewire('admin.settings.update-settings') --}}
+                {{-- <form class="space-y-5 text-right">
+                    <div>
+                        <label class="block text-gray-800 font-semibold mb-2" for="name">@lang('Name')</label>
+                        <input type="text" id="name" name="name" placeholder="اكتب اسمك"
+                            class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-800 font-semibold mb-2" for="email">@lang('Email')
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com"
+                            class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-800 font-semibold mb-2" for="subject">@lang('Subject')</label>
+                        <input type="text" id="subject" name="subject" placeholder="@lang('Subject')"
+                            class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-800 font-semibold mb-2" for="message">@lang('Message')</label>
+                        <textarea id="message" name="message" rows="5" placeholder="اكتب رسالتك هنا..."
+                            class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105">
+                        <i class="fas fa-paper-plane ml-2"></i>
+                        @lang('Send Message')
+                    </button>
+                </form> --}}
+            </div>
+        </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
             <div class="text-center">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">منصة الأحداث</h3>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4"> منصات مجتمع البيانات</h3>
                 <p class="text-gray-600 mb-6">ربط الناس من خلال التجارب المذهلة</p>
                 <div class="flex justify-center space-x-6 rtl:space-x-reverse">
-                    <a href="#" class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
-                        <i class="fab fa-facebook text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
-                        <i class="fab fa-linkedin text-xl"></i>
-                    </a>
+                    @if ($settings->twitter)
+                        <a href="{{ $settings->twitter }}" target="blank"
+                            class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    @endif
+                    @if ($settings->facebook)
+                        <a href="{{ $settings->facebook }}" target="blank"
+                            class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    @endif
+                    @if ($settings->instgram)
+                        <a href="{{ $settings->instgram }}" target="blank"
+                            class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    @endif
+                    @if ($settings->linkedin)
+                        <a href="{{ $settings->linkedin }}" target="blank"
+                            class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    @endif
                 </div>
-                <p class="text-gray-500 text-sm mt-6">© 2024 منصة الأحداث. جميع الحقوق محفوظة.</p>
+                <p class="text-gray-500 text-sm mt-6"> © 2025 .جميع الحقوق محفوظة مجتمع البيانات العربي </p>
             </div>
         </div>
     </footer>

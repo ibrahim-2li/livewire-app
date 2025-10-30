@@ -1,3 +1,3 @@
 @error($property)
-<span class="text-danger">{{$message}}</span>
+    <span class="text-primary">{{ $message }}</span>
 @enderror

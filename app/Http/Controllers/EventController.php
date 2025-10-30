@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\AttendanceConfirmationMail;
 use App\Models\Attendance;
 use App\Models\Event;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -14,6 +15,7 @@ class EventController extends Controller
 {
     public function index()
     {
+        $settings = Setting::first();
         $events = Event::with('admin')
             ->where('is_active', true)
             ->where('end_date', '>', now())
@@ -21,14 +23,15 @@ class EventController extends Controller
             ->get();
 
             // dd($events);
-        return view('front.events.index', compact('events'));
+        return view('front.events.index', compact('events','settings'));
     }
 
     public function show(Event $event)
     {
+        $settings = Setting::first();
         $event->load('admin');
 
-        return view('front.events.show', compact('event'));
+        return view('front.events.show', compact('event','settings'));
     }
 
     public function register(Request $request, Event $event)

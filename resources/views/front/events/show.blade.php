@@ -299,22 +299,34 @@
 
                         <div class="flex space-x-3">
                             <div></div>
-                            <button
-                                class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-3 rounded-lg transition-colors duration-300">
-                                <i class="fab fa-twitter"></i>
-                            </button>
-                            <button
-                                class="flex-1 bg-blue-800 hover:bg-blue-900 text-white py-2 px-3 rounded-lg transition-colors duration-300">
-                                <i class="fab fa-facebook"></i>
-                            </button>
-                            <button
-                                class="flex-1 bg-pink-600 hover:bg-pink-700 text-white py-2 px-3 rounded-lg transition-colors duration-300">
-                                <i class="fab fa-instagram"></i>
-                            </button>
-                            <button
-                                class="flex-1 bg-blue-700 hover:bg-blue-800 text-white py-2 px-3 rounded-lg transition-colors duration-300">
-                                <i class="fab fa-linkedin"></i>
-                            </button>
+                            @if ($settings->twitter)
+                                <button
+                                    class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-3 rounded-lg transition-colors duration-300">
+                                    <a href="{{ $settings->twitter }}" target="blank"> <i
+                                            class="fab fa-twitter"></i></a>
+                                </button>
+                            @endif
+                            @if ($settings->facebook)
+                                <button
+                                    class="flex-1 bg-blue-800 hover:bg-blue-900 text-white py-2 px-3 rounded-lg transition-colors duration-300">
+                                    <a href="{{ $settings->facebook }}" target="blank"><i
+                                            class="fab fa-facebook"></i></a>
+                                </button>
+                            @endif
+                            @if ($settings->instgram)
+                                <button
+                                    class="flex-1 bg-pink-600 hover:bg-pink-700 text-white py-2 px-3 rounded-lg transition-colors duration-300">
+                                    <a href="{{ $settings->instgram }}" target="blank"><i
+                                            class="fab fa-instagram"></i></a>
+                                </button>
+                            @endif
+                            @if ($settings->linkedin)
+                                <button
+                                    class="flex-1 bg-blue-700 hover:bg-blue-800 text-white py-2 px-3 rounded-lg transition-colors duration-300">
+                                    <a href="{{ $settings->linkedin }}" target="blank"><i
+                                            class="fab fa-linkedin"></i></a>
+                                </button>
+                            @endif
                         </div>
                     </div>
                 </div>
