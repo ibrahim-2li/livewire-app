@@ -1,1 +1,1 @@
-<x-delete-modal title="Delete Message"></x-delete-modal>
+<x-delete-modal title="حزف الرسالة"></x-delete-modal>

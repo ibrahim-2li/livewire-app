@@ -5,9 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Event;
+use App\Models\Attendance;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Admin extends Authenticatable
 {
+    use HasFactory;
+
+
+    const ROLE_USER = 'USER';
+    const ROLE_ADMIN = 'ADMIN';
+    const ROLE_SCANNER = 'SCANNER';
+
+    const ROLES = [
+        self::ROLE_USER => 'User',
+        self::ROLE_ADMIN => 'Admin',
+        self::ROLE_SCANNER => 'Scanner',
+    ];
 
     protected function avatar(): Attribute
     {
@@ -29,22 +45,6 @@ class Admin extends Authenticatable
      *
      * @var string
      */
-    protected $primaryKey = 'id';
-
-    /**
-     * The data type of the auto-incrementing ID.
-     *
-     * @var string
-     */
-    protected $keyType = 'integer';
-
-    /**
-     * Indicates if the model's ID is auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = true;
-
     /**
      * Indicates if the model should be timestamped.
      *
@@ -91,6 +91,33 @@ class Admin extends Authenticatable
     // {
     //     $query->where('status', Status::ACTIVE);
     // }
+
+
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === self::ROLE_USER;
+    }
+
+    public function isScanner(): bool
+    {
+        return $this->role === self::ROLE_SCANNER;
+    }
+
+    public function events(): HasMany
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function attendances(): HasMany
+    {
+        return $this->hasMany(Attendance::class);
+    }
 
 
     ##--------------------------------- ACCESSORS & MUTATORS

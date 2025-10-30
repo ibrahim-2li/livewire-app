@@ -10,15 +10,15 @@
                     </div>
                     <div class="modal-body">
                         <div class="row g-2">
-                           {{$slot}}
+                            {{ $slot }}
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                            Close
+                            @lang('Close')
                         </button>
                         <button type="submit" class="btn btn-primary">
-                            @include('admin.loading-form',['property'=>'Create'])
+                            @include('admin.loading-form', ['property' => 'إضافة'])
                         </button>
                     </div>
                 </div>

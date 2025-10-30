@@ -5,21 +5,21 @@
             <form wire:submit.prevent='submit'>
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel1">{{$title}}</h5>
+                        <h5 class="modal-title" id="exampleModalLabel1">{{ $title }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="col mb-0 ">
-                                Are you Soure you want to delete this record !!
+                                @lang('Are you Soure you want to delete this record !!')
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                            Close
+                            @lang('Close')
                         </button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">@lang('Delete')</button>
                     </div>
                 </div>
             </form>

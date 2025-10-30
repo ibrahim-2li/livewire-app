@@ -23,29 +23,22 @@
                 <ul class="navbar-nav flex-row align-items-center ms-auto">
                     <!-- Place this tag where you want the button to render. -->
                     <li class="nav-item lh-1 me-3">
-                    {{-- <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
+                    <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
                         <!-- Language -->
                         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                             data-bs-toggle="dropdown">
                             <i class='icon-base bx bx-globe icon-sm me-1'></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item {{ app()->getLocale() === 'en' ? 'active' : '' }}"
-                                    href="{{ url('lang/en') }}" data-language="en" data-text-direction="ltr">
-                                    <span class="align-middle">English</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item {{ app()->getLocale() === 'ar' ? 'active' : '' }}"
-                                    href="{{ url('lang/ar') }}" data-language="ar" data-text-direction="rtl">
-                                    <span class="align-middle">Arabic</span>
-                                </a>
-                            </li>
+                            <div class="flex space-x-2">
+                                <a href="{{ route('language.swap', 'en') }}"
+                                    class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md">English</a>
+                                <a href="{{ route('language.swap', 'ar') }}"
+                                    class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md">العربية</a>
+                            </div>
 
                         </ul>
-                    </li> --}}
+                    </li>
                     <!-- Language -->
 
                     <!-- Dark-ligth -->
@@ -194,9 +187,14 @@
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                        <img src="{{ asset(Auth::guard('admin')->user()->avatar) }}" alt
-                            class="w-px-40 h-auto rounded-circle" />
+                    <div class="avatar ">
+                        @if (auth('admin')->user()->gender == 'male')
+                            <img src="{{ asset('admin-assets/img/avatars/male.jpg') }}" alt
+                                class="w-px-40 h-auto rounded-circle" />
+                        @else
+                            <img src="{{ asset('admin-assets/img/avatars/female.jpg') }}" alt
+                                class="w-px-40 h-auto rounded-circle" />
+                        @endif
                     </div>
                 </a>
 
@@ -205,14 +203,19 @@
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
-                                    <div class="avatar avatar-online">
-                                        <img src="{{ asset(Auth::guard('admin')->user()->avatar) }}" alt
-                                            class="w-px-40 h-auto rounded-circle" />
+                                    <div class="avatar ">
+                                        @if (auth('admin')->user()->gender == 'male')
+                                            <img src="{{ asset('admin-assets/img/avatars/male.jpg') }}" alt
+                                                class="w-px-40 h-auto rounded-circle" />
+                                        @else
+                                            <img src="{{ asset('admin-assets/img/avatars/female.jpg') }}" alt
+                                                class="w-px-40 h-auto rounded-circle" />
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">{{Auth::guard('admin')->user()->name}}</span>
-                                    <small class="text-muted">Admin</small>
+                                    <span class="fw-semibold d-block">{{ Auth::guard('admin')->user()->name }}</span>
+                                    <small class="text-muted">{{ Auth::guard('admin')->user()->role }}</small>
                                 </div>
                             </div>
                         </a>
@@ -221,24 +224,26 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{route('admin.account')}}">
+                        <a class="dropdown-item" href="{{ route('admin.account') }}">
                             <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">@lang('My Profile')</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="dropdown-item" href="{{ route('admin.settings') }}">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
+                    @if (auth('admin')->user()->isAdmin())
+                        <li>
+                            <a class="dropdown-item" href="{{ route('admin.settings') }}">
+                                <i class="bx bx-cog me-2"></i>
+                                <span class="align-middle">@lang('Settings')</span>
+                            </a>
+                        </li>
+                        <a class="dropdown-item" href="{{ route('admin.messages') }}">
+                            <span class="d-flex align-items-center align-middle">
+                                <i class="flex-shrink-0 bx bx-message me-2"></i>
+                                <span class=" mx-1 flex-grow-1 align-middle">@lang('Messages')</span>
+                                @livewire('admin.components.message-component')
+                            </span>
                         </a>
-                    </li>
-                    <a class="dropdown-item" href="{{ route('admin.messages') }}">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-message me-2"></i>
-                          <span class=" mx-1 flex-grow-1 align-middle">Messages</span>
-                        @livewire('admin.components.message-component')
-                    </span>
-                </a>
+                    @endif
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>

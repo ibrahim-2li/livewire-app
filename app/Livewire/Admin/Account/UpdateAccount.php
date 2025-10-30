@@ -25,8 +25,9 @@ class UpdateAccount extends Component
             'user.name' => 'required',
             'user.email' => 'required|email',
             'user.phone' => 'nullable|string',
-            'user.address' => 'nullable|string',
-            'newAvatar' => 'nullable|image|max:800', // Validate image separately
+            'user.job_title' => 'nullable|string',
+            'user.gender' => 'required|in:male,female',
+            // 'newAvatar' => 'nullable|image|max:800', // Validate image separately
         ];
     }
 
@@ -36,8 +37,9 @@ class UpdateAccount extends Component
             'user.name' => 'Name',
             'user.email' => 'Email',
             'user.phone' => 'Phone',
-            'user.address' => 'Address',
-            'newAvatar' => 'Avatar',
+            'user.job_title' => 'job_title',
+            'user.gender' => 'Gender',
+            // 'newAvatar' => 'Avatar',
         ];
     }
 
@@ -45,20 +47,22 @@ class UpdateAccount extends Component
     {
         $this->validate();
 
-        // // Handle avatar upload
-        // if ($this->newAvatar) {
-        //     // Delete old avatar if exists
-        //     if ($this->user->avatar) {
-        //         Storage::delete(str_replace('storage/', 'public/', $this->user->avatar));
-        //     }
+        $updateData = $this->user->toArray();
 
-        //     // Save new avatar
-        //     $imageName = time() . '.' . $this->newAvatar->getClientOriginalExtension();
-        //     $this->newAvatar->storeAs('public/images', $imageName);
-        //     $this->user->avatar = 'storage/images/' . $imageName;
-        // }
+        // Handle avatar upload
+        if ($this->newAvatar) {
+            // Delete old avatar if exists
+            if ($this->user->avatar) {
+                Storage::delete(str_replace('storage/', 'public/', $this->user->avatar));
+            }
 
-        $this->user->update();
+            // Save new avatar
+            $imageName = time() . '.' . $this->newAvatar->getClientOriginalExtension();
+            $this->newAvatar->storeAs('public/images', $imageName);
+            $updateData['avatar'] = 'storage/images/' . $imageName;
+        }
+
+        $this->user->update($updateData);
 
         session()->flash('message', 'Account Updated Successfully!');
     }

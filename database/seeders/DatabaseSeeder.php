@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\User;
+use App\Models\Event;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Attendance;
 use Illuminate\Database\Seeder;
 use Database\Seeders\AdminSeeder;
 use Database\Seeders\SettingSeeder;
@@ -20,7 +23,12 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             SettingSeeder::class,
         ]);
-        // User::factory(10)->create();
+
+        $events = Event::factory(10)->create();
+        $users = Admin::factory(50)->create();
+        Attendance::factory(50)
+        ->recycle($users, $events)
+        ->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',

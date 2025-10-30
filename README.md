@@ -1,66 +1,256 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Event Management & QR Code Attendance System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive Laravel-based event management platform with QR code attendance tracking, built with modern web technologies and Arabic language support.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Core Functionality
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   **Event Management**: Create, manage, and display events with detailed information
+-   **QR Code Attendance**: Generate unique QR codes for event registration and check-in
+-   **Multi-Role Admin System**: Different access levels (Admin, User, Scanner)
+-   **Real-time QR Scanner**: Web-based QR code scanner for attendance validation
+-   **Email Notifications**: Automated confirmation emails with QR codes
+-   **Responsive Design**: Mobile-first design with Arabic RTL support
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Technical Features
 
-## Learning Laravel
+-   **Laravel 12**: Latest Laravel framework with modern PHP 8.4
+-   **Livewire Integration**: Dynamic components for real-time interactions
+-   **QR Code Generation**: SimpleSoftwareIO QR Code package integration
+-   **Role-Based Access Control**: Custom middleware for different user roles
+-   **Email System**: Laravel Mail with attendance confirmations
+-   **Database Management**: MySQL with comprehensive migrations and seeders
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Tech Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Backend
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   **PHP 8.4.12**
+-   **Laravel 12.3.0**
+-   **MySQL Database**
+-   **Laravel Livewire 3.6.2**
+-   **SimpleSoftwareIO QR Code 4.2**
 
-## Laravel Sponsors
+### Frontend
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   **Tailwind CSS 3.4.17**
+-   **Alpine.js 3.14.8**
+-   **Font Awesome Icons**
+-   **Arabic Font Support (Noto Sans Arabic)**
 
-### Premium Partners
+### Development Tools
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   **Laravel Breeze 2.3.6** (Authentication scaffolding)
+-   **Laravel Pint 1.21.2** (Code formatting)
+-   **Laravel Sail 1.41.0** (Docker development)
+-   **PHPUnit 11.5.14** (Testing framework)
 
-## Contributing
+## 📋 System Requirements
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   PHP >= 8.2
+-   Composer
+-   MySQL 5.7+ or MariaDB 10.2+
+-   Node.js & NPM (for frontend assets)
+-   Web server (Apache/Nginx)
 
-## Code of Conduct
+## 🚀 Installation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Clone the repository**
 
-## Security Vulnerabilities
+    ```bash
+    git clone <repository-url>
+    cd livewire-app
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. **Install PHP dependencies**
 
-## License
+    ```bash
+    composer install
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3. **Install Node.js dependencies**
+
+    ```bash
+    npm install
+    ```
+
+4. **Environment setup**
+
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+5. **Database configuration**
+
+    - Update `.env` with your database credentials
+    - Run migrations: `php artisan migrate`
+    - Seed the database: `php artisan db:seed`
+
+6. **Build frontend assets**
+
+    ```bash
+    npm run build
+    # or for development
+    npm run dev
+    ```
+
+7. **Start the application**
+    ```bash
+    php artisan serve
+    ```
+
+## 🏗️ Project Structure
+
+```
+livewire-app/
+├── app/
+│   ├── Http/Controllers/          # Application controllers
+│   │   ├── authController.php     # Authentication controller
+│   │   ├── EventController.php    # Event management
+│   │   └── QRScannerController.php # QR code scanning
+│   ├── Livewire/                  # Livewire components
+│   │   ├── Admin/                 # Admin panel components
+│   │   └── Front/                 # Frontend components
+│   ├── Models/                    # Eloquent models
+│   │   ├── Admin.php             # Admin user model
+│   │   ├── Event.php             # Event model
+│   │   └── Attendance.php        # Attendance tracking
+│   └── Mail/                     # Email templates
+├── resources/views/              # Blade templates
+│   ├── admin/                    # Admin panel views
+│   └── front/                    # Public-facing views
+├── routes/                       # Application routes
+└── database/                     # Migrations and seeders
+```
+
+## 🔐 User Roles & Permissions
+
+### Admin Role
+
+-   Full system access
+-   Event creation and management
+-   User management
+-   QR code scanning
+-   Attendance reports
+
+### User Role
+
+-   View personal attendance records
+-   Basic account management
+
+### Scanner Role
+
+-   QR code scanning for check-ins
+-   Attendance validation
+
+## 📱 Key Features Explained
+
+### Event Registration Flow
+
+1. Users browse available events on the public page
+2. Click to view event details and register
+3. System generates unique QR code for each registration
+4. Confirmation email sent with QR code attachment
+5. Users can download/view their QR code
+
+### QR Code Check-in Process
+
+1. Admin/Scanner uses the web-based QR scanner
+2. QR code is scanned and validated
+3. System checks for duplicate usage
+4. Attendance is marked and timestamped
+5. Real-time feedback provided to scanner
+
+### Multi-language Support
+
+-   Full Arabic language support
+-   RTL (Right-to-Left) layout
+-   Arabic date formatting
+-   Localized error messages
+
+## 🎨 UI/UX Features
+
+-   **Modern Design**: Clean, professional interface with gradient effects
+-   **Responsive Layout**: Mobile-first design that works on all devices
+-   **Arabic Typography**: Beautiful Arabic font rendering
+-   **Interactive Elements**: Hover effects, animations, and smooth transitions
+-   **Color Scheme**: Orange/red gradient theme with professional styling
+
+## 🔧 Configuration
+
+### Email Settings
+
+Configure SMTP settings in `.env`:
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=your-smtp-host
+MAIL_PORT=587
+MAIL_USERNAME=your-email
+MAIL_PASSWORD=your-password
+MAIL_ENCRYPTION=tls
+```
+
+### QR Code Settings
+
+QR codes are generated with:
+
+-   Event-specific tokens
+-   Attendee-specific tokens
+-   JSON data structure for validation
+
+## 📊 Database Schema
+
+### Key Tables
+
+-   `admins`: User accounts with role-based access
+-   `events`: Event information and metadata
+-   `attendances`: Registration and check-in records
+-   `settings`: System configuration
+
+## 🧪 Testing
+
+Run the test suite:
+
+```bash
+php artisan test
+```
+
+## 🚀 Deployment
+
+1. **Production Environment**
+
+    - Set `APP_ENV=production`
+    - Configure proper database credentials
+    - Set up SSL certificate
+    - Configure web server (Apache/Nginx)
+
+2. **Asset Compilation**
+    ```bash
+    npm run build
+    php artisan config:cache
+    php artisan route:cache
+    php artisan view:cache
+    ```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 📞 Support
+
+For support and questions, please contact the development team or create an issue in the repository.
+
+---
+
+**Built with ❤️ using Laravel, Livewire, and modern web technologies**
