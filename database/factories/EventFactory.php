@@ -20,12 +20,11 @@ class EventFactory extends Factory
         return [
             'title' => fake()->sentence(3, true),
             'description' => fake()->paragraph(),
-            'start_date'   => fake()->date(),
-            'end_date' => fake()->date(),
+            'start_date' => fake()->dateTimeBetween('now', 'now'),
+            'end_date'   => fake()->dateTimeBetween('now +1 month', 'now +1 month'),
             'location' => fake()->address(),
             'qr_token' => fake()->uuid(),
-            'is_active' => fake()->boolean(),
-            'image' => fake()->imageUrl(),
+            'is_active' => 1,
             'admin_id' => 1, // Use the default admin
 
         ];

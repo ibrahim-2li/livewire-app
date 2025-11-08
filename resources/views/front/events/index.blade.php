@@ -76,22 +76,22 @@
                     @if (auth('admin')->user()->isAdmin() || auth('admin')->user()->isScanner())
                         <a href="{{ url('/admin/') }}"
                             class="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105">
-                            Dashboard
+                            @lang('Dashboard')
                         </a>
                     @else
                         <a href="{{ url('/admin/my-attendances') }}"
                             class="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105">
-                            Dashboard
+                            @lang('Dashboard')
                         </a>
                     @endif
                 @else
                     <a href="{{ url('/admin/login') }}"
                         class="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 ml-4">
-                        Log in
+                        @lang('Log in')
                     </a>
                     <a href="{{ url('/admin/register') }}"
                         class="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105">
-                        Register
+                        @lang('Register')
                     </a>
                 @endauth
 
@@ -315,7 +315,7 @@
             <div class="text-center">
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-4"> منصات مجتمع البيانات</h3>
-                <p class="text-gray-600 mb-6">ربط الناس من خلال التجارب المذهلة</p>
+                <p class="text-gray-600 mb-6">تابعنا على</p>
                 <div class="flex justify-center space-x-6 rtl:space-x-reverse">
                     @if ($settings->twitter)
                         <a href="{{ $settings->twitter }}" target="blank"

@@ -94,7 +94,7 @@
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل اسمك الكامل" required>
                                 @error('name')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -106,7 +106,7 @@
                                     value="{{ session('attendee_email', old('email')) }}"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل بريدك الإلكتروني" required />
-                                <div class="text-danger">
+                                <div class="text-orange-600 hover:text-orange-700 font-medium">
                                     @error('email')
                                         {{ $message }}
                                     @enderror
@@ -116,13 +116,13 @@
 
                             </div>
                             <div class=<label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
-                                @lang('Phone Number') : like 00966512345678</label>
+                                @lang('Phone Number') </label>
 
                                 <div class="input-group input-group-merge">
-                                    <input type="text" maxlength="14" pattern="\d{14}" inputmode="numeric"
+                                    <input type="text" maxlength="14" pattern="\d{14}" inputmode="text"
                                         id="phone" name="phone" value="{{ old('phone') }}"
                                         class="form-control form-control w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                                        placeholder="500 000 000" required />
+                                        placeholder="00966512345678 أو 966512345678+" required />
                                 </div>
                                 {{-- <span class="input-group-text">KSA (+966)</span>
                                 <input minlength="10" maxlength="10" type="number" id="phone_numbe" name="phone_numbe" wire:model='phone'
@@ -130,7 +130,7 @@
                                     class="form-control w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل رقم الهاتف" max="999999999" required> --}}
                                 @error('phone')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -143,7 +143,7 @@
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل المسمى الوظيفي" required>
                                 @error('job_title')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -159,7 +159,7 @@
                                     </option>
                                 </select>
                                 @error('gender')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -171,7 +171,7 @@
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل كلمة المرور" required>
                                 @error('password')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -184,7 +184,7 @@
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أعد إدخال كلمة المرور" required>
                                 @error('password_confirmation')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -219,7 +219,7 @@
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل اسمك الكامل" required>
                                 @error('name')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -232,7 +232,7 @@
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل بريدك الإلكتروني" required>
                                 @error('email')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -247,7 +247,7 @@
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل رقم الهاتف" required>
                                 @error('phone_number')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -260,7 +260,7 @@
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل المسمى الوظيفي" required>
                                 @error('job_title')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -274,7 +274,7 @@
                                     <option value="female">أنثى</option>
                                 </select>
                                 @error('gender')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -286,7 +286,7 @@
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل كلمة المرور" required>
                                 @error('password')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
                             </div>
 

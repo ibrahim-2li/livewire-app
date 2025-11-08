@@ -135,6 +135,8 @@
     "Email must be valid": "Email must be valid",
     "Subject is required": "Subject is required",
     "Message body is required": "Message body is required",
-    "Message Send Successfully": "Message Send Successfully"
+    "Message Send Successfully": "Message Send Successfully",
+    "Register": "Register",
+    "Log in": "Log in"
 
 }

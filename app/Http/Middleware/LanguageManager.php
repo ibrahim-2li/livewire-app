@@ -10,8 +10,12 @@ class LanguageManager
 {
     public function handle(Request $request, Closure $next)
     {
-        if (session()->has('locale')) {
-            App::setLocale(session()->get('locale'));
+        $locale = session('locale');
+        if (!$locale) {
+            $locale = $request->cookie('locale');
+        }
+        if ($locale) {
+            App::setLocale($locale);
         }
 
         return $next($request);

@@ -11,7 +11,7 @@ use Livewire\WithFileUploads;
 class UsersCreate extends Component
 {
     use WithFileUploads;
-    public $name, $email, $password, $phone, $job_title, $gender;
+    public $name, $email, $role, $password, $phone, $job_title, $gender;
 
     public function rules ()
     {
@@ -19,6 +19,7 @@ class UsersCreate extends Component
             'name' => 'required',
             'email' => 'required|email|unique:admins,email',
             'password' => 'required',
+            'role' => 'required|in:USER,ADMIN,SCANNER',
             'phone' => 'nullable',
             'job_title' => 'nullable',
             'gender' => 'required|in:male,female',

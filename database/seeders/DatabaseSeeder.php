@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
         ]);
 
-        $events = Event::factory(10)->create();
-        $users = Admin::factory(50)->create();
-        Attendance::factory(50)
+        $events = Event::factory(1)->create();
+        $users = Admin::factory(1)->create();
+        Attendance::factory(1)
         ->recycle($users, $events)
         ->create();
 

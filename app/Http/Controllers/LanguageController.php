@@ -9,9 +9,15 @@ class LanguageController extends Controller
 {
     public function swap($locale)
     {
-        if (in_array($locale, config('app.available_locales', []))) {
+        $available = config('app.available_locales');
+        if (!is_array($available) || empty($available)) {
+            $available = ['en', 'ar'];
+        }
+
+        if (in_array($locale, $available, true)) {
             session()->put('locale', $locale);
             App::setLocale($locale);
+            cookie()->queue(cookie('locale', $locale, 60 * 24 * 365));
         }
 
         return redirect()->back();

@@ -136,7 +136,8 @@
     "Email must be valid": "يجب أن يكون البريد الإلكتروني صالحًا",
     "Subject is required": "الموضوع مطلوب",
     "Message body is required": "نص الرسالة مطلوب",
-    "Message Send Successfully": "تم إرسال الرسالة بنجاح"
-
+    "Message Send Successfully": "تم إرسال الرسالة بنجاح",
+    "Register": "تسجيل جديد",
+    "Log in": "دخول"
 
 }

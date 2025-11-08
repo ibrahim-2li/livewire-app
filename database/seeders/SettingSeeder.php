@@ -14,7 +14,7 @@ class SettingSeeder extends Seeder
     public function run(): void
     {
         Setting::updateOrCreate(['email'=>'test@test.com'],[
-            'name' =>'Ibrahim',
+            'name' =>'Event',
             'phone'=>'012345678',
             'address'=>'Riyadh KSA'
         ]);

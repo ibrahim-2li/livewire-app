@@ -9,6 +9,15 @@
         <input type="text" class="form-control" placeholder="@lang('Email')" wire:model='email' />
         @include('admin.errors', ['property' => 'email'])
     </div>
+    <div class="col-md-8 mb-0">
+        <label class="form-label">@lang('Role')</label>
+        <option value="">اختر الجنس</option>
+        <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>ذكر</option>
+        <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>أنثى
+        </option>
+        <input type="text" class="form-control" placeholder="@lang('User Role')" wire:model='role' />
+        @include('admin.errors', ['property' => 'role'])
+    </div>
     <div class="col-md-6 mb-0">
         <label class="form-label">@lang('Password')</label>
         <input type="password" class="form-control" placeholder="@lang('Enter a strong Password')" wire:model='password' />

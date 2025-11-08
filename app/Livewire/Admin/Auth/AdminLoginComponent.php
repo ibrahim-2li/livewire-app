@@ -30,6 +30,7 @@ class AdminLoginComponent extends Component
         ], $this->remember)){
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
+                'password'=> trans('auth.failed')
             ]);
         }
         return to_route('admin.index');
