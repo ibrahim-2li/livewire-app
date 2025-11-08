@@ -61,9 +61,14 @@ class AttendanceConfirmationMail extends Mailable
             'attendee_email' => $this->attendance->attendee_email,
         ]);
 
-        return QrCode::size(200)
+        // Generate SVG QR code (doesn't require imagick extension)
+        $qrCodeSvg = QrCode::size(200)
             ->format('svg')
             ->generate($qrData);
+
+        // Convert SVG to base64 data URI and embed in img tag for better email compatibility
+        $base64 = base64_encode($qrCodeSvg);
+        return '<img src="data:image/svg+xml;base64,' . $base64 . '" alt="QR Code" style="max-width: 200px; height: auto;" />';
     }
 
     /**
