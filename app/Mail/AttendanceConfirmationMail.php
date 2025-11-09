@@ -2,14 +2,14 @@
 
 namespace App\Mail;
 
-use App\Models\Attendance;
+use Storage;
 use App\Models\Event;
+use App\Models\Attendance;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AttendanceConfirmationMail extends Mailable
@@ -19,9 +19,7 @@ class AttendanceConfirmationMail extends Mailable
     public function __construct(
         public Attendance $attendance,
         public Event $event
-    ) {
-        //
-    }
+    ) {}
 
     /**
      * Get the message envelope.
@@ -52,29 +50,39 @@ class AttendanceConfirmationMail extends Mailable
      * Generate QR code for the attendance
      */
     private function generateQrCode(): string
-    {
-        $qrData = json_encode([
-            'type' => 'attendance',
-            'event_id' => $this->event->id,
-            'token' => $this->attendance->qr_token,
-            'attendee_name' => $this->attendance->attendee_name,
-            'attendee_email' => $this->attendance->attendee_email,
-        ]);
+{
+    // $qrData = json_encode([
+    //     'type' => 'attendance',
+    //     'event_id' => $this->event->id,
+    //     'token' => $this->attendance->qr_token,
+    //     'attendee_name' => $this->attendance->attendee_name,
+    //     'attendee_email' => $this->attendance->attendee_email,
+    // ]);
 
-        // Generate SVG QR code (doesn't require imagick extension)
-        $qrCodeSvg = QrCode::size(200)
-            ->format('svg')
-            ->generate($qrData);
+    $qrData = json_encode([
+        'type' => 'attendance',
+        'event_id' => $this->event->id,
+        'token' => $this->attendance->qr_token,
+        'attendee_name' => $this->attendance->attendee_name,
+        'attendee_email' => $this->attendance->attendee_email,
+    ]);
 
-        // Convert SVG to base64 data URI and embed in img tag for better email compatibility
-        $base64 = base64_encode($qrCodeSvg);
-        return '<img src="data:image/svg+xml;base64,' . $base64 . '" alt="QR Code" style="max-width: 200px; height: auto;" />';
-    }
+    $qrSvg = QrCode::format('svg')->size(200)->generate($qrData);
+
+    // Save SVG to storage
+    $fileName = 'qr_' . $this->attendance->qr_token . '.svg';
+    $filePath = storage_path('app/public/qrcodes/' . $fileName);
+
+    Storage::disk('public')->put('qrcodes/' . $fileName, QrCode::format('svg')->size(200)->generate($qrData));
+
+    // Generate public URL
+    $url = asset('storage/qrcodes/' . $fileName);
+
+    return '<img src="' . $url . '" alt="QR Code" style="max-width: 200px; height: auto;" />';
+}
 
     /**
      * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments(): array
     {

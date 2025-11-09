@@ -77,7 +77,12 @@ class EventController extends Controller
 
         // Send confirmation email with QR code
         try {
-            Mail::to($request->email)->send(new AttendanceConfirmationMail($attendance, $event));
+            // Mail::to($request->email)->send(new AttendanceConfirmationMail($attendance, $event));
+            Mail::to($attendance->attendee_email)->send(
+                new AttendanceConfirmationMail($attendance, $event)
+            );
+
+
         } catch (\Exception $e) {
             // Log the error but don't fail the registration
             Log::error('Failed to send attendance confirmation email: '.$e->getMessage());

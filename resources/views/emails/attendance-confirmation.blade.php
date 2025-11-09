@@ -155,7 +155,6 @@
             <div class="qr-code">
                 {!! $qrCode !!}
             </div>
-            {{-- <p><strong>رقم التسجيل:</strong> {{ $attendance->qr_token }}</p> --}}
         </div>
 
         <div class="instructions">
