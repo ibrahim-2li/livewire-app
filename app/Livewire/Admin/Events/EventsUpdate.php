@@ -50,13 +50,16 @@ class EventsUpdate extends Component
 
 
     public function submit()
-    {
-        $data = $this->validate($this->rules(), ['is_active' => 'required|boolean'], ['is_active' => 'Is Active']);
+{
+    $data = $this->validate($this->rules());
 
-        $this->event->update($data);
-        $this->dispatch('editModalToggle');
-        $this->dispatch('refreshData')->to(EventsData::class);
-    }
+    // Convert boolean to integer explicitly
+    $data['is_active'] = $this->is_active ? 1 : 0;
+
+    $this->event->update($data);
+    $this->dispatch('editModalToggle');
+    $this->dispatch('refreshData')->to(EventsData::class);
+}
     public function render()
     {
         return view('admin.events.events-update');

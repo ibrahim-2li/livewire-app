@@ -7,20 +7,23 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th width="30%">@lang('Name')</th>
-                    <th width="25%">@lang('Email')</th>
-                    <th width="15%">@lang('Phone')</th>
-                    <th width="25%">@lang('Job Title')</th>
-                    <th>@lang('Actions')</th>
+                    <th class="col-12 col-sm-3 col-md-2">@lang('Name')</th>
+                    <th class="col-12 col-sm-3 col-md-2">@lang('Email')</th>
+                    <th class="d-none d-sm-table-cell col-sm-2 col-md-2">@lang('Phone')</th>
+                    <th class="d-none d-sm-table-cell col-sm-2 col-md-2" width="25%">@lang('Job Title')</th>
+                    <th class="col-12 col-sm-1">
+                        <i class="menu-icon tf-icons bx bx-cog"></i>
+                    </th>
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
                 @foreach ($data as $record)
                     <tr>
-                        <td><strong>{{ $record->name }}</strong></td>
+                        <td width="25%"><strong>{{ $record->name }}</strong></td>
                         <td><strong>{{ $record->email }}</strong></td>
-                        <td><strong>{{ $record->phone }}</strong></td>
-                        <td><strong>{{ $record->job_title }}</strong></td>
+                        <td class="d-none d-sm-table-cell col-sm-2 col-md-2"><strong>{{ $record->phone }}</strong></td>
+                        <td class="d-none d-sm-table-cell col-sm-2 col-md-2"><strong>{{ $record->job_title }}</strong>
+                        </td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

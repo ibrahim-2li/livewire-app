@@ -7,26 +7,35 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th width="30%">@lang('Title')</th>
-                    <th width="20%">@lang('Status')</th>
-                    <th width="25%">@lang('Location')</th>
-                    <th width="25%">@lang('Starting')</th>
-                    {{-- <th width="25%">@lang('Ending')</th> --}}
-                    <th>Actions</th>
+                    <th class="col-12 col-sm-3 col-md-2">@lang('Title')</th>
+                    <th class="d-none d-sm-table-cell col-sm-2 col-md-2">@lang('Status')</th>
+                    <th class="col-12 col-sm-3 col-md-2">@lang('Location')</th>
+                    <th class="col-12 col-sm-3 col-md-2">@lang('Starting')</th>
+                    <th class="d-none d-sm-table-cell col-sm-2 col-md-2">@lang('Ending')</th>
+                    <th class="col-12 col-sm-1">
+                        <i class="menu-icon tf-icons bx bx-cog"></i>
+                    </th>
                 </tr>
             </thead>
+
             <tbody class="table-border-bottom-0">
                 @foreach ($data as $record)
                     <tr>
                         <td><strong>{{ $record->title }}</strong></td>
-                        <td><strong>
-                                <span
-                                    class="badge bg-label-{{ $record->is_active ? 'success' : 'danger' }} me-1">{{ $record->is_active ? 'Active' : 'Not Avtive' }}</span>
 
-                            </strong></td>
+                        <td class="d-none d-sm-table-cell"><strong>
+                                <span
+                                    class="badge bg-label-{{ $record->is_active ? 'success' : 'danger' }} me-1">{{ $record->is_active ? 'on' : 'off' }}</span>
+
+                            </strong>
+                        </td>
                         <td><strong>{{ $record->location }}</strong></td>
                         <td>
                             <strong>{{ \Carbon\Carbon::parse($record->start_date)->format('d M Y, h:i A') }}</strong>
+                            {{-- <img src="{{ asset($record->image) }}" width="auto" height="45px"> --}}
+                        </td>
+                        <td class="d-none d-sm-table-cell">
+                            <strong>{{ \Carbon\Carbon::parse($record->end_date)->format('d M Y, h:i A') }}</strong>
                             {{-- <img src="{{ asset($record->image) }}" width="auto" height="45px"> --}}
                         </td>
                         {{-- <td>

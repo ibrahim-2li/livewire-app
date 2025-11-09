@@ -100,7 +100,7 @@
         <div class="card-header bg-white d-flex justify-content-center align-items-center">
             <div>
                 <h5 class="mb-0 font-weight-bold">@lang('Available QR Codes')</h5>
-                <small class="text-muted">@lang('QR Codes that have not been used yet')</small>
+
             </div>
 
         </div>
@@ -111,8 +111,8 @@
                     <tr>
                         <th>@lang('Event Title')</th>
                         <th>@lang('Qr Code')</th>
-                        <th>@lang('Event Location')</th>
-                        <th>@lang('Registration Date')</th>
+                        <th>@lang('Location')</th>
+                        <th>@lang('Date')</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -46,23 +46,28 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th width="40%">@lang('Name')</th>
-                                <th width="25%" class="sm:hidden">@lang('Email')</th>
+                                <th width="30%">@lang('Name')</th>
+                                <th width="25%" class="d-none d-sm-table-cell">@lang('Email')</th>
+                                <!-- Hide on mobile -->
                                 <th width="25%">@lang('Events')</th>
-                                <th width="25%">@lang('Arrived At')</th>
-                                <th width="25%">@lang('Checked In By')</th>
-
-                                <th>@lang('Actions')</th>
+                                <th width="15%">@lang('Arrived At')</th>
+                                <th width="25%" class="d-none d-sm-table-cell">@lang('Checked By')</th>
+                                <!-- Hide on mobile -->
+                                <th class="col-12 col-sm-1">
+                                    <i class="menu-icon tf-icons bx bx-cog"></i>
+                                </th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @foreach ($data as $record)
                                 <tr>
                                     <td><strong>{{ $record->attendee_name }}</strong></td>
-                                    <td><strong class="sm:hidden">{{ $record->attendee_email }}</strong></td>
+                                    <td class="d-none d-sm-table-cell"><strong>{{ $record->attendee_email }}</strong>
+                                    </td> <!-- Hide on mobile -->
                                     <td><strong>{{ $record->event->title }}</strong></td>
                                     <td><strong class="text-success">{{ $record->used_at }}</strong></td>
-                                    <td><strong>{{ $record->checked_in_by }}</strong></td>
+                                    <td class="d-none d-sm-table-cell"><strong>{{ $record->checked_in_by }}</strong>
+                                    </td> <!-- Hide on mobile -->
 
                                     <td>
                                         <div class="dropdown">
@@ -83,7 +88,6 @@
                                                     wire:click.prevent="$dispatch('attendancesShow',{id: {{ $record->id }}})"><i
                                                         class="bx bx-show me-1"></i>
                                                     @lang('Show')</a>
-
                                             </div>
                                         </div>
                                     </td>
@@ -95,6 +99,7 @@
                 @else
                     <div class="text-danger">@lang('No Results Found')</div>
                 @endif
+
 
             </div>
 

@@ -1,12 +1,13 @@
 <?php
 
+use App\Models\Attendance;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\authController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\authController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/language/{locale}', [LanguageController::class, 'swap'])->name('language.swap');
 
@@ -106,16 +107,28 @@ Route::fallback(function () {
     return view('admin.error');
 });
 
-Route::get('/download-qr/{attendance}', function (App\Models\Attendance $attendance) {
-    // Allow admins to download any QR code, or users to download their own
-    if (auth('admin')->check()) {
-        // Admin can download any QR code - no restrictions
-    } elseif (auth()->check() && $attendance->attendee_email === auth()->user()->email) {
-        // User can download their own QR code
-    } elseif (auth()->check() && $attendance->attendee_email !== auth()->user()->email) {
-        abort(403, 'ليس لديك صلاحية لتحميل هذا الرمز');
-    } else {
+Route::get('/download-qr/{attendance}', function (Attendance $attendance) {
+    // Check if authenticated via admin guard (all users use this)
+    if (!auth('admin')->check()) {
         abort(403, 'يجب تسجيل الدخول أولاً');
+    }
+
+    $user = auth('admin')->user();
+    $userRole = $user->role;
+
+    // ADMIN and SCANNER roles can download any QR code
+    if ($userRole === \App\Models\Admin::ROLE_ADMIN || $userRole === \App\Models\Admin::ROLE_SCANNER) {
+        // Allow access - continue
+    }
+    // USER role can only download their own QR code (must match email)
+    elseif ($userRole === \App\Models\Admin::ROLE_USER) {
+        if ($user->email !== $attendance->attendee_email) {
+            abort(403, 'ليس لديك صلاحية لتحميل هذا الرمز');
+        }
+    }
+    // Unknown role - deny access
+    else {
+        abort(403, 'ليس لديك صلاحية لتحميل هذا الرمز');
     }
 
     $qrData = json_encode([
@@ -138,15 +151,27 @@ Route::get('/download-qr/{attendance}', function (App\Models\Attendance $attenda
 })->name('download-qr');
 
 Route::get('/view-qr/{attendance}', function (App\Models\Attendance $attendance) {
-    // Allow admins to view any QR code, or users to view their own
-    if (auth('admin')->check()) {
-        // Admin can view any QR code - no restrictions
-    } elseif (auth()->check() && $attendance->attendee_email === auth()->user()->email) {
-        // User can view their own QR code
-    } elseif (auth()->check() && $attendance->attendee_email !== auth()->user()->email) {
-        abort(403, 'ليس لديك صلاحية لعرض هذا الرمز');
-    } else {
+    // Check if authenticated via admin guard (all users use this)
+    if (!auth('admin')->check()) {
         abort(403, 'يجب تسجيل الدخول أولاً');
+    }
+
+    $user = auth('admin')->user();
+    $userRole = $user->role;
+
+    // ADMIN and SCANNER roles can view any QR code
+    if ($userRole === \App\Models\Admin::ROLE_ADMIN || $userRole === \App\Models\Admin::ROLE_SCANNER) {
+        // Allow access - continue
+    }
+    // USER role can only view their own QR code (must match email)
+    elseif ($userRole === \App\Models\Admin::ROLE_USER) {
+        if ($user->email !== $attendance->attendee_email) {
+            abort(403, 'ليس لديك صلاحية لعرض هذا الرمز');
+        }
+    }
+    // Unknown role - deny access
+    else {
+        abort(403, 'ليس لديك صلاحية لعرض هذا الرمز');
     }
 
     $qrData = json_encode([

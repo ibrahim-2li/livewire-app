@@ -76,7 +76,7 @@
     "No QR Codes Available": "متاحة QR Code لا يوجد رموز",
     "Show QR": "عرض الرمز",
     "Registration Date": "تاريخ التسجيل",
-    "Qr Code": "رمز الاستجابة السريعة",
+    "Qr Code": "QRرموز",
     "QR Codes that have not been used yet": "التي لم تُستخدم بعد QR Code رموز ",
     "Available QR Codes": "الرموز المتاحة",
     "Thank you for attending!": "شكرًا لحضورك!",
@@ -113,7 +113,7 @@
     "Upload new photo": "رفع صورة جديدة",
     "Are you sure you want to delete this account? This action cannot be undone!": "هل أنت متأكد أنك تريد حذف هذا الحساب؟ لا يمكن التراجع عن هذا الإجراء!",
     "Confirm Deletion": "تأكيد الحذف",
-    "I confirm my account deactivation": "أؤكد إلغاء تنشيط حسابي",
+    "I confirm my account deactivation": "أؤكد حزف حسابي",
     "Once you delete your account, there is no going back. Please be certain.": "بمجرد حذف حسابك، لا يمكنك استعادته. يرجى التأكد من قرارك.",
     "Are you sure you want to delete your account?": "هل أنت متأكد أنك تريد حذف حسابك؟",
     "Delete Account": "حذف الحساب",
@@ -138,6 +138,7 @@
     "Message body is required": "نص الرسالة مطلوب",
     "Message Send Successfully": "تم إرسال الرسالة بنجاح",
     "Register": "تسجيل جديد",
-    "Log in": "دخول"
+    "Log in": "دخول",
+    "Checked By": "سجل بـ"
 
 }

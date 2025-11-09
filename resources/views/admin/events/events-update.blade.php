@@ -42,9 +42,8 @@
         @include('admin.errors', ['property' => 'description'])
     </div>
     <div class="form-check form-switch mb-2">
-        <input class="form-check-input" type="checkbox" checked />
-        <label class="form-check-label" wire:model='is_active'>@lang('Is Active')</label>
-        {{-- <input type="text" class="form-control" wire:model='is_active' /> --}}
+        <input class="form-check-input" type="checkbox" wire:model="is_active" id="is_active">
+        <label class="form-check-label" for="is_active">@lang('Is Active')</label>
         @include('admin.errors', ['property' => 'is_active'])
     </div>
 

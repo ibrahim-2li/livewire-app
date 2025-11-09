@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersUpdate extends Component
 {
-    public $user, $name, $email, $password, $phone , $job_title, $gender;
+    public $user, $name, $email, $password, $role, $phone , $job_title, $gender;
     protected $listeners = ['usersUpdate'];
 
     public function usersUpdate($id)
@@ -18,6 +18,7 @@ class UsersUpdate extends Component
         $this->name = $this->user->name;
         $this->email = $this->user->email;
         $this->password = $this->user->password;
+        $this->role = $this->user->role;
         $this->phone = $this->user->phone;
         $this->job_title = $this->user->job_title;
         $this->gender = $this->user->gender;
@@ -30,7 +31,8 @@ class UsersUpdate extends Component
     {
         return [
             'name' => 'required',
-             'email' => 'required|email|unique:admins,email,' . $this->user->id,
+            'email' => 'required|email|unique:admins,email,' . $this->user->id,
+            'role' => 'required|in:USER,ADMIN,SCANNER',
             'phone' => 'nullable',
             'job_title' => 'nullable',
             'gender' => 'required|in:male,female',
