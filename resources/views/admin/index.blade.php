@@ -20,8 +20,8 @@
                     <div class="card h-100">
                         <div class="card-header d-flex align-items-center justify-content-between pb-0">
                             <div class="card-title mb-0">
-                                <h5 class="m-0 me-2">@lang('Events Statistics')</h5>
-                                <small class="text-muted">@lang('Total Events') {{ $events->count() }}</small>
+                                <h5 class="m-0 me-2">@lang('Country Statistics')</h5>
+                                <small class="text-muted">@lang('Total Countries') {{ count($countryNames ?? []) }}</small>
                             </div>
                             <div class="dropdown">
                                 <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown"
@@ -38,33 +38,35 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <div class="d-flex flex-column align-items-center gap-1">
-                                    <h2 class="mb-2">{{ $events->sum('total_attendees') }}</h2>
-                                    <span>@lang('Total Registered')</span>
+                                    <h2 class="mb-2">{{ array_sum($countryCounts ?? []) }}</h2>
+                                    <span>@lang('Total Attendances')</span>
                                 </div>
 
-                                <div id="orderStatisticsChart" data-event-titles="{{ $events->pluck('title')->toJson() }}"
-                                    data-event-attendees="{{ $events->pluck('total_attendees')->toJson() }}">
+                                <div id="orderStatisticsChart" data-event-titles="{{ json_encode($countryNames ?? []) }}"
+                                    data-event-attendees="{{ json_encode($countryCounts ?? []) }}">
                                 </div>
                             </div>
                             <ul class="p-0 m-0">
-                                @foreach ($events as $event)
-                                    <li class="d-flex mb-4 pb-1">
-                                        <div class="avatar flex-shrink-0 me-3">
-                                            <span class="avatar-initial rounded bg-label-primary"><i
-                                                    class="bx bx-calendar"></i></span>
-                                        </div>
-                                        <div
-                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                            <div class="me-2">
-                                                <h6 class="mb-0">{{ $event->title }}</h6>
-                                                <small class="text-muted">{{ $event->location }}</small>
+                                @if (isset($countryNames) && isset($countryCounts) && count($countryNames) === count($countryCounts))
+                                    @foreach (array_combine($countryNames, $countryCounts) as $country => $count)
+                                        <li class="d-flex mb-4 pb-1">
+                                            <div class="avatar flex-shrink-0 me-3">
+                                                <span class="avatar-initial rounded bg-label-primary"><i
+                                                        class="bx bx-globe"></i></span>
                                             </div>
-                                            <div class="user-progress">
-                                                <small class="fw-semibold">{{ $event->total_attendees }}</small>
+                                            <div
+                                                class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                                <div class="me-2">
+                                                    <h6 class="mb-0">{{ $country }}</h6>
+                                                    <small class="text-muted">@lang('Country')</small>
+                                                </div>
+                                                <div class="user-progress">
+                                                    <small class="fw-semibold">{{ $count }}</small>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                @endforeach
+                                        </li>
+                                    @endforeach
+                                @endif
 
                             </ul>
                         </div>
@@ -187,7 +189,7 @@
             <div class="row">
 
                 <!-- Total Revenue -->
-                {{-- <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+                <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
                     <div class="card">
                         <div class="row row-bordered g-0">
                             <div class="col-md-8">
@@ -239,98 +241,42 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
+                <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
+                                        <div
+                                            class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
+                                            <div class="card-title">
+                                                <h5 class="text-nowrap mb-2">Profile Report</h5>
+                                                <span class="badge bg-label-warning rounded-pill">Year
+                                                    2021</span>
+                                            </div>
+                                            <div class="mt-sm-auto">
+                                                <small class="text-success text-nowrap fw-semibold"><i
+                                                        class="bx bx-chevron-up"></i> 68.2%</small>
+                                                <h3 class="mb-0">$84,686k</h3>
+                                            </div>
+                                        </div>
+                                        <div id="profileReportChart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!--/ Total Revenue -->
                 <!-- Total Revenue -->
                 <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
                     <div class="card">
                         <div class="row row-bordered g-0">
                             <!-- attends table -->
-                            <div class="col-md-8">
-
-                                <h5 class="card-header m-0 me-2 pb-3">@lang('Total Attende')</h5>
-                                <div class="dropdown float-end m-0 me-2 pb-3">
-                                    <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
-                                        id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        All
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                        @foreach ($events as $e)
-                                            <a class="dropdown-item"
-                                                href="?event={{ $e->id }}">{{ $e->title }}</a>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-
-                                    </div>
-                                    <table>
-                                        {{-- @foreach ($attends as $attend) --}}
-                                        <tr>
-                                            <table class=" table table-bordered table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>@lang('Attendee Name')</th>
-                                                        <th class="d-none d-sm-table-cell col-sm-2 col-md-2">
-                                                            @lang('Attendee Email')</th>
-
-                                                        <th>@lang('Arrived At')</th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($attends as $index => $attend)
-                                                        <tr>
-                                                            <td>{{ $index + 1 }}</td>
-                                                            <td>{{ $attend->attendee_name }}</td>
-                                                            <td class="d-none d-sm-table-cell col-sm-2 col-md-2">
-                                                                {{ $attend->attendee_email }}</td>
-
-                                                            <td>{{ $attend->used_at ? \Carbon\Carbon::parse($attend->used_at)->format('d M Y, h:i A') : '' }}
-                                                            </td>
-
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </tr>
-                                        {{-- @endforeach --}}
-                                    </table>
-                                </div>
-                                {{-- <div id="totalRevenueChart" class="px-2"></div> --}}
 
 
-                            </div>
 
-                            <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-                                <div class="row">
-                                    <div class="col-12 mb-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                                                    <div
-                                                        class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                                                        <div class="card-title">
-                                                            <h5 class="text-nowrap mb-2">Profile Report</h5>
-                                                            <span class="badge bg-label-warning rounded-pill">Year
-                                                                2021</span>
-                                                        </div>
-                                                        <div class="mt-sm-auto">
-                                                            <small class="text-success text-nowrap fw-semibold"><i
-                                                                    class="bx bx-chevron-up"></i> 68.2%</small>
-                                                            <h3 class="mb-0">$84,686k</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div id="profileReportChart"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

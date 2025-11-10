@@ -30,7 +30,11 @@
     <div class="card mb-4">
         <div class="card-body">
 
-            <div class="mt-1 d-flex justify-content-end diaplay-inline">
+            <div class="mt-1 d-flex justify-content-end gap-2 diaplay-inline">
+                <!-- Export Button -->
+                <button type="button" class="btn btn-success" wire:click="export">
+                    <i class="fas fa-file-excel"></i> @lang('Export to Excel')
+                </button>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
                     @lang('Create')

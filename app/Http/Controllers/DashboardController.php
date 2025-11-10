@@ -19,7 +19,18 @@ class DashboardController extends Controller
 
         $todayEvent = Event::with('attendances')->whereDate('start_date', now())->first();
 
-        return view('admin.index', compact('events', 'attendances', 'todayEvent','attends'));
+        // Get country statistics
+        $countryStats = Attendance::whereNotNull('country')
+            ->where('country', '!=', '')
+            ->selectRaw('country, COUNT(*) as count')
+            ->groupBy('country')
+            ->orderBy('count', 'desc')
+            ->get();
+
+        $countryNames = $countryStats->pluck('country')->toArray();
+        $countryCounts = $countryStats->pluck('count')->toArray();
+
+        return view('admin.index', compact('events', 'attendances', 'todayEvent', 'attends', 'countryNames', 'countryCounts'));
     }
 
     // public function attend(AttendanceFilter $filters)

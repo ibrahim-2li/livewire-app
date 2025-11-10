@@ -119,7 +119,7 @@
             <li class="menu-item @yield('attendances-active')">
                 <a href="{{ route('admin.attendances') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-calendar-check"></i>
-                    <div data-i18n="Analytics">@lang('All Attendances')</div>
+                    <div data-i18n="Analytics">@lang('Attendances')</div>
                 </a>
             </li>
 

@@ -7,7 +7,9 @@ use App\Models\Attendance;
 use App\Models\Event;
 use Livewire\WithPagination;
 use App\Http\Filters\AttendanceFilter;
+use App\Exports\AttendancesExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AttendancesData extends Component
 {
@@ -34,12 +36,7 @@ class AttendancesData extends Component
 
     protected $listeners = ['refreshData','$refresh'];
 
-    public function getDatacountProperty()
-    {
-        return Attendance::count();
-    }
-
-    public function getAttendsProperty()
+    public function getFilteredQueryProperty()
     {
         $request = new Request();
         if (!empty($this->event)) {
@@ -49,25 +46,41 @@ class AttendancesData extends Component
             $request->merge(['country' => $this->country]);
         }
         $filters = new AttendanceFilter($request);
-        return Attendance::filter($filters);
-    }
-
-    public function getDatausedProperty()
-    {
-        return Attendance::whereNotNull('event_id')->count();
-    }
-
-    public function render()
-    {
-        // Start with base query or filtered query using getAttendsProperty
-        $query = (!empty($this->event) || !empty($this->country)) ? $this->Attends : Attendance::query();
+        $query = Attendance::filter($filters);
 
         // Apply search filter
         if ($this->serarch) {
             $query->where('attendee_name', 'like', '%' . $this->serarch . '%');
         }
 
-        $data = $query->paginate(10);
+        return $query;
+    }
+
+    public function getDatacountProperty()
+    {
+        return $this->filteredQuery->count();
+    }
+
+    public function getAttendsProperty()
+    {
+        return $this->filteredQuery;
+    }
+
+    public function getDatausedProperty()
+    {
+        return $this->filteredQuery->whereNotNull('event_id')->count();
+    }
+
+    public function export()
+    {
+        $filename = 'attendances_' . date('Y-m-d_His') . '.xlsx';
+        return Excel::download(new AttendancesExport($this->filteredQuery), $filename);
+    }
+
+    public function render()
+    {
+        // Use filtered query which already includes all filters
+        $data = $this->filteredQuery->paginate(10);
 
         // Get distinct countries for dropdown
         $countries = Attendance::whereNotNull('country')

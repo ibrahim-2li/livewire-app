@@ -23,7 +23,7 @@
                     <tr>
                         <td><strong> <a class="dropdown-item" href="#"
                                     wire:click.prevent="$dispatch('eventsAttends',{id: {{ $record->id }}})"><i
-                                        class="bx bx-edit-alt me-1"></i>
+                                        class="bx bx-check-alt me-1"></i>
                                     {{ $record->title }}</a></strong></td>
 
                         <td class="d-none d-sm-table-cell"><strong>
