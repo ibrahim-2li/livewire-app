@@ -139,6 +139,14 @@
     "Message Send Successfully": "تم إرسال الرسالة بنجاح",
     "Register": "تسجيل جديد",
     "Log in": "دخول",
-    "Checked By": "سجل بـ"
-
+    "Checked By": "سجل بـ",
+    "Events Platform": "منصة الفعاليات",
+    "Attendances for": "سجل الحضور لـ",
+    "Where are you joining from?": "من أين ستنضم إلينا؟",
+    "Sudan": "السودان",
+    "Egypt": "مصر",
+    "Saudi Arabia": "المملكة العربية السعودية",
+    "Qatar": "قطر",
+    "United Arab Emirates": "الإمارة العربية المتحدة",
+    "Country": "الدولة"
 }

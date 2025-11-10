@@ -9,4 +9,9 @@ class AttendanceFilter extends QueryFilter {
         return $this->builder->where('event_id', $value)->whereNotNull('used_at');
     }
 
+    public function country($value)
+    {
+        return $this->builder->where('country', $value);
+    }
+
 }

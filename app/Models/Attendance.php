@@ -16,6 +16,7 @@ class Attendance extends Model
         'event_id',
         'attendee_name',
         'attendee_email',
+        'country',
         'qr_token',
         'used_at',
         'checked_in_by',

@@ -70,6 +70,7 @@ class EventController extends Controller
         // Create attendance record
         $attendance = Attendance::create([
             'event_id' => $event->id,
+            'country' => $request->country,
             'attendee_name' => $request->name,
             'attendee_email' => $request->email,
             'qr_token' => 'attend_'.bin2hex(random_bytes(16)),

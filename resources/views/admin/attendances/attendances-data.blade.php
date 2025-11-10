@@ -39,8 +39,22 @@
             <div>
                 <!--/ Model !-->
                 @livewire('admin.attendances.attendances-create')
-                <input type="text" class="form-control w-25" placeholder="@lang('Search')"
-                    wire:model.live='serarch'>
+                <div class="d-flex gap-2 mb-3">
+                    <select class="form-control w-25" wire:model.live="event">
+                        <option value="">@lang('All Events')</option>
+                        @foreach ($events as $eventItem)
+                            <option value="{{ $eventItem->id }}">{{ $eventItem->title }}</option>
+                        @endforeach
+                    </select>
+                    <select class="form-control w-25" wire:model.live="country">
+                        <option value="">@lang('All Countries')</option>
+                        @foreach ($countries as $countryItem)
+                            <option value="{{ $countryItem }}">{{ $countryItem }}</option>
+                        @endforeach
+                    </select>
+                    <input type="text" class="form-control w-25" placeholder="@lang('Search')"
+                        wire:model.live='serarch'>
+                </div>
 
                 @if (count($data) > 0)
                     <table class="table">
@@ -50,6 +64,7 @@
                                 <th width="25%" class="d-none d-sm-table-cell">@lang('Email')</th>
                                 <!-- Hide on mobile -->
                                 <th width="25%">@lang('Events')</th>
+                                <th width="25%">@lang('Country')</th>
                                 <th width="15%">@lang('Arrived At')</th>
                                 <th width="25%" class="d-none d-sm-table-cell">@lang('Checked By')</th>
                                 <!-- Hide on mobile -->
@@ -65,6 +80,7 @@
                                     <td class="d-none d-sm-table-cell"><strong>{{ $record->attendee_email }}</strong>
                                     </td> <!-- Hide on mobile -->
                                     <td><strong>{{ $record->event->title }}</strong></td>
+                                    <td><strong>{{ $record->country }}</strong></td>
                                     <td><strong class="text-success">{{ $record->used_at }}</strong></td>
                                     <td class="d-none d-sm-table-cell"><strong>{{ $record->checked_in_by }}</strong>
                                     </td> <!-- Hide on mobile -->

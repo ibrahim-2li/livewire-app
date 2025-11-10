@@ -19,6 +19,7 @@
             </div>
         </div>
         @livewire('admin.events.events-update')
+        @livewire('admin.events.events-ateends')
         @livewire('admin.events.events-delete')
         {{--  @livewire('admin.projects.projects-show') --}}
     </div>

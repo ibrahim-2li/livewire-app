@@ -256,6 +256,31 @@
                                     class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-orange-500 transition-all duration-300"
                                     required>
                             </div>
+                            <div>
+
+                                <select id="country" name="country"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
+                                    required>
+                                    <option value="">@lang('Where are you joining from?')</option>
+                                    <option value="Sudan" {{ old('country') == 'Sudan' ? 'selected' : '' }}>
+                                        @lang('Sudan')
+                                    </option>
+                                    <option value="Egypt" {{ old('country') == 'Egypt' ? 'selected' : '' }}>
+                                        @lang('Egypt')</option>
+                                    </option>
+                                    <option value="Saudi Arabia"
+                                        {{ old('country') == 'Saudi Arabia' ? 'selected' : '' }}>@lang('Saudi Arabia')
+                                    </option>
+                                    <option value="Qatar" {{ old('country') == 'Qatar' ? 'selected' : '' }}>
+                                        @lang('Qatar')
+                                    </option>
+                                    <option value="United Arab Emirates"
+                                        {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
+                                        @lang('United Arab Emirates')
+                                    </option>
+                                </select>
+
+                            </div>
                             <button type="submit"
                                 class="w-full bg-white text-orange-600 font-bold py-4 px-6 rounded-xl hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105 shadow-lg">
                                 <i class="fas fa-ticket-alt ml-2"></i>

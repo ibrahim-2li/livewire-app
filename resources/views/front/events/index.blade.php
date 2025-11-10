@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأحداث - اكتشف الأحداث المذهلة</title>
+    <title>@lang('Events Platform')</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap"
@@ -69,9 +69,9 @@
         </div>
     </nav> --}}
     <nav class="bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-end rtl:justify-start space-x-2 items-center py-4">
-
                 @auth('admin')
                     @if (auth('admin')->user()->isAdmin() || auth('admin')->user()->isScanner())
                         <a href="{{ url('/admin/') }}"
@@ -99,8 +99,26 @@
             </div>
         </div>
     </nav>
+
+    {{-- <div class="absolute top-40 left-20 hidden lg:block">
+        <div class="bg-white p-4 rounded-2xl shadow-2xl">
+            <div class=" bg-gray-100 rounded-lg flex items-center justify-center">
+                <img src="{{ asset('admin-assets/img/icons/unicons/logo1.png') }}" alt="Logo" width="200">
+            </div>
+        </div>
+    </div> --}}
     <!-- Header -->
+
     <header class="relative overflow-hidden">
+        <div class="mt-10 mx-20 mb-10 float-left grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8">
+            <div class="bg-white rounded-2xl shadow-2xl">
+                <div class=" bg-gray-100 rounded-lg ">
+
+                    <img src="{{ asset('admin-assets/img/icons/unicons/logo1.png') }}" alt="Logo" width="250">
+
+                </div>
+            </div>
+        </div>
         <div class="absolute inset-0 bg-gradient-to-r from-orange-100/50 to-orange-200/50"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="text-center">
@@ -130,7 +148,6 @@
             </div>
         </div>
     </header>
-
     <!-- Events Section -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         @if ($events->count() > 0)
