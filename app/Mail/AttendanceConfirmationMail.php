@@ -2,7 +2,6 @@
 
 namespace App\Mail;
 
-use Storage;
 use App\Models\Event;
 use App\Models\Attendance;
 use Illuminate\Bus\Queueable;
@@ -48,38 +47,30 @@ class AttendanceConfirmationMail extends Mailable
 
     /**
      * Generate QR code for the attendance
+     * Returns base64-encoded SVG image embedded inline for email compatibility
+     * Uses SVG format which doesn't require imagick extension
      */
     private function generateQrCode(): string
-{
-    // $qrData = json_encode([
-    //     'type' => 'attendance',
-    //     'event_id' => $this->event->id,
-    //     'token' => $this->attendance->qr_token,
-    //     'attendee_name' => $this->attendance->attendee_name,
-    //     'attendee_email' => $this->attendance->attendee_email,
-    // ]);
+    {
+        $qrData = json_encode([
+            'type' => 'attendance',
+            'event_id' => $this->event->id,
+            'token' => $this->attendance->qr_token,
+            'attendee_name' => $this->attendance->attendee_name,
+            'attendee_email' => $this->attendance->attendee_email,
+        ]);
 
-    $qrData = json_encode([
-        'type' => 'attendance',
-        'event_id' => $this->event->id,
-        'token' => $this->attendance->qr_token,
-        'attendee_name' => $this->attendance->attendee_name,
-        'attendee_email' => $this->attendance->attendee_email,
-    ]);
+        // Generate QR code as SVG (doesn't require imagick extension)
+        $qrSvg = QrCode::format('svg')->size(200)->generate($qrData);
 
-    $qrSvg = QrCode::format('svg')->size(200)->generate($qrData);
+        // Convert to base64 for inline embedding
+        $base64 = base64_encode($qrSvg);
 
-    // Save SVG to storage
-    $fileName = 'qr_' . $this->attendance->qr_token . '.svg';
-    $filePath = storage_path('app/public/qrcodes/' . $fileName);
-
-    Storage::disk('public')->put('qrcodes/' . $fileName, QrCode::format('svg')->size(200)->generate($qrData));
-
-    // Generate public URL
-    $url = asset('storage/qrcodes/' . $fileName);
-
-    return '<img src="' . $url . '" alt="QR Code" style="max-width: 200px; height: auto;" />';
-}
+        // Return as data URI (embedded directly in email, no external URL needed)
+        // SVG works in most modern email clients including Outlook, Apple Mail, Hotmail, etc.
+        // Note: Gmail has limited SVG support, but base64-embedded SVG may work in newer versions
+        return '<img src="data:image/svg+xml;base64,' . $base64 . '" alt="QR Code" style="max-width: 200px; height: auto; display: block; margin: 0 auto;" />';
+    }
 
     /**
      * Get the attachments for the message.
