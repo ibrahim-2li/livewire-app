@@ -136,12 +136,12 @@
                 <span class="info-value">{{ $event->title }}</span>
             </div>
             <div class="info-row">
-                <span class="info-label">تاريخ البداية:</span>
+                <span class="info-label">تاريخ الفعالية:</span>
                 <span class="info-value">{{ $event->start_date->format('Y-m-d H:i') }}</span>
             </div>
             <div class="info-row">
-                <span class="info-label">تاريخ النهاية:</span>
-                <span class="info-value">{{ $event->end_date->format('Y-m-d H:i') }}</span>
+                <span class="info-label">الدولة:</span>
+                <span class="info-value">{{ $attendance->country }}</span>
             </div>
             <div class="info-row">
                 <span class="info-label">الموقع:</span>
