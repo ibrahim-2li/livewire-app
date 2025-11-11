@@ -25,6 +25,8 @@ class UpdateSettings extends Component
             'settings.twitter'=> 'nullable|url',
             'settings.linkedin'=> 'nullable|url',
             'settings.instgram'=> 'nullable|url',
+            'settings.youtube'=> 'nullable|url',
+            'settings.telegram'=> 'nullable|url',
         ];
     }
 
@@ -39,6 +41,8 @@ class UpdateSettings extends Component
             'settings.twitter'=> 'Twitter',
             'settings.linkedin'=> 'LinkedIn',
             'settings.instgram'=> 'Instgram',
+            'settings.youtube'=> 'Youtube',
+            'settings.telegram'=> 'Telegram',
         ];
     }
 

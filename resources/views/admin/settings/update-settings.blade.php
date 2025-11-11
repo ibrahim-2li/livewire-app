@@ -61,6 +61,20 @@
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
+    <div class="col-md-6">
+        <label class="form-label">@lang('Youtube')</label>
+        <input type="text" class="form-control" placeholder="@lang('Youtube')" wire:model='settings.youtube' />
+        @error('settings.youtube')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">@lang('Telegram')</label>
+        <input type="text" class="form-control" placeholder="@lang('Telegram')" wire:model='settings.telegram' />
+        @error('settings.telegram')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
     <div class="col-md-12 mt-3">
         <button class="btn btn-primary">@lang('Submit')</button>
     </div>

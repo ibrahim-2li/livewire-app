@@ -331,25 +331,26 @@
                                             class="fab fa-twitter"></i></a>
                                 </button>
                             @endif
-                            @if ($settings->facebook)
-                                <button
-                                    class="flex-1 bg-blue-800 hover:bg-blue-900 text-white py-2 px-3 rounded-lg transition-colors duration-300">
-                                    <a href="{{ $settings->facebook }}" target="blank"><i
-                                            class="fab fa-facebook"></i></a>
-                                </button>
-                            @endif
-                            @if ($settings->instgram)
-                                <button
-                                    class="flex-1 bg-pink-600 hover:bg-pink-700 text-white py-2 px-3 rounded-lg transition-colors duration-300">
-                                    <a href="{{ $settings->instgram }}" target="blank"><i
-                                            class="fab fa-instagram"></i></a>
-                                </button>
-                            @endif
+
                             @if ($settings->linkedin)
                                 <button
                                     class="flex-1 bg-blue-700 hover:bg-blue-800 text-white py-2 px-3 rounded-lg transition-colors duration-300">
                                     <a href="{{ $settings->linkedin }}" target="blank"><i
                                             class="fab fa-linkedin"></i></a>
+                                </button>
+                            @endif
+                            @if ($settings->youtube)
+                                <button
+                                    class="flex-1 bg-blue-700 hover:bg-blue-800 text-white py-2 px-3 rounded-lg transition-colors duration-300">
+                                    <a href="{{ $settings->youtube }}" target="blank"><i
+                                            class="fab fa-youtube"></i></a>
+                                </button>
+                            @endif
+                            @if ($settings->telegram)
+                                <button
+                                    class="flex-1 bg-blue-700 hover:bg-blue-800 text-white py-2 px-3 rounded-lg transition-colors duration-300">
+                                    <a href="{{ $settings->telegram }}" target="blank"><i
+                                            class="fab fa-telegram"></i></a>
                                 </button>
                             @endif
                         </div>

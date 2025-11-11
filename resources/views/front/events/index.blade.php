@@ -358,6 +358,18 @@
                             <i class="fab fa-linkedin text-xl"></i>
                         </a>
                     @endif
+                    @if ($settings->youtube)
+                        <a href="{{ $settings->youtube }}" target="blank"
+                            class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    @endif
+                    @if ($settings->telegram)
+                        <a href="{{ $settings->telegram }}" target="blank"
+                            class="text-gray-500 hover:text-orange-600 transition-colors duration-300">
+                            <i class="fab fa-telegram text-xl"></i>
+                        </a>
+                    @endif
                 </div>
                 <p class="text-gray-500 text-sm mt-6"> © 2025 .جميع الحقوق محفوظة مجتمع البيانات العربي </p>
             </div>
