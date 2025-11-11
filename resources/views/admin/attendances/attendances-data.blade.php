@@ -30,7 +30,7 @@
     <div class="card mb-4">
         <div class="card-body">
 
-            <div class="mt-1 d-flex justify-content-end gap-2 diaplay-inline">
+            <div class="mt-1 mb-2 d-flex justify-content-end gap-2 diaplay-inline">
                 <!-- Export Button -->
                 <button type="button" class="btn btn-success" wire:click="export">
                     <i class="fas fa-file-excel"></i> @lang('Export to Excel')
@@ -68,8 +68,8 @@
                                 <th width="25%" class="d-none d-sm-table-cell">@lang('Email')</th>
                                 <!-- Hide on mobile -->
                                 <th width="25%">@lang('Events')</th>
-                                <th width="25%">@lang('Country')</th>
-                                <th width="15%">@lang('Arrived At')</th>
+                                <th width="20%">@lang('Country')</th>
+                                <th width="15%" class="d-none d-sm-table-cell">@lang('Arrived At')</th>
                                 <th width="25%" class="d-none d-sm-table-cell">@lang('Checked By')</th>
                                 <!-- Hide on mobile -->
                                 <th class="col-12 col-sm-1">

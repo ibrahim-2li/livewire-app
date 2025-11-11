@@ -51,6 +51,7 @@ class AttendancesData extends Component
         // Apply search filter
         if ($this->serarch) {
             $query->where('attendee_name', 'like', '%' . $this->serarch . '%');
+            $query->orWhere('attendee_email', 'like', '%' . $this->serarch . '%');
         }
 
         return $query;
@@ -68,7 +69,7 @@ class AttendancesData extends Component
 
     public function getDatausedProperty()
     {
-        return $this->filteredQuery->whereNotNull('event_id')->count();
+        return $this->filteredQuery->whereNotNull('used_at')->count();
     }
 
     public function export()
