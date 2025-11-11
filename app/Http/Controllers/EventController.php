@@ -6,6 +6,7 @@ use App\Mail\AttendanceConfirmationMail;
 use App\Models\Attendance;
 use App\Models\Event;
 use App\Models\Setting;
+use App\Services\QrCodeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -34,7 +35,7 @@ class EventController extends Controller
         return view('front.events.show', compact('event','settings'));
     }
 
-    public function register(Request $request, Event $event)
+    public function register(Request $request, Event $event, QrCodeService $qrCodeService)
     {
         // Validate the request
         $validator = Validator::make($request->all(), [
@@ -75,12 +76,12 @@ class EventController extends Controller
             'attendee_email' => $request->email,
             'qr_token' => 'attend_'.bin2hex(random_bytes(16)),
         ]);
-
+        $qrData = $qrCodeService->generateAttendanceQrData($attendance);
         // Send confirmation email with QR code
         try {
             // Mail::to($request->email)->send(new AttendanceConfirmationMail($attendance, $event));
             Mail::to($attendance->attendee_email)->send(
-                new AttendanceConfirmationMail($attendance, $event)
+                new AttendanceConfirmationMail($attendance, $event, $qrData)
             );
 
 

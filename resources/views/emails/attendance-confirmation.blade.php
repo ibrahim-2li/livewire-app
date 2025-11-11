@@ -147,13 +147,15 @@
                 <span class="info-label">الموقع:</span>
                 <span class="info-value">{{ $event->location }}</span>
             </div>
+
         </div>
 
-        <div class="qr-section">
-            <h3>📱 رمز QR الخاص بك</h3>
-            <p>يرجى عرض هذا الرمز عند وصولك للحدث للتحقق من حضورك:</p>
-            <div class="qr-code">
-                {!! $qrCode !!}
+        <div class="qr-section items-center">
+            @php($qrPayload = urlencode(json_encode($qrData)))
+            <div style="margin:16px 0;">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data={{ $qrPayload }}"
+                    alt="Event QR Code" width="300" height="300"
+                    style="display:block;border:0;outline:none;text-decoration:none;" />
             </div>
         </div>
 

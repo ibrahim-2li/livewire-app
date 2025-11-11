@@ -29,7 +29,7 @@
         @include('admin.errors', ['property' => 'password'])
     </div>
     <div class="col-md-6 mb-0">
-        <label class="form-label">@lang('Title')</label>
+        <label class="form-label">@lang('Job Title')</label>
         <input type="text" class="form-control" placeholder="@lang('Job Title')" wire:model='job_title' />
         @include('admin.errors', ['property' => 'job_title'])
     </div>

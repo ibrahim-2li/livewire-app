@@ -10,6 +10,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AttendanceConfirmationMail extends Mailable implements ShouldQueue
@@ -18,7 +20,8 @@ class AttendanceConfirmationMail extends Mailable implements ShouldQueue
 
     public function __construct(
         public Attendance $attendance,
-        public Event $event
+        public Event $event,
+        public array $qrData,
     ) {}
 
     /**
@@ -41,7 +44,7 @@ class AttendanceConfirmationMail extends Mailable implements ShouldQueue
             with: [
                 'attendance' => $this->attendance,
                 'event' => $this->event,
-                'qrCode' => $this->generateQrCode(),
+                'qrData' => $this->qrData,
             ],
         );
     }
@@ -51,33 +54,5 @@ class AttendanceConfirmationMail extends Mailable implements ShouldQueue
      * Returns base64-encoded SVG image embedded inline for email compatibility
      * Uses SVG format which doesn't require imagick extension
      */
-    private function generateQrCode(): string
-    {
-        $qrData = json_encode([
-            'type' => 'attendance',
-            'event_id' => $this->event->id,
-            'token' => $this->attendance->qr_token,
-            'attendee_name' => $this->attendance->attendee_name,
-            'attendee_email' => $this->attendance->attendee_email,
-        ]);
 
-        // Generate QR code as SVG (doesn't require imagick extension)
-        $qrSvg = QrCode::format('svg')->size(200)->generate($qrData);
-
-        // Convert to base64 for inline embedding
-        $base64 = base64_encode($qrSvg);
-
-        // Return as data URI (embedded directly in email, no external URL needed)
-        // SVG works in most modern email clients including Outlook, Apple Mail, Hotmail, etc.
-        // Note: Gmail has limited SVG support, but base64-embedded SVG may work in newer versions
-        return '<img src="data:image/svg+xml;base64,' . $base64 . '" alt="QR Code" style="max-width: 200px; height: auto; display: block; margin: 0 auto;" />';
-    }
-
-    /**
-     * Get the attachments for the message.
-     */
-    public function attachments(): array
-    {
-        return [];
-    }
 }
