@@ -21,6 +21,7 @@ class AttendanceFactory extends Factory
             'event_id' => 1, // Will be overridden by recycle()
             'attendee_name' => fake()->name(),
             'attendee_email' => fake()->email(),
+            'country' => fake()->randomElement(['Sudan', 'Egypt', 'Saudi Arabia', 'Qatar', 'United Arab Emirates']),
             'qr_token' => fake()->uuid(),
             'used_at' => fake()->dateTime(),
             'checked_in_by' => fake()->name(),

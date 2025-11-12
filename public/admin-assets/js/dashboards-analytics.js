@@ -433,90 +433,120 @@
     // Order Statistics Chart
     // --------------------------------------------------------------------
     const chartOrderStatistics = document.querySelector(
-            "#orderStatisticsChart"
-        ),
-        orderChartConfig = {
-            chart: {
-                height: 165,
-                width: 130,
-                type: "donut",
+        "#orderStatisticsChart"
+    );
+
+    if (chartOrderStatistics) {
+        chartOrderStatistics.style.width = "100%";
+        chartOrderStatistics.style.minWidth = "240px";
+        chartOrderStatistics.style.minHeight = "260px";
+    }
+
+    // Normalize input to avoid length/type mismatches breaking the chart
+    function toArray(value) {
+        if (Array.isArray(value)) return value;
+        if (value && typeof value === "object") return Object.values(value);
+        return [];
+    }
+
+    const labelsParsed = JSON.parse(
+        chartOrderStatistics?.dataset.eventTitles || "[]"
+    );
+    const seriesParsed = JSON.parse(
+        chartOrderStatistics?.dataset.eventAttendees || "[]"
+    );
+
+    const orderLabelsRaw = toArray(labelsParsed);
+    const orderSeriesRaw = toArray(seriesParsed);
+
+    // Coerce series to finite numbers
+    const numericSeries = orderSeriesRaw
+        .map((v) => (typeof v === "string" && v.trim() !== "" ? Number(v) : v))
+        .map((v) => (Number.isFinite(v) ? v : 0));
+
+    // Align lengths
+    const orderCount = Math.min(orderLabelsRaw.length, numericSeries.length);
+    const orderLabels = orderLabelsRaw.slice(0, orderCount);
+    const orderSeries = numericSeries.slice(0, orderCount);
+
+    // Base color palette
+    const baseColors = [
+        config.colors.primary,
+        config.colors.success,
+        config.colors.info,
+        config.colors.warning,
+        config.colors.danger,
+        config.colors.secondary,
+    ];
+
+    // Extend colors if needed
+    while (baseColors.length < orderSeries.length) {
+        baseColors.push(
+            "#" + Math.floor(Math.random() * 16777215).toString(16)
+        );
+    }
+
+    const orderChartConfig = {
+        chart: {
+            height: 260,
+            width: "100%",
+            type: "donut",
+        },
+        labels: orderLabels,
+        series: orderSeries,
+        colors: baseColors,
+        stroke: {
+            width: 3,
+            colors: cardColor,
+        },
+        dataLabels: {
+            enabled: false,
+            formatter: function (val, opt) {
+                return parseInt(val) + "%";
             },
-            labels: JSON.parse(
-                document.querySelector("#orderStatisticsChart")?.dataset
-                    .eventTitles || "[]"
-            ),
-            series: JSON.parse(
-                document.querySelector("#orderStatisticsChart")?.dataset
-                    .eventAttendees || "[]"
-            ),
-            colors: [
-                config.colors.primary,
-                config.colors.success,
-                config.colors.info,
-                config.colors.warning,
-                config.colors.danger,
-                config.colors.secondary,
-            ],
-            stroke: {
-                width: 5,
-                colors: cardColor,
+        },
+        legend: {
+            show: true,
+            position: "bottom",
+            horizontalAlign: "center",
+            markers: { width: 10, height: 10, radius: 12 },
+            itemMargin: { horizontal: 8, vertical: 6 },
+        },
+        grid: {
+            padding: {
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
             },
-            dataLabels: {
-                enabled: false,
-                formatter: function (val, opt) {
-                    return parseInt(val) + "%";
-                },
-            },
-            legend: {
-                show: false,
-            },
-            grid: {
-                padding: {
-                    top: 0,
-                    bottom: 0,
-                    right: 15,
-                },
-            },
-            plotOptions: {
-                pie: {
-                    donut: {
-                        size: "75%",
-                        labels: {
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: "70%",
+                    labels: {
+                        show: false,
+                        total: {
                             show: true,
-                            value: {
-                                fontSize: "1.2rem",
-                                fontFamily: "Public Sans",
-                                color: headingColor,
-                                offsetY: -15,
-                                formatter: function (val) {
-                                    return parseInt(val) + "%";
-                                },
-                            },
-                            name: {
-                                offsetY: 20,
-                                fontFamily: "Public Sans",
-                                fontSize: "0.8rem",
-                            },
-                            total: {
-                                show: true,
-                                fontSize: "0.8rem",
-                                color: axisColor,
-                                label: "Total",
-                                formatter: function (w) {
-                                    const total = w.globals.seriesTotals.reduce(
-                                        (a, b) => a + b,
-                                        0
-                                    );
-                                    return total.toString();
-                                },
+                            fontSize: "0.8rem",
+                            color: axisColor,
+                            label: "Total",
+                            formatter: function (w) {
+                                const total = w.globals.seriesTotals.reduce(
+                                    (a, b) => a + b,
+                                    0
+                                );
+                                return total.toString();
                             },
                         },
                     },
                 },
             },
-        };
+        },
+    };
+
     if (
-        typeof chartOrderStatistics !== undefined &&
+        typeof chartOrderStatistics !== "undefined" &&
         chartOrderStatistics !== null
     ) {
         const statisticsChart = new ApexCharts(
@@ -561,7 +591,7 @@
                 size: 6,
                 colors: "transparent",
                 strokeColors: "transparent",
-                strokeWidth: 4,
+                strokeWidth: 5,
                 discrete: [
                     {
                         fillColor: config.colors.white,

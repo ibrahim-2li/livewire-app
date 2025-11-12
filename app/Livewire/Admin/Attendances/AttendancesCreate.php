@@ -12,7 +12,7 @@ use App\Livewire\Admin\Attendances\AttendancesData;
 class AttendancesCreate extends Component
 {
     use WithFileUploads;
-    public $attendee_name, $attendee_email, $event_id, $qr_token, $used_at, $checked_in_by, $events;
+    public $attendee_name, $attendee_email, $event_id, $qr_token, $used_at, $checked_in_by, $events, $country;
 
     public function mount()
     {
@@ -24,6 +24,7 @@ class AttendancesCreate extends Component
         return [
             'attendee_name' => 'required',
             'attendee_email' => 'required',
+            'country' => 'required',
             'event_id' => 'required',
             'used_at' => 'nullable',
             'checked_in_by' => 'nullable',

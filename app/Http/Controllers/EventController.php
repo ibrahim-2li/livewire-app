@@ -79,7 +79,6 @@ class EventController extends Controller
         $qrData = $qrCodeService->generateAttendanceQrData($attendance);
         // Send confirmation email with QR code
         try {
-            // Mail::to($request->email)->send(new AttendanceConfirmationMail($attendance, $event));
             Mail::to($attendance->attendee_email)->send(
                 new AttendanceConfirmationMail($attendance, $event, $qrData)
             );

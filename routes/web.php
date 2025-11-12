@@ -16,26 +16,9 @@ require __DIR__.'/auth.php';
 Route::get('/', [EventController::class, 'index'])->name('events.index');
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 Route::post('/events/{event}/register', [EventController::class, 'register'])->name('events.register');
-// Route::prefix('/')->name('front.')->group(function (){
-    // ========================================== index
-    // Route::view('', 'front.index')->name('index');
-    // // ========================================== about
-    // Route::view('about', 'front.about')->name('about');
-    // // ========================================== contact
-    // Route::view('contact', 'front.contact')->name('contact');
-    // // ========================================== projects
-    // Route::view('projects', 'front.projects')->name('projects');
-    // // ========================================== services
-    // Route::view('services', 'front.services')->name('services');
-    // // ========================================== team
-    // Route::view('team', 'front.team')->name('team');
-    // // ========================================== testimonials
-    // Route::view('testimonials', 'front.testimonials')->name('testimonials');
-// });
 
-/**
- *  Admin Routes
- */
+ //  Admin Routes
+
 Route::prefix('/admin/')->name('admin.')->group(function (){
 
     // Routes accessible by all authenticated users (USER, ADMIN, SCANNER roles)

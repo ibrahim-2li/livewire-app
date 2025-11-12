@@ -10,7 +10,7 @@ use App\Livewire\Admin\Attendances\AttendancesData;
 class AttendancesUpdate extends Component
 {
 
-    public $attendee_name, $attendee_email, $event_id, $events, $attendance;
+    public $attendee_name, $attendee_email, $event_id, $events, $attendance, $country;
 
     protected $listeners = ['attendancesUpdate'];
 
@@ -27,6 +27,7 @@ class AttendancesUpdate extends Component
         $this->attendee_name = $this->attendance->attendee_name;
         $this->attendee_email = $this->attendance->attendee_email;
         $this->event_id = $this->attendance->event_id;
+        $this->country = $this->attendance->country;
         // $this->qr_token = $this->event->qr_token;
 
         $this->resetValidation();
@@ -40,6 +41,7 @@ class AttendancesUpdate extends Component
             'attendee_name' => 'required',
             'attendee_email' => 'required',
             'event_id' => 'required',
+            'country' => 'required',
         ];
     }
 
@@ -60,6 +62,13 @@ class AttendancesUpdate extends Component
     }
     public function render()
     {
-        return view('admin.attendances.attendances-update');
+        $countries = Attendance::whereNotNull('country')
+        ->where('country', '!=', '')
+        ->distinct()
+        ->orderBy('country')
+        ->pluck('country');
+        return view('admin.attendances.attendances-update', [
+            'countries' => $countries
+        ]);
     }
 }

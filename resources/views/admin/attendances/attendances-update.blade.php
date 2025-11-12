@@ -11,7 +11,7 @@
     </div>
 
     <div class="col-md-6 mb-0">
-        <label class="form-label">@lang('Events')</label>
+        <label class="form-label">@lang('Event')</label>
         <select type="text" class="form-control" wire:model='event_id'>
             <option value="">@lang('Select Event')</option>
             @if (count($events) > 0)
@@ -23,5 +23,14 @@
         </select>
         @include('admin.errors', ['property' => 'event_id'])
     </div>
-
+    <div class="col-md-6 mb-0">
+        <label class="form-label">@lang('Country')</label>
+        <select id="country" name="country" class="form-control" wire:model='country'>
+            <option value="">@lang('Select Country')</option>
+            @foreach ($countries as $country)
+                <option value="{{ $country }}">{{ $country }}</option>
+            @endforeach
+        </select>
+        @include('admin.errors', ['property' => 'country'])
+    </div>
 </x-update-modal>

@@ -294,30 +294,6 @@
                         </p>
                     </div>
 
-                    <!-- Event Info -->
-                    {{-- <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-                        <h3 class="text-lg font-semibold text-white mb-4">معلومات الحدث</h3>
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-400">معرف الحدث</span>
-                                <span class="text-white font-mono text-sm">{{ $event->id }}</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-400">الحالة</span>
-                                <span
-                                    class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium {{ $event->is_active ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300' }}">
-                                    {{ $event->is_active ? 'Active' : 'Inactive' }}
-                                </span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-400">تاريخ الإنشاء</span>
-                                <span class="text-white text-sm">{{ $event->created_at->format('M j, Y') }}</span>
-                            </div>
-                        </div>
-                    </div> --}}
-
-                    <!-- Share -->
-
                     <div class="bg-white backdrop-blur-lg rounded-2xl p-6 border border-gray-200 shadow-lg mt-4">
 
                         <h3 class="text-lg font-semibold text-gray-900 mb-4"> تابعنا على</h3>

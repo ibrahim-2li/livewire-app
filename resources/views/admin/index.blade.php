@@ -23,17 +23,7 @@
                                 <h5 class="m-0 me-2">@lang('Country Statistics')</h5>
                                 <small class="text-muted">@lang('Total Countries') {{ count($countryNames ?? []) }}</small>
                             </div>
-                            <div class="dropdown">
-                                <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                                    <a class="dropdown-item" href="javascript:void(0);">@lang('Select All')</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">@lang('Refresh')</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">@lang('Share')</a>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">

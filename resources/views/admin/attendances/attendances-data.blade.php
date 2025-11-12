@@ -7,7 +7,7 @@
                     @lang('Total Attendances') <span class="ml-1"><i class="fas fa-users"></i></span>
                 </h5>
                 <div class="stat-value">
-                    <h5>{{ $datacount }}</h5>
+                    <h5 class="text-muted fw-bold">{{ $datacount }}</h5>
                 </div>
 
             </div>
@@ -19,8 +19,8 @@
                 <h5 class="text-success">
                     @lang('Total Check-ins') <span class="ml-1"><i class="fas fa-calendar-minus"></i></span>
                 </h5>
-                <div class="stat-value">
-                    <h5>{{ $dataused }}
+                <div class="">
+                    <h5 class="text-muted fw-bold">{{ $dataused }}
                     </h5>
                 </div>
 
