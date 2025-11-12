@@ -24,6 +24,7 @@ class UpdateAccount extends Component
         return [
             'user.name' => 'required',
             'user.email' => 'required|email',
+            'user.nationality' => 'required',
             'user.phone' => 'nullable|string',
             'user.job_title' => 'nullable|string',
             'user.gender' => 'required|in:male,female',
@@ -36,6 +37,7 @@ class UpdateAccount extends Component
         return [
             'user.name' => 'Name',
             'user.email' => 'Email',
+            'user.nationality' => 'Nationality',
             'user.phone' => 'Phone',
             'user.job_title' => 'job_title',
             'user.gender' => 'Gender',

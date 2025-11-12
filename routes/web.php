@@ -16,6 +16,7 @@ require __DIR__.'/auth.php';
 Route::get('/', [EventController::class, 'index'])->name('events.index');
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 Route::post('/events/{event}/register', [EventController::class, 'register'])->name('events.register');
+Route::post('/events/{event}/register', [EventController::class, 'existing_register'])->name('events.existing_register');
 
  //  Admin Routes
 

@@ -68,6 +68,68 @@ class EventController extends Controller
             return back()->withErrors(['email' => 'أنت مسجل بالفعل في هذا الحدث.'])->withInput();
         }
 
+        // // Create attendance record
+        // $attendance = Attendance::create([
+        //     'event_id' => $event->id,
+        //     'country' => $request->country,
+        //     'attendee_name' => $request->name,
+        //     'attendee_email' => $request->email,
+        //     'qr_token' => 'attend_'.bin2hex(random_bytes(16)),
+        // ]);
+        // $qrData = $qrCodeService->generateAttendanceQrData($attendance);
+        // // Send confirmation email with QR code
+        // try {
+        //     Mail::to($attendance->attendee_email)->send(
+        //         new AttendanceConfirmationMail($attendance, $event, $qrData)
+        //     );
+
+
+        // } catch (\Exception $e) {
+        //     // Log the error but don't fail the registration
+        //     Log::error('Failed to send attendance confirmation email: '.$e->getMessage());
+        // }
+
+        return redirect()->route('admin.register')
+            ->with('success', 'أكمل التسجيل لإرسال رمز QR إليك عبر البريد الإلكتروني. و المتابعة لإنشاء حساب لتفقد سجل حضورك.')
+            ->with('attendee_name', $request->name)
+            ->with('attendee_email', $request->email)
+            ->with('country', $request->country)
+            ->with('event_id', $event->id);
+    }
+
+    public function existing_register(Request $request, Event $event, QrCodeService $qrCodeService)
+    {
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+        ], [
+            'name.required' => 'الاسم مطلوب',
+            'name.string' => 'يجب أن يكون الاسم نصاً',
+            'name.max' => 'الاسم لا يجب أن يتجاوز 255 حرف',
+            'email.required' => 'البريد الإلكتروني مطلوب',
+            'email.email' => 'يجب أن يكون البريد الإلكتروني صحيحاً',
+            'email.max' => 'البريد الإلكتروني لا يجب أن يتجاوز 255 حرف',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        // Check if event is active and in the future
+        if (! $event->is_active || $event->end_date < now()) {
+            return back()->withErrors(['event' => 'هذا الحدث لم يعد متاحاً للتسجيل.'])->withInput();
+        }
+
+        // Check if user is already registered
+        $existingRegistration = Attendance::where('event_id', $event->id)
+            ->where('attendee_email', $request->email)
+            ->first();
+
+        if ($existingRegistration) {
+            return back()->withErrors(['email' => 'أنت مسجل بالفعل في هذا الحدث.'])->withInput();
+        }
+
         // Create attendance record
         $attendance = Attendance::create([
             'event_id' => $event->id,
@@ -90,7 +152,7 @@ class EventController extends Controller
         }
 
         return redirect()->route('admin.register')
-            ->with('success', 'تم التسجيل بنجاح! تم إرسال رمز QR إليك عبر البريد الإلكتروني. يمكنك المتابعة لإنشاء حساب لتفقد سجل حضورك.')
+            ->with('success', 'أكمل التسجيل لإرسال رمز QR إليك عبر البريد الإلكتروني. و المتابعة لإنشاء حساب لتفقد سجل حضورك.')
             ->with('attendee_name', $request->name)
             ->with('attendee_email', $request->email);
     }

@@ -20,9 +20,9 @@
                     <div class="mb-3 col-md-6">
                         <label class="form-label">@lang('Phone Number')</label>
                         <div class="input-group input-group-merge">
-                            <span class="input-group-text">(00)</span>
-                            <input type="number" class="form-control" wire:model='user.phone' placeholder="500 000 000"
-                                max="999999999" />
+                            <span class="input-group-text">(+)</span>
+                            <input class="form-control" wire:model='user.phone' placeholder="500 000 000" type="tel"
+                                maxlength="14" pattern="\+966\d{9}" inputmode="tel" />
                         </div>
                     </div>
                     <div class="mb-3 col-md-6">
@@ -35,6 +35,11 @@
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="job_title" class="form-label">@lang('Nationality')</label>
+                        <input type="text" class="form-control" wire:model='user.nationality'
+                            placeholder="Nationality" />
                     </div>
                 </div>
                 <div class="mt-2">

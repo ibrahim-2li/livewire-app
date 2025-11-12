@@ -58,60 +58,6 @@
     </nav>
 
     <!-- Hero Section -->
-    {{-- <section class="relative overflow-hidden py-16">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Event Image -->
-                <div class="order-2 lg:order-1">
-                    <div class="relative">
-                        <div
-                            class="w-full h-96 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-2xl">
-                            <i class="fas fa-calendar-alt text-white text-8xl"></i>
-                        </div>
-                        <div
-                            class="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-xl">
-                            <i class="fas fa-ticket-alt text-white text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event Info -->
-                <div class="order-1 lg:order-2 space-y-6">
-                    <div>
-                        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
-                            {{ $event->title }}
-                        </h1>
-                        <div class="flex items-center text-gray-300 mb-6">
-                            <i class="fas fa-user-circle text-gray-400 mr-3"></i>
-                            <span class="text-lg">Organized by {{ $event->user->name }}</span>
-                        </div>
-                    </div>
-
-                    <!-- Description -->
-                    <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
-                        <p class="text-gray-300 leading-relaxed">
-                            {{ $event->description ?: 'Join us for an amazing event that will inspire and connect you with like-minded individuals. This is a great opportunity to network, learn, and have fun!' }}
-                        </p>
-                    </div>
-
-                    <!-- Quick Stats -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/20 text-center">
-                            <i class="fas fa-users text-purple-400 text-2xl mb-2"></i>
-                            <p class="text-white font-semibold text-lg">{{ $event->total_attendees }}</p>
-                            <p class="text-gray-400 text-sm">Attendees</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4 border border-white/20 text-center">
-                            <i class="fas fa-check-circle text-green-400 text-2xl mb-2"></i>
-                            <p class="text-white font-semibold text-lg">{{ $event->checked_in_count }}</p>
-                            <p class="text-gray-400 text-sm">Checked In</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
     <!-- Event Details -->
     <section class="py-16">
@@ -164,7 +110,7 @@
                                         <button
                                             class="mt-2 text-blue-600 hover:text-blue-500 transition-colors duration-300">
                                             <i class="fas fa-directions mr-1"></i>
-                                            <a href="https://maps.app.goo.gl/9CJStLS45EB4cqvn8" target="blank">
+                                            <a href="{{ $event->map }}" target="blank">
                                                 Get Directions
                                             </a>
                                         </button>
@@ -232,61 +178,111 @@
                             <div class="mb-4 p-2 bg-green-100 text-green-800 rounded text-sm">
                                 Logged in as: {{ auth('admin')->user()->name }} ({{ auth('admin')->user()->email }})
                             </div>
+                            <form action="{{ route('events.existing_register', $event) }}" method="POST"
+                                class="space-y-4">
+                                @csrf
+                                <div>
+                                    @php
+                                        $name = auth('admin')->check() ? auth('admin')->user()->name : old('name');
+                                        $email = auth('admin')->check() ? auth('admin')->user()->email : old('email');
+                                    @endphp
+                                    <input type="text" name="name" value="{{ $name }}" readonly
+                                        placeholder="الاسم الكامل"
+                                        class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-orange-500 transition-all duration-300"
+                                        required>
+                                </div>
+                                <div>
+                                    <input type="email" name="email" value="{{ $email }}" readonly
+                                        placeholder="البريد الإلكتروني"
+                                        class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-orange-500 transition-all duration-300"
+                                        required>
+                                </div>
+                                <div>
+
+                                    <select id="country" name="country"
+                                        class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
+                                        required>
+                                        <option value="">@lang('Where are you joining from?')</option>
+                                        <option value="Sudan" {{ old('country') == 'Sudan' ? 'selected' : '' }}>
+                                            @lang('Sudan')
+                                        </option>
+                                        <option value="Egypt" {{ old('country') == 'Egypt' ? 'selected' : '' }}>
+                                            @lang('Egypt')</option>
+                                        </option>
+                                        <option value="Saudi Arabia"
+                                            {{ old('country') == 'Saudi Arabia' ? 'selected' : '' }}>@lang('Saudi Arabia')
+                                        </option>
+                                        <option value="Qatar" {{ old('country') == 'Qatar' ? 'selected' : '' }}>
+                                            @lang('Qatar')
+                                        </option>
+                                        <option value="United Arab Emirates"
+                                            {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
+                                            @lang('United Arab Emirates')
+                                        </option>
+                                    </select>
+
+                                </div>
+                                <button type="submit"
+                                    class="w-full bg-white text-orange-600 font-bold py-4 px-6 rounded-xl hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105 shadow-lg">
+                                    <i class="fas fa-ticket-alt ml-2"></i>
+                                    سجل الآن
+                                </button>
+                            </form>
                         @else
                             <div class="mb-4 p-2 bg-yellow-100 text-yellow-800 rounded text-sm">
                                 Not logged in
                             </div>
+                            {{-- <form action="{{ route('events.register', $event) }}" method="POST" class="space-y-4">
+                                @csrf
+                                <div>
+                                    @php
+                                        $name = auth('admin')->check() ? auth('admin')->user()->name : old('name');
+                                        $email = auth('admin')->check() ? auth('admin')->user()->email : old('email');
+                                    @endphp
+                                    <input type="text" name="name" value="{{ $name }}"
+                                        placeholder="الاسم الكامل"
+                                        class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-orange-500 transition-all duration-300"
+                                        required>
+                                </div>
+                                <div>
+                                    <input type="email" name="email" value="{{ $email }}"
+                                        placeholder="البريد الإلكتروني"
+                                        class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-orange-500 transition-all duration-300"
+                                        required>
+                                </div>
+                                <div>
+
+                                    <select id="country" name="country"
+                                        class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
+                                        required>
+                                        <option value="">@lang('Where are you joining from?')</option>
+                                        <option value="Sudan" {{ old('country') == 'Sudan' ? 'selected' : '' }}>
+                                            @lang('Sudan')
+                                        </option>
+                                        <option value="Egypt" {{ old('country') == 'Egypt' ? 'selected' : '' }}>
+                                            @lang('Egypt')</option>
+                                        </option>
+                                        <option value="Saudi Arabia"
+                                            {{ old('country') == 'Saudi Arabia' ? 'selected' : '' }}>@lang('Saudi Arabia')
+                                        </option>
+                                        <option value="Qatar" {{ old('country') == 'Qatar' ? 'selected' : '' }}>
+                                            @lang('Qatar')
+                                        </option>
+                                        <option value="United Arab Emirates"
+                                            {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
+                                            @lang('United Arab Emirates')
+                                        </option>
+                                    </select>
+
+                                </div>
+                                <button type="submit"
+                                    class="w-full bg-white text-orange-600 font-bold py-4 px-6 rounded-xl hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105 shadow-lg">
+                                    <i class="fas fa-ticket-alt ml-2"></i>
+                                    سجل الآن
+                                </button>
+                            </form> --}}
                         @endif
 
-                        <form action="{{ route('events.register', $event) }}" method="POST" class="space-y-4">
-                            @csrf
-                            <div>
-                                @php
-                                    $name = auth('admin')->check() ? auth('admin')->user()->name : old('name');
-                                    $email = auth('admin')->check() ? auth('admin')->user()->email : old('email');
-                                @endphp
-                                <input type="text" name="name" value="{{ $name }}"
-                                    placeholder="الاسم الكامل"
-                                    class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-orange-500 transition-all duration-300"
-                                    required>
-                            </div>
-                            <div>
-                                <input type="email" name="email" value="{{ $email }}"
-                                    placeholder="البريد الإلكتروني"
-                                    class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 backdrop-blur-sm text-gray-900 placeholder-gray-500 focus:bg-white focus:ring-2 focus:ring-orange-500 transition-all duration-300"
-                                    required>
-                            </div>
-                            <div>
-
-                                <select id="country" name="country"
-                                    class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                                    required>
-                                    <option value="">@lang('Where are you joining from?')</option>
-                                    <option value="Sudan" {{ old('country') == 'Sudan' ? 'selected' : '' }}>
-                                        @lang('Sudan')
-                                    </option>
-                                    <option value="Egypt" {{ old('country') == 'Egypt' ? 'selected' : '' }}>
-                                        @lang('Egypt')</option>
-                                    </option>
-                                    <option value="Saudi Arabia"
-                                        {{ old('country') == 'Saudi Arabia' ? 'selected' : '' }}>@lang('Saudi Arabia')
-                                    </option>
-                                    <option value="Qatar" {{ old('country') == 'Qatar' ? 'selected' : '' }}>
-                                        @lang('Qatar')
-                                    </option>
-                                    <option value="United Arab Emirates"
-                                        {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
-                                        @lang('United Arab Emirates')
-                                    </option>
-                                </select>
-
-                            </div>
-                            <button type="submit"
-                                class="w-full bg-white text-orange-600 font-bold py-4 px-6 rounded-xl hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105 shadow-lg">
-                                <i class="fas fa-ticket-alt ml-2"></i>
-                                سجل الآن
-                            </button>
-                        </form>
 
 
                         <p class="text-white text-sm mt-4">
