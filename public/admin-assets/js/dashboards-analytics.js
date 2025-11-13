@@ -517,94 +517,127 @@
     const orderLabels = orderLabelsRaw.slice(0, orderCount);
     const orderSeries = numericSeries.slice(0, orderCount);
 
-    // Calculate dynamic height based on number of countries
-    // Base chart height + legend height (approximately 25px per item)
-    const legendHeight = Math.max(100, orderCount * 25);
-    const chartHeight = 330 + Math.max(0, legendHeight - 100);
-
     if (chartOrderStatistics) {
         chartOrderStatistics.style.width = "100%";
-        chartOrderStatistics.style.minWidth = "330px";
-        chartOrderStatistics.style.minHeight = `${chartHeight + 60}px`;
+        chartOrderStatistics.style.minWidth = "300px";
+        chartOrderStatistics.style.minHeight = "400px";
     }
 
-    // Base color palette
-    const baseColors = [
-        config.colors.primary,
-        config.colors.success,
-        config.colors.info,
-        config.colors.warning,
-        config.colors.danger,
-        config.colors.secondary,
-    ];
+    // Generate extended color palette for all countries
+    const generateColors = (count) => {
+        const baseColors = [
+            config.colors.primary,
+            config.colors.success,
+            config.colors.info,
+            config.colors.warning,
+            config.colors.danger,
+            config.colors.secondary,
+        ];
 
-    // Extend colors if needed
-    while (baseColors.length < orderSeries.length) {
-        baseColors.push(
-            "#" + Math.floor(Math.random() * 16777215).toString(16)
-        );
-    }
+        const extendedColors = [...baseColors];
+
+        // Generate additional colors using HSL for better variety
+        for (let i = baseColors.length; i < count; i++) {
+            const hue = (i * 137.508) % 360; // Golden angle for color distribution
+            const saturation = 60 + (i % 3) * 10; // Vary saturation
+            const lightness = 50 + (i % 2) * 10; // Vary lightness
+            extendedColors.push(`hsl(${hue}, ${saturation}%, ${lightness}%)`);
+        }
+
+        return extendedColors;
+    };
+
+    const baseColors = generateColors(orderSeries.length);
 
     const orderChartConfig = {
         chart: {
-            height: chartHeight,
+            height: 350,
             width: "100%",
-            type: "donut",
+            type: "pie",
         },
         labels: orderLabels,
         series: orderSeries,
         colors: baseColors,
         stroke: {
-            width: 3,
+            width: 2,
             colors: cardColor,
         },
         dataLabels: {
-            enabled: false,
-            formatter: function (val, opt) {
-                return parseInt(val) + "%";
+            enabled: true,
+            formatter: function (val, opts) {
+                return opts.w.config.series[opts.seriesIndex];
+            },
+            style: {
+                fontSize: "12px",
+                fontWeight: 600,
+                colors: [cardColor],
+            },
+            dropShadow: {
+                enabled: false,
             },
         },
         legend: {
             show: true,
             position: "bottom",
             horizontalAlign: "center",
-            markers: { width: 10, height: 10, radius: 12 },
-            itemMargin: { horizontal: 8, vertical: 6 },
+            markers: {
+                width: 12,
+                height: 12,
+                radius: 6,
+            },
+            itemMargin: {
+                horizontal: 10,
+                vertical: 8,
+            },
             floating: false,
-            height: legendHeight,
-            scrollable: true,
+            fontSize: "13px",
+            fontWeight: 500,
+            formatter: function (seriesName, opts) {
+                const value = opts.w.globals.series[opts.seriesIndex];
+                const total = opts.w.globals.seriesTotals.reduce(
+                    (a, b) => a + b,
+                    0
+                );
+                const percent =
+                    total > 0 ? ((value / total) * 100).toFixed(1) : 0;
+                return seriesName + ": " + value + " (" + percent + "%)";
+            },
         },
-        grid: {
-            padding: {
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
+        tooltip: {
+            y: {
+                formatter: function (val, opts) {
+                    const total = opts.w.globals.seriesTotals.reduce(
+                        (a, b) => a + b,
+                        0
+                    );
+                    const percent =
+                        total > 0 ? ((val / total) * 100).toFixed(1) : 0;
+                    return val + " (" + percent + "%)";
+                },
             },
         },
         plotOptions: {
             pie: {
+                expandOnClick: true,
                 donut: {
-                    size: "70%",
-                    labels: {
-                        show: false,
-                        total: {
-                            show: true,
-                            fontSize: "0.8rem",
-                            color: axisColor,
-                            label: "Total",
-                            formatter: function (w) {
-                                const total = w.globals.seriesTotals.reduce(
-                                    (a, b) => a + b,
-                                    0
-                                );
-                                return total.toString();
-                            },
-                        },
-                    },
+                    size: "0%",
                 },
             },
         },
+        responsive: [
+            {
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        height: 300,
+                    },
+                    legend: {
+                        position: "bottom",
+                        fontSize: "11px",
+                    },
+                },
+            },
+        ],
     };
 
     if (

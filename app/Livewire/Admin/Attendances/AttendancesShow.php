@@ -4,18 +4,33 @@ namespace App\Livewire\Admin\Attendances;
 
 use Livewire\Component;
 use App\Models\Attendance;
+use Illuminate\Support\Facades\Auth;
 
 class AttendancesShow extends Component
 {
-    public $attendances, $attendee_name, $attendee_email, $event_id, $qr_token, $used_at, $checked_in_by;
+    public $attendances, $name, $email, $country, $phone, $job_title, $event_id, $qr_token, $used_at, $checked_in_by;
     protected $listeners = ['attendancesShow'];
+
+    public function getQrcodesProperty()
+    {
+        return Attendance::where('admin_id', Auth::guard('admin')->user()->id)
+            ->whereNull('used_at')
+            ->with('event')
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
+
+
 
     public function attendancesShow($id)
     {
         $record = Attendance::find($id);
 
-        $this->attendee_name = $record->attendee_name;
-        $this->attendee_email = $record->attendee_email;
+        $this->name = $record->user->name;
+        $this->email = $record->user->email;
+        $this->country = $record->country;
+        $this->phone = $record->user->phone;
+        $this->job_title = $record->user->job_title;
         $this->event_id = $record->event_id;
         $this->qr_token = $record->qr_token;
         $this->used_at = $record->used_at;
@@ -25,6 +40,8 @@ class AttendancesShow extends Component
     }
     public function render()
     {
-        return view('admin.attendances.attendances-show');
+        return view('admin.attendances.attendances-show', [
+            'qrcodes' => $this->qrcodes
+        ]);
     }
 }

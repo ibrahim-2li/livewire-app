@@ -14,9 +14,9 @@
             <option value="Qatar" {{ old('country') == 'Qatar' ? 'selected' : '' }}>
                 @lang('Qatar')
             </option>
-            <option value="United Arab Emirates" {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
+            {{-- <option value="United Arab Emirates" {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
                 @lang('United Arab Emirates')
-            </option>
+            </option> --}}
         </select>
         @include('admin.errors', ['property' => 'country'])
     </div>

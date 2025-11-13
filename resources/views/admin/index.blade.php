@@ -37,7 +37,7 @@
                                     data-event-attendees="{{ json_encode($countryCounts ?? []) }}">
                                 </div>
                             </div>
-                            <ul class="p-0 m-0">
+                            {{-- <ul class="p-0 m-0">
                                 @if (isset($countryNames) && isset($countryCounts) && count($countryNames) === count($countryCounts))
                                     @foreach (array_combine($countryNames, $countryCounts) as $country => $count)
                                         <li class="d-flex mb-4 pb-1">
@@ -50,7 +50,6 @@
                                                 class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                                 <div class="me-2">
                                                     <h6 class="mb-0">{{ $country }}</h6>
-                                                    {{-- <small class="text-muted">@lang('Country')</small> --}}
                                                 </div>
                                                 <div class="user-progress">
                                                     <small class="fw-semibold">{{ $count }}</small>
@@ -60,7 +59,7 @@
                                     @endforeach
                                 @endif
 
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>
@@ -121,10 +120,10 @@
                                                         gradientUnits="userSpaceOnUse" />
                                                 </defs>
                                                 <sodipodi:namedview id="base" bordercolor="#666666"
-                                                    inkscape:pageshadow="2" inkscape:window-width="1916"
-                                                    pagecolor="#ffffff" inkscape:zoom="0.47746872" inkscape:window-x="4"
-                                                    borderopacity="1.0" inkscape:current-layer="Layer_1"
-                                                    inkscape:cx="408.80447" inkscape:cy="46.448836" inkscape:window-y="1"
+                                                    inkscape:pageshadow="2" inkscape:window-width="1916" pagecolor="#ffffff"
+                                                    inkscape:zoom="0.47746872" inkscape:window-x="4" borderopacity="1.0"
+                                                    inkscape:current-layer="Layer_1" inkscape:cx="408.80447"
+                                                    inkscape:cy="46.448836" inkscape:window-y="1"
                                                     inkscape:window-height="1035" inkscape:pageopacity="0.0"
                                                     showgrid="false" fit-margin-top="0" fit-margin-left="0"
                                                     fit-margin-right="0" fit-margin-bottom="0"
