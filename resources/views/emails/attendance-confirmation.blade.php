@@ -125,7 +125,7 @@
         </div>
 
         <div class="success-message">
-            <strong>مرحباً {{ $attendance->attendee_name }}!</strong><br>
+            <strong>مرحباً {{ $attendance->user->name }}!</strong><br>
             تم تأكيد تسجيلك في الحدث بنجاح. يرجى الاحتفاظ بهذا البريد الإلكتروني ورمز QR للمراجعة عند الحضور.
         </div>
 

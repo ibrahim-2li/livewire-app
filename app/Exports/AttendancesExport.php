@@ -49,8 +49,8 @@ class AttendancesExport implements FromCollection, WithHeadings, WithMapping, Sh
     {
         return [
             $attendance->id,
-            $attendance->attendee_name,
-            $attendance->attendee_email,
+            $attendance->user->name,
+            $attendance->user->email,
             $attendance->event->title ?? '',
             $attendance->country ?? '',
             $attendance->used_at ? $attendance->used_at->format('Y-m-d H:i:s') : '',

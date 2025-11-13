@@ -14,9 +14,9 @@ Route::get('/language/{locale}', [LanguageController::class, 'swap'])->name('lan
 
 require __DIR__.'/auth.php';
 Route::get('/', [EventController::class, 'index'])->name('events.index');
-Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
+Route::post('/events/{event}/register-existing', [EventController::class, 'existing_register'])->name('events.existing_register');
 Route::post('/events/{event}/register', [EventController::class, 'register'])->name('events.register');
-Route::post('/events/{event}/register', [EventController::class, 'existing_register'])->name('events.existing_register');
+Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 
  //  Admin Routes
 
@@ -84,6 +84,9 @@ Route::get('/download-qr/{attendance}', function (Attendance $attendance) {
         abort(403, 'يجب تسجيل الدخول أولاً');
     }
 
+    // Load user relationship
+    $attendance->load('user');
+
     $user = auth('admin')->user();
     $userRole = $user->role;
 
@@ -91,9 +94,9 @@ Route::get('/download-qr/{attendance}', function (Attendance $attendance) {
     if ($userRole === \App\Models\Admin::ROLE_ADMIN || $userRole === \App\Models\Admin::ROLE_SCANNER) {
         // Allow access - continue
     }
-    // USER role can only download their own QR code (must match email)
+    // USER role can only download their own QR code (must match admin_id)
     elseif ($userRole === \App\Models\Admin::ROLE_USER) {
-        if ($user->email !== $attendance->attendee_email) {
+        if ($user->id !== $attendance->admin_id) {
             abort(403, 'ليس لديك صلاحية لتحميل هذا الرمز');
         }
     }
@@ -106,8 +109,8 @@ Route::get('/download-qr/{attendance}', function (Attendance $attendance) {
         'type' => 'attendance',
         'event_id' => $attendance->event_id,
         'token' => $attendance->qr_token,
-        'attendee_name' => $attendance->attendee_name,
-        'attendee_email' => $attendance->attendee_email,
+        'name' => $attendance->user->name,
+        'email' => $attendance->user->email,
     ]);
 
     $qrCode = \SimpleSoftwareIO\QrCode\Facades\QrCode::size(300)
@@ -127,6 +130,9 @@ Route::get('/view-qr/{attendance}', function (App\Models\Attendance $attendance)
         abort(403, 'يجب تسجيل الدخول أولاً');
     }
 
+    // Load user relationship
+    $attendance->load('user');
+
     $user = auth('admin')->user();
     $userRole = $user->role;
 
@@ -134,9 +140,9 @@ Route::get('/view-qr/{attendance}', function (App\Models\Attendance $attendance)
     if ($userRole === \App\Models\Admin::ROLE_ADMIN || $userRole === \App\Models\Admin::ROLE_SCANNER) {
         // Allow access - continue
     }
-    // USER role can only view their own QR code (must match email)
+    // USER role can only view their own QR code (must match admin_id)
     elseif ($userRole === \App\Models\Admin::ROLE_USER) {
-        if ($user->email !== $attendance->attendee_email) {
+        if ($user->id !== $attendance->admin_id) {
             abort(403, 'ليس لديك صلاحية لعرض هذا الرمز');
         }
     }
@@ -149,8 +155,8 @@ Route::get('/view-qr/{attendance}', function (App\Models\Attendance $attendance)
         'type' => 'attendance',
         'event_id' => $attendance->event_id,
         'token' => $attendance->qr_token,
-        'attendee_name' => $attendance->attendee_name,
-        'attendee_email' => $attendance->attendee_email,
+        'name' => $attendance->user->name,
+        'email' => $attendance->user->email,
     ]);
 
     $qrCode = \SimpleSoftwareIO\QrCode\Facades\QrCode::size(250)

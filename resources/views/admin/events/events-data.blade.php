@@ -21,9 +21,8 @@
             <tbody class="table-border-bottom-0">
                 @foreach ($data as $record)
                     <tr>
-                        <td><strong> <a class="dropdown-item" href="#"
-                                    wire:click.prevent="$dispatch('eventsAttends',{id: {{ $record->id }}})"><i
-                                        class="bx bx-check-alt me-1"></i>
+                        <td><strong> <a class="text-gray" href="#"
+                                    wire:click.prevent="$dispatch('eventsAttends',{id: {{ $record->id }}})"><i></i>
                                     {{ $record->title }}</a></strong></td>
 
                         <td class="d-none d-sm-table-cell"><strong>

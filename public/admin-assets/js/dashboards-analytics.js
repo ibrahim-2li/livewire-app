@@ -15,17 +15,49 @@
     // Total Revenue Report Chart - Bar Chart
     // --------------------------------------------------------------------
     const totalRevenueChartEl = document.querySelector("#totalRevenueChart"),
+        totalRevenueSeries = (() => {
+            try {
+                const raw =
+                    totalRevenueChartEl?.dataset?.totalRevenueSeries || "[]";
+                const parsed = JSON.parse(raw);
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (e) {
+                return [];
+            }
+        })(),
+        totalRevenueCategories = [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+        ],
         totalRevenueChartOptions = {
-            series: [
-                {
-                    name: "2021",
-                    data: [18, 7, 15, 29, 18, 12, 9],
-                },
-                {
-                    name: "2020",
-                    data: [-13, -18, -9, -14, -5, -17, -15],
-                },
-            ],
+            series:
+                totalRevenueSeries.length > 0
+                    ? totalRevenueSeries
+                    : [
+                          {
+                              name: "2021",
+                              data: [
+                                  18, 7, 15, 29, 18, 12, 9, 17, 13, 18, 9, 11,
+                              ],
+                          },
+                          {
+                              name: "2020",
+                              data: [
+                                  -13, -18, -9, -14, -5, -17, -15, -10, -12, -8,
+                                  -6, -9,
+                              ],
+                          },
+                      ],
             chart: {
                 height: 300,
                 stacked: true,
@@ -78,7 +110,10 @@
                 },
             },
             xaxis: {
-                categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                categories:
+                    totalRevenueSeries.length > 0
+                        ? totalRevenueCategories
+                        : totalRevenueCategories,
                 labels: {
                     style: {
                         fontSize: "13px",
@@ -283,8 +318,14 @@
     // Growth Chart - Radial Bar Chart
     // --------------------------------------------------------------------
     const growthChartEl = document.querySelector("#growthChart"),
+        // Read growth percent from dataset
+        growthPercent = (() => {
+            const raw = growthChartEl?.dataset?.growthPercent;
+            const num = Number(raw);
+            return Number.isFinite(num) ? num : 0;
+        })(),
         growthChartOptions = {
-            series: [78],
+            series: [growthPercent],
             labels: ["Growth"],
             chart: {
                 height: 240,
@@ -364,6 +405,16 @@
     // Profit Report Line Chart
     // --------------------------------------------------------------------
     const profileReportChartEl = document.querySelector("#profileReportChart"),
+        // Parse users series from dataset if provided
+        profileUsersSeries = (() => {
+            try {
+                const raw = profileReportChartEl?.dataset?.usersSeries || "[]";
+                const parsed = JSON.parse(raw);
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (e) {
+                return [];
+            }
+        })(),
         profileReportChartConfig = {
             chart: {
                 height: 80,
@@ -400,7 +451,10 @@
             },
             series: [
                 {
-                    data: [110, 270, 145, 245, 205, 285],
+                    data:
+                        profileUsersSeries.length > 0
+                            ? profileUsersSeries
+                            : [110, 270, 145, 245, 205, 285],
                 },
             ],
             xaxis: {
@@ -436,12 +490,6 @@
         "#orderStatisticsChart"
     );
 
-    if (chartOrderStatistics) {
-        chartOrderStatistics.style.width = "100%";
-        chartOrderStatistics.style.minWidth = "240px";
-        chartOrderStatistics.style.minHeight = "260px";
-    }
-
     // Normalize input to avoid length/type mismatches breaking the chart
     function toArray(value) {
         if (Array.isArray(value)) return value;
@@ -469,6 +517,17 @@
     const orderLabels = orderLabelsRaw.slice(0, orderCount);
     const orderSeries = numericSeries.slice(0, orderCount);
 
+    // Calculate dynamic height based on number of countries
+    // Base chart height + legend height (approximately 25px per item)
+    const legendHeight = Math.max(100, orderCount * 25);
+    const chartHeight = 330 + Math.max(0, legendHeight - 100);
+
+    if (chartOrderStatistics) {
+        chartOrderStatistics.style.width = "100%";
+        chartOrderStatistics.style.minWidth = "330px";
+        chartOrderStatistics.style.minHeight = `${chartHeight + 60}px`;
+    }
+
     // Base color palette
     const baseColors = [
         config.colors.primary,
@@ -488,7 +547,7 @@
 
     const orderChartConfig = {
         chart: {
-            height: 260,
+            height: chartHeight,
             width: "100%",
             type: "donut",
         },
@@ -511,6 +570,9 @@
             horizontalAlign: "center",
             markers: { width: 10, height: 10, radius: 12 },
             itemMargin: { horizontal: 8, vertical: 6 },
+            floating: false,
+            height: legendHeight,
+            scrollable: true,
         },
         grid: {
             padding: {

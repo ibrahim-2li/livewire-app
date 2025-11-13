@@ -1,4 +1,4 @@
-<x-create-modal title='Create Project'>
+<x-create-modal title='Create Event'>
     <div class="col-md-6 mb-0">
         <label for="emailBasic" class="form-label">@lang('Title')</label>
         <input type="text" class="form-control" placeholder="@lang('ُEvent Title')" wire:model='title' />

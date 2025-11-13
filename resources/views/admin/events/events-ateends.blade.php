@@ -16,10 +16,10 @@
             <tbody class="table-border-bottom-0">
                 @foreach ($attendances as $attendance)
                     <tr>
-                        <td><strong>{{ $attendance->attendee_name }} </strong></td>
+                        <td><strong>{{ $attendance->user->name }} </strong></td>
 
                         <td class="d-none d-sm-table-cell col-sm-2 col-md-2">
-                            <strong>{{ $attendance->attendee_email }}</strong>
+                            <strong>{{ $attendance->user->email }}</strong>
                         </td>
                         <td>
                             @if ($attendance->used_at)

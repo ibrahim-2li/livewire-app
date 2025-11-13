@@ -15,7 +15,7 @@ class MyAttendancesData extends Component
 
     public function getQrcodesProperty()
     {
-        return Attendance::where('attendee_email', Auth::guard('admin')->user()->email)
+        return Attendance::where('admin_id', Auth::guard('admin')->user()->id)
             ->whereNull('used_at')
             ->with('event')
             ->orderBy('created_at', 'desc')
@@ -24,7 +24,7 @@ class MyAttendancesData extends Component
 
     public function getQrcodesUsedProperty()
     {
-        return Attendance::where('attendee_email', Auth::guard('admin')->user()->email)
+        return Attendance::where('admin_id', Auth::guard('admin')->user()->id)
             ->whereNotNull('used_at')
             ->with('event')
             ->orderBy('created_at', 'desc')
@@ -33,10 +33,10 @@ class MyAttendancesData extends Component
 
     public function render()
     {
-        $userEmail = Auth::guard('admin')->user()->email;
+        $userId = Auth::guard('admin')->user()->id;
 
         return view('admin.my-attendances.my-attendances-data', [
-            'data' => Attendance::where('attendee_email', $userEmail)->paginate(10),
+            'data' => Attendance::where('admin_id', $userId)->paginate(10),
             'qrcodes' => $this->qrcodes,
             'qrcodesUsed' => $this->qrcodesUsed
         ]);

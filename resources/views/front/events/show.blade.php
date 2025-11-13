@@ -232,7 +232,7 @@
                             <div class="mb-4 p-2 bg-yellow-100 text-yellow-800 rounded text-sm">
                                 Not logged in
                             </div>
-                            {{-- <form action="{{ route('events.register', $event) }}" method="POST" class="space-y-4">
+                            <form action="{{ route('events.register', $event) }}" method="POST" class="space-y-4">
                                 @csrf
                                 <div>
                                     @php
@@ -280,7 +280,7 @@
                                     <i class="fas fa-ticket-alt ml-2"></i>
                                     سجل الآن
                                 </button>
-                            </form> --}}
+                            </form>
                         @endif
 
 

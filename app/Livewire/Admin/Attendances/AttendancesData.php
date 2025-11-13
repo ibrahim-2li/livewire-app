@@ -50,8 +50,10 @@ class AttendancesData extends Component
 
         // Apply search filter
         if ($this->serarch) {
-            $query->where('attendee_name', 'like', '%' . $this->serarch . '%');
-            $query->orWhere('attendee_email', 'like', '%' . $this->serarch . '%');
+            $query->whereHas('user', function ($q) {
+                $q->where('name', 'like', '%' . $this->serarch . '%')
+                  ->orWhere('phone', 'like', '%' . $this->serarch . '%');
+            });
         }
 
         return $query;
@@ -74,7 +76,7 @@ class AttendancesData extends Component
 
     public function export()
     {
-        $filename = 'attendances_' . date('Y-m-d_His') . '.xlsx';
+        $filename = 'Attendances_' . date('Y-m-d_His') . '.xlsx';
         return Excel::download(new AttendancesExport($this->filteredQuery), $filename);
     }
 

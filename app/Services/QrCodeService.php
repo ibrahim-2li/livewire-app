@@ -25,11 +25,21 @@ class QrCodeService
      */
     public function generateAttendanceQrData(Attendance $attendance): array
     {
+        // Load user relationship if not already loaded
+        if (! $attendance->relationLoaded('user')) {
+            $attendance->load('user');
+        }
+
+        // Ensure user relationship exists
+        if (! $attendance->user) {
+            throw new \Exception('Attendance user relationship is missing. Admin ID: ' . $attendance->admin_id);
+        }
+
         return [
             'type' => 'attendance',
             'event_id' => $attendance->event_id,
             'token' => $attendance->qr_token,
-            'attendee_name' => $attendance->attendee_name,
+            'name' => $attendance->user->name,
         ];
     }
 
@@ -128,7 +138,7 @@ class QrCodeService
     {
         $attendance = Attendance::where('qr_token', $data['token'])
             ->whereNull('used_at')
-            ->with('event')
+            ->with(['event', 'user'])
             ->first();
 
         if (! $attendance) {
@@ -177,11 +187,15 @@ class QrCodeService
                 $freshAttendance->checkIn($checkedInBy);
             });
 
+            // Reload attendance with user relationship after check-in
+            $attendance->refresh();
+            $attendance->load('user');
+
             return [
                 'success' => true,
-                'message' => "Successfully checked in {$attendance->attendee_name}",
+                'message' => "Successfully checked in {$attendance->user->name}",
                 'data' => [
-                    'attendee_name' => $attendance->attendee_name,
+                    'attendee_name' => $attendance->user->name,
                     'event_title' => $attendance->event->title,
                     'checked_in_at' => now()->toISOString(),
                 ],

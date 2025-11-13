@@ -50,15 +50,15 @@ class authController extends Controller
             if (! $event) {
                 Log::warning('Event not found when attempting to create attendance during registration', [
                     'event_id' => $request->input('event_id'),
-                    'email' => $validated['email'],
+                    'admin_id' => $admin->id,
                 ]);
             } else {
                 $attendance = Attendance::firstOrNew([
                     'event_id' => $event->id,
-                    'attendee_email' => $validated['email'],
+                    'admin_id' => $admin->id,
                 ]);
 
-                $attendance->attendee_name = $validated['name'];
+                $attendance->user()->name = $validated['name'];
                 if ($request->filled('country')) {
                     $attendance->country = $request->input('country');
                 }

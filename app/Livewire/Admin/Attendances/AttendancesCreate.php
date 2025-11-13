@@ -8,22 +8,22 @@ use App\Models\Attendance;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Admin\Attendances\AttendancesData;
+use App\Models\Admin;
 
 class AttendancesCreate extends Component
 {
     use WithFileUploads;
-    public $attendee_name, $attendee_email, $event_id, $qr_token, $used_at, $checked_in_by, $events, $country;
+    public $name, $email, $event_id, $qr_token, $used_at, $checked_in_by, $events, $users, $country;
 
     public function mount()
     {
+        $this->users = Admin::all();
         $this->events = Event::all();
     }
 
     public function rules ()
     {
         return [
-            'attendee_name' => 'required',
-            'attendee_email' => 'required',
             'country' => 'required',
             'event_id' => 'required',
             'used_at' => 'nullable',
@@ -46,7 +46,7 @@ class AttendancesCreate extends Component
         $data['qr_token'] = 'attend_' . bin2hex(random_bytes(16));
 
         Attendance::create($data);
-        $this->reset(['attendee_name','attendee_email','event_id']);
+        $this->reset(['name','email','event_id']);
         // hide image
         $this->dispatch('createModalToggle');
         // refresh projects data component

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\AttendanceConfirmationMail;
+use App\Models\Admin;
 use App\Models\Attendance;
 use App\Models\Event;
 use App\Models\Setting;
@@ -59,40 +60,24 @@ class EventController extends Controller
             return back()->withErrors(['event' => 'هذا الحدث لم يعد متاحاً للتسجيل.'])->withInput();
         }
 
-        // Check if user is already registered
-        $existingRegistration = Attendance::where('event_id', $event->id)
-            ->where('attendee_email', $request->email)
-            ->first();
+        // Check if admin user exists with this email
+        $admin = Admin::where('email', $request->email)->first();
 
-        if ($existingRegistration) {
-            return back()->withErrors(['email' => 'أنت مسجل بالفعل في هذا الحدث.'])->withInput();
+        if ($admin) {
+            // Check if user is already registered
+            $existingRegistration = Attendance::where('event_id', $event->id)
+                ->where('admin_id', $admin->id)
+                ->first();
+
+            if ($existingRegistration) {
+                return back()->withErrors(['email' => 'أنت مسجل بالفعل في هذا الحدث.'])->withInput();
+            }
         }
-
-        // // Create attendance record
-        // $attendance = Attendance::create([
-        //     'event_id' => $event->id,
-        //     'country' => $request->country,
-        //     'attendee_name' => $request->name,
-        //     'attendee_email' => $request->email,
-        //     'qr_token' => 'attend_'.bin2hex(random_bytes(16)),
-        // ]);
-        // $qrData = $qrCodeService->generateAttendanceQrData($attendance);
-        // // Send confirmation email with QR code
-        // try {
-        //     Mail::to($attendance->attendee_email)->send(
-        //         new AttendanceConfirmationMail($attendance, $event, $qrData)
-        //     );
-
-
-        // } catch (\Exception $e) {
-        //     // Log the error but don't fail the registration
-        //     Log::error('Failed to send attendance confirmation email: '.$e->getMessage());
-        // }
 
         return redirect()->route('admin.register')
             ->with('success', 'أكمل التسجيل لإرسال رمز QR إليك عبر البريد الإلكتروني. و المتابعة لإنشاء حساب لتفقد سجل حضورك.')
-            ->with('attendee_name', $request->name)
-            ->with('attendee_email', $request->email)
+            ->with('name', $request->name)
+            ->with('email', $request->email)
             ->with('country', $request->country)
             ->with('event_id', $event->id);
     }
@@ -121,9 +106,21 @@ class EventController extends Controller
             return back()->withErrors(['event' => 'هذا الحدث لم يعد متاحاً للتسجيل.'])->withInput();
         }
 
+        // Find or get authenticated admin user
+        $admin = auth('admin')->user();
+
+        if (! $admin) {
+            // If not authenticated, try to find by email
+            $admin = Admin::where('email', $request->email)->first();
+
+            if (! $admin) {
+                return back()->withErrors(['email' => 'لم يتم العثور على حساب بهذا البريد الإلكتروني. يرجى التسجيل أولاً.'])->withInput();
+            }
+        }
+
         // Check if user is already registered
         $existingRegistration = Attendance::where('event_id', $event->id)
-            ->where('attendee_email', $request->email)
+            ->where('admin_id', $admin->id)
             ->first();
 
         if ($existingRegistration) {
@@ -133,19 +130,22 @@ class EventController extends Controller
         // Create attendance record
         $attendance = Attendance::create([
             'event_id' => $event->id,
+            'admin_id' => $admin->id,
             'country' => $request->country,
-            'attendee_name' => $request->name,
-            'attendee_email' => $request->email,
             'qr_token' => 'attend_'.bin2hex(random_bytes(16)),
         ]);
+
+        // Refresh and load the user relationship for email sending
+        $attendance->refresh();
+        $attendance->load('user');
+
         $qrData = $qrCodeService->generateAttendanceQrData($attendance);
+
         // Send confirmation email with QR code
         try {
-            Mail::to($attendance->attendee_email)->send(
+            Mail::to($attendance->user->email)->send(
                 new AttendanceConfirmationMail($attendance, $event, $qrData)
             );
-
-
         } catch (\Exception $e) {
             // Log the error but don't fail the registration
             Log::error('Failed to send attendance confirmation email: '.$e->getMessage());
@@ -153,8 +153,8 @@ class EventController extends Controller
 
         return redirect()->route('admin.register')
             ->with('success', 'أكمل التسجيل لإرسال رمز QR إليك عبر البريد الإلكتروني. و المتابعة لإنشاء حساب لتفقد سجل حضورك.')
-            ->with('attendee_name', $request->name)
-            ->with('attendee_email', $request->email);
+            ->with('name', $request->name)
+            ->with('email', $request->email);
     }
 
     /**
@@ -180,7 +180,7 @@ class EventController extends Controller
             // Find attendance record
             $attendance = Attendance::where('event_id', $qrData['event_id'])
                 ->where('qr_token', $qrData['token'])
-                ->with('event')
+                ->with(['event', 'user'])
                 ->first();
 
             if (! $attendance) {
@@ -226,7 +226,7 @@ class EventController extends Controller
                     'success' => true,
                     'message' => 'تم تسجيل الحضور بنجاح',
                     'data' => [
-                        'attendee_name' => $attendance->attendee_name,
+                        'name' => $attendance->user->name,
                         'event_title' => $attendance->event->title,
                         'checked_in_at' => $attendance->used_at->format('Y-m-d H:i:s'),
                         'checked_in_by' => $attendance->checked_in_by,

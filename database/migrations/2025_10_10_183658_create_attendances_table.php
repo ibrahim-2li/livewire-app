@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin;
 use App\Models\Event;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,8 +16,7 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Event::class)->constrained()->onDelete('cascade');
-            $table->string('attendee_name');
-            $table->string('attendee_email')->nullable();
+            $table->foreignIdFor(Admin::class)->constrained()->onDelete('cascade');
             $table->string('qr_token')->unique();
             $table->timestamp('used_at')->nullable();
             $table->string('checked_in_by')->nullable(); // Admin who checked them in

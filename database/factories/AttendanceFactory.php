@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Admin;
 use App\Models\Event;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,8 +20,7 @@ class AttendanceFactory extends Factory
     {
         return [
             'event_id' => 1, // Will be overridden by recycle()
-            'attendee_name' => fake()->name(),
-            'attendee_email' => fake()->email(),
+            'admin_id' =>Admin::factory(),
             'country' => fake()->randomElement(['Sudan', 'Egypt', 'Saudi Arabia', 'Qatar', 'United Arab Emirates']),
             'qr_token' => fake()->uuid(),
             'used_at' => fake()->dateTime(),

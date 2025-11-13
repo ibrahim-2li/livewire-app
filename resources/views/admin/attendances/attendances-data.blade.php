@@ -65,6 +65,7 @@
                         <thead>
                             <tr>
                                 <th width="30%">@lang('Name')</th>
+                                <th width="15%">@lang('Phone')</th>
                                 <th width="25%" class="d-none d-sm-table-cell">@lang('Email')</th>
                                 <!-- Hide on mobile -->
                                 <th width="25%">@lang('Events')</th>
@@ -80,8 +81,9 @@
                         <tbody class="table-border-bottom-0">
                             @foreach ($data as $record)
                                 <tr>
-                                    <td><strong>{{ $record->attendee_name }}</strong></td>
-                                    <td class="d-none d-sm-table-cell"><strong>{{ $record->attendee_email }}</strong>
+                                    <td><strong>{{ $record->user->name }}</strong></td>
+                                    <td><strong>{{ $record->user->phone }}</strong></td>
+                                    <td class="d-none d-sm-table-cell"><strong>{{ $record->user->email }}</strong>
                                     </td> <!-- Hide on mobile -->
                                     <td><strong>{{ $record->event->title }}</strong></td>
                                     <td><strong>{{ $record->country }}</strong></td>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Admin;
 use App\Http\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -14,8 +15,7 @@ class Attendance extends Model
 
     protected $fillable = [
         'event_id',
-        'attendee_name',
-        'attendee_email',
+        'admin_id',
         'country',
         'qr_token',
         'used_at',
@@ -32,6 +32,11 @@ class Attendance extends Model
     public function event()
     {
         return $this->belongsTo(Event::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
 
     public function generateQrToken(): string
