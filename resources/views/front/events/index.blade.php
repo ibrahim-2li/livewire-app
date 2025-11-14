@@ -21,6 +21,66 @@
         .ltr {
             direction: ltr;
         }
+        
+        /* Toast Animation Styles */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .toast-popup {
+            animation: slideInRight 0.5s ease-out;
+        }
+        
+        .toast-popup.hiding {
+            animation: slideOutRight 0.5s ease-in forwards;
+        }
+        
+        .checkmark-icon {
+            animation: checkmark 0.6s ease-out;
+        }
+        
+        .toast-progress {
+            animation: progressBar 5s linear forwards;
+        }
+        
+        @keyframes progressBar {
+            from {
+                width: 100%;
+            }
+            to {
+                width: 0%;
+            }
+        }
     </style>
     <script>
         tailwind.config = {
@@ -37,6 +97,43 @@
 </head>
 
 <body class="bg-gradient-to-br from-orange-50 via-white to-orange-100 min-h-screen">
+    <!-- Success Toast Popup -->
+    @if (session('success'))
+        <div id="successToast" class="toast-popup fixed top-6 left-6 z-50 max-w-md w-full">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-r-4 border-green-500">
+                <!-- Progress Bar -->
+                <div class="h-1 bg-gradient-to-r from-green-500 to-emerald-500 toast-progress"></div>
+                
+                <div class="p-6">
+                    <div class="flex items-start gap-4">
+                        <!-- Icon -->
+                        <div class="flex-shrink-0">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center checkmark-icon shadow-lg">
+                                <i class="fas fa-check text-white text-xl"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-gray-900 mb-1">
+                                <i class="fas fa-check-circle text-green-500 ml-2"></i>
+                                تم بنجاح!
+                            </h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                {{ session('success') }}
+                            </p>
+                        </div>
+                        
+                        <!-- Close Button -->
+                        <button onclick="closeToast()" class="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
+                            <i class="fas fa-times text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     {{-- <nav class="relative z-10 px-6 py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-2">
@@ -409,6 +506,28 @@
             background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
         }
     </style>
+    
+    <!-- Toast Script -->
+    @if (session('success'))
+        <script>
+            function closeToast() {
+                const toast = document.getElementById('successToast');
+                if (toast) {
+                    toast.classList.add('hiding');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 500);
+                }
+            }
+
+            // Auto-hide toast after 5 seconds
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    closeToast();
+                }, 5000);
+            });
+        </script>
+    @endif
 </body>
 
 </html>

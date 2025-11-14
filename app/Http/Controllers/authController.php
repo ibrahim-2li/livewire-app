@@ -72,7 +72,7 @@ class authController extends Controller
                 $qrData = $qrCodeService->generateAttendanceQrData($attendance);
 
                 try {
-                    Mail::to($attendance->attendee_email)->queue(
+                    Mail::to($attendance->user->email)->queue(
                         new AttendanceConfirmationMail($attendance, $event, $qrData)
                     );
                 } catch (\Exception $e) {
@@ -89,6 +89,11 @@ class authController extends Controller
         // Auto-login after registration
         Auth::guard('admin')->login($admin);
 
-        return redirect()->route('admin.index');
+        $successMessage = 'تم إنشاء حسابك بنجاح! مرحباً بك في منصة الأحداث.';
+        if ($request->boolean('attendance') && $request->filled('event_id')) {
+            $successMessage = 'تم إنشاء حسابك بنجاح! تم إرسال رمز QR إلى بريدك الإلكتروني.';
+        }
+
+        return redirect()->route('admin.index')->with('success', $successMessage);
     }
 }

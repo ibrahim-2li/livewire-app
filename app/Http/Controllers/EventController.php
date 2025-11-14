@@ -151,10 +151,8 @@ class EventController extends Controller
             Log::error('Failed to send attendance confirmation email: '.$e->getMessage());
         }
 
-        return redirect()->route('admin.register')
-            ->with('success', 'أكمل التسجيل لإرسال رمز QR إليك عبر البريد الإلكتروني. و المتابعة لإنشاء حساب لتفقد سجل حضورك.')
-            ->with('name', $request->name)
-            ->with('email', $request->email);
+        return redirect()->route('events.index')
+            ->with('success', 'تم تسجيلك في الحدث بنجاح! تم إرسال رمز QR إلى بريدك الإلكتروني.');
     }
 
     /**

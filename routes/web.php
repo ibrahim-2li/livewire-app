@@ -75,7 +75,7 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
     Route::post('/register', [authController::class, 'store'])->middleware('guest:admin')->name('register.store');
 });
 Route::fallback(function () {
-    return view('admin.error');
+    return view('admin.errors.error');
 });
 
 Route::get('/download-qr/{attendance}', function (Attendance $attendance) {

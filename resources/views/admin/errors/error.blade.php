@@ -17,7 +17,7 @@
   class="light-style"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="{{asset('admin-assets')}}/"
+  data-assets-path="{{ asset('admin-assets') }}/"
   data-template="vertical-menu-template-free"
 >
   <head>
@@ -27,12 +27,12 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Error - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Error - Pages</title>
 
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset('admin-assets')}}/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('admin-assets') }}/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,25 +43,25 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{asset('admin-assets')}}/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="{{ asset('admin-assets') }}/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{asset('admin-assets')}}/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{asset('admin-assets')}}/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{asset('admin-assets')}}/css/demo.css" />
+    <link rel="stylesheet" href="{{ asset('admin-assets') }}/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('admin-assets') }}/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('admin-assets') }}/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{asset('admin-assets')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="{{ asset('admin-assets') }}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <!-- Page CSS -->
     <!-- Page -->
-    <link rel="stylesheet" href="{{asset('admin-assets')}}/vendor/css/pages/page-misc.css" />
+    <link rel="stylesheet" href="{{ asset('admin-assets') }}/vendor/css/pages/page-misc.css" />
     <!-- Helpers -->
-    <script src="{{asset('admin-assets')}}/vendor/js/helpers.js"></script>
+    <script src="{{ asset('admin-assets') }}/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{asset('admin-assets')}}/js/config.js"></script>
+    <script src="{{ asset('admin-assets') }}/js/config.js"></script>
   </head>
 
   <body>
@@ -70,14 +70,14 @@
     <!-- Error -->
     <div class="container-xxl container-p-y">
       <div class="misc-wrapper">
-        <h2 class="mb-2 mx-2">Page Not Found :(</h2>
-        <p class="mb-4 mx-2">Oops! 😖 The requested URL was not found on this server.</p>
-        <a href="{{route('admin.index')}}" class="btn btn-primary">Back to home</a>
+        <h2 class="mb-2 mx-2">@lang('Page Not Found') :(</h2>
+        <p class="mb-4 mx-2">@lang('Oops! 😖 The requested URL was not found on this server.')</p>
+        <a href="{{ route('admin.index') }}" class="btn btn-primary">@lang('Back to home')</a>
         <div class="mt-3">
           <img
-            src="{{asset('admin-assets')}}/img/illustrations/page-misc-error-light.png"
+            src="{{ asset('admin-assets') }}/img/illustrations/404.png"
             alt="page-misc-error-light"
-            width="500"
+            width="300"
             class="img-fluid"
             data-app-dark-img="illustrations/page-misc-error-dark.png"
             data-app-light-img="illustrations/page-misc-error-light.png"
@@ -90,18 +90,18 @@
     <!-- / Content -->
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{asset('admin-assets')}}/vendor/libs/jquery/jquery.js"></script>
-    <script src="{{asset('admin-assets')}}/vendor/libs/popper/popper.js"></script>
-    <script src="{{asset('admin-assets')}}/vendor/js/bootstrap.js"></script>
-    <script src="{{asset('admin-assets')}}/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="{{ asset('admin-assets') }}/vendor/libs/jquery/jquery.js"></script>
+    <script src="{{ asset('admin-assets') }}/vendor/libs/popper/popper.js"></script>
+    <script src="{{ asset('admin-assets') }}/vendor/js/bootstrap.js"></script>
+    <script src="{{ asset('admin-assets') }}/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="{{asset('admin-assets')}}/vendor/js/menu.js"></script>
+    <script src="{{ asset('admin-assets') }}/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
 
     <!-- Main JS -->
-    <script src="{{asset('admin-assets')}}/js/main.js"></script>
+    <script src="{{ asset('admin-assets') }}/js/main.js"></script>
 
     <!-- Page JS -->
 

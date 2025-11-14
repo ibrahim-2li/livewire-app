@@ -42,4 +42,70 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('admin-assets') }}/js/config.js"></script>
+    
+    <!-- Toast Animation Styles -->
+    <style>
+        @keyframes slideInRight {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .toast-popup {
+            animation: slideInRight 0.5s ease-out;
+        }
+        
+        .toast-popup.hiding {
+            animation: slideOutRight 0.5s ease-in forwards;
+        }
+        
+        .checkmark-icon {
+            animation: checkmark 0.6s ease-out;
+        }
+        
+        .toast-progress {
+            animation: progressBar 5s linear forwards;
+        }
+        
+        @keyframes progressBar {
+            from {
+                width: 100%;
+            }
+            to {
+                width: 0%;
+            }
+        }
+        
+        .z-9999 {
+            z-index: 9999;
+        }
+    </style>
 </head>

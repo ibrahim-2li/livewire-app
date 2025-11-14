@@ -477,8 +477,8 @@
                                             class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                             <div class="me-2">
                                                 <small
-                                                    class="text-muted d-block mb-1">{{ $attendance->attendee_name }}</small>
-                                                <h6 class="mb-0">{{ $attendance->event->title }}</h6>
+                                                    class="text-muted d-block mb-1">{{ $attendance->event->title }}</small>
+                                                <h6 class="mb-0">{{ $attendance->user->name }}</h6>
                                             </div>
                                             <div class="user-progress d-flex align-items-center gap-1">
                                                 <h6 class="mb-0">{{ $attendance->used_at->format('d-m H:i') }}</h6>

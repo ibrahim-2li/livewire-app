@@ -12,10 +12,114 @@
         body {
             font-family: 'Cairo', sans-serif;
         }
+
+        /* Toast Animation Styles */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .toast-popup {
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        .toast-popup.hiding {
+            animation: slideOutRight 0.5s ease-in forwards;
+        }
+
+        .checkmark-icon {
+            animation: checkmark 0.6s ease-out;
+        }
+
+        .toast-progress {
+            animation: progressBar 5s linear forwards;
+        }
+
+        @keyframes progressBar {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 0%;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-gradient-to-br from-orange-50 to-orange-100 min-h-screen">
+    <!-- Success Toast Popup -->
+    {{-- @if (session('success'))
+        <div id="successToast" class="toast-popup fixed top-6 left-6 z-50 max-w-md w-full">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-r-4 border-green-500">
+                <!-- Progress Bar -->
+                <div class="h-1 bg-gradient-to-r from-green-500 to-emerald-500 toast-progress"></div>
+
+                <div class="p-6">
+                    <div class="flex items-start gap-4">
+                        <!-- Icon -->
+                        <div class="flex-shrink-0">
+                            <div
+                                class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center checkmark-icon shadow-lg">
+                                <i class="fas fa-check text-white text-xl"></i>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-gray-900 mb-1">
+                                <i class="fas fa-check-circle text-green-500 ml-2"></i>
+                                تم بنجاح!
+                            </h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                {{ session('success') }}
+                            </p>
+                        </div>
+
+                        <!-- Close Button -->
+                        <button onclick="closeToast()"
+                            class="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
+                            <i class="fas fa-times text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif --}}
+
     <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -58,18 +162,18 @@
 
                         <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20">
                             <h3 class="text-lg font-semibold mb-4">معلومات التسجيل</h3>
-                            @if (session('attendee_name') || session('attendee_email'))
+                            @if (session('name') || session('email'))
                                 <div class="space-y-3">
-                                    @if (session('attendee_name'))
+                                    @if (session('name'))
                                         <div class="flex justify-between items-center">
                                             <span class="text-orange-200">الاسم:</span>
-                                            <span class="text-white font-medium">{{ session('attendee_name') }}</span>
+                                            <span class="text-white font-medium">{{ session('name') }}</span>
                                         </div>
                                     @endif
-                                    @if (session('attendee_email'))
+                                    @if (session('email'))
                                         <div class="flex justify-between items-center">
                                             <span class="text-orange-200">البريد الإلكتروني:</span>
-                                            <span class="text-white font-medium">{{ session('attendee_email') }}</span>
+                                            <span class="text-white font-medium">{{ session('email') }}</span>
                                         </div>
                                     @endif
                                 </div>
@@ -97,7 +201,7 @@
                                 <label for="name" class="block text-sm font-medium text-gray-700 mb-2">الاسم
                                     الكامل</label>
                                 <input type="text" id="name" name="name"
-                                    value="{{ session('attendee_name', old('name')) }}" autofocus
+                                    value="{{ session('name', old('name')) }}" autofocus
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل اسمك الكامل" required>
                                 @error('name')
@@ -110,7 +214,7 @@
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">البريد
                                     الإلكتروني</label>
                                 <input type="email" id="email" name="email"
-                                    value="{{ session('attendee_email', old('email')) }}"
+                                    value="{{ session('email', old('email')) }}"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل بريدك الإلكتروني" required />
                                 <div class="text-orange-600 hover:text-orange-700 font-medium">
@@ -123,7 +227,7 @@
                                 <label for="nationality"
                                     class="block text-sm font-medium text-gray-700 mb-2">@lang('Nationality')</label>
                                 <input type="nationality" id="nationality" name="nationality"
-                                    value="{{ session('attendee_nationality', old('nationality')) }}"
+                                    value="{{ session('nationality', old('nationality')) }}"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="@lang('Nationality or home country')" required />
                                 <div class="text-orange-600 hover:text-orange-700 font-medium">
@@ -155,7 +259,7 @@
                                 <label for="job_title" class="block text-sm font-medium text-gray-700 mb-2">المسمى
                                     الوظيفي</label>
                                 <input type="text" id="job_title" name="job_title"
-                                    value="{{ session('attendee_job_title', old('job_title')) }}"
+                                    value="{{ session('job_title', old('job_title')) }}"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     placeholder="أدخل المسمى الوظيفي" required>
                                 @error('job_title')
@@ -240,6 +344,28 @@
             </div>
         </div>
     </footer>
+
+    <!-- Toast Script -->
+    @if (session('success'))
+        <script>
+            function closeToast() {
+                const toast = document.getElementById('successToast');
+                if (toast) {
+                    toast.classList.add('hiding');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 500);
+                }
+            }
+
+            // Auto-hide toast after 5 seconds
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    closeToast();
+                }, 5000);
+            });
+        </script>
+    @endif
 </body>
 
 </html>

@@ -46,4 +46,25 @@
             $('#showModal').modal('toggle');
         });
 
+        // Toast notification functions
+        function closeToast() {
+            const toast = document.getElementById('successToast');
+            if (toast) {
+                toast.classList.add('hiding');
+                setTimeout(() => {
+                    toast.remove();
+                }, 500);
+            }
+        }
+
+        // Auto-hide toast after 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            const toast = document.getElementById('successToast');
+            if (toast) {
+                setTimeout(() => {
+                    closeToast();
+                }, 5000);
+            }
+        });
+
     </script>

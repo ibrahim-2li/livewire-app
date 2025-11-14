@@ -156,5 +156,11 @@
     "All Countries": "جميع الدول",
     "Nationality": "الجنسية",
     "Nationality or home country": "الجنسية او البلد الام",
-    "Attendance statistics from countries": "إحصائيات الحضور من الدول"
+    "Attendance statistics from countries": "إحصائيات الحضور من الدول",
+    "Page Not Found": "الصفحة غير موجودة",
+    "Oops! 😖 The requested URL was not found on this server.": "عفواً! 😖 لم يتم العثور على الصفحة المطلوبة على هذا الخادم.",
+    "Back to home": "العودة إلى الرئيسية",
+    "Access Denied": "غير مصرح لك بالوصول إلى هذه الصفحة",
+    "You are not authorized to access this page.": "غير مصرح لك بالوصول إلى هذه الصفحة",
+    "Back to Dashboard": "العودة إلى لوحة التحكم"
 }
