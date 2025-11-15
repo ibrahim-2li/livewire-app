@@ -21,62 +21,67 @@
         .ltr {
             direction: ltr;
         }
-        
+
         /* Toast Animation Styles */
         @keyframes slideInRight {
             from {
                 transform: translateX(-100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
             }
         }
-        
+
         @keyframes slideOutRight {
             from {
                 transform: translateX(0);
                 opacity: 1;
             }
+
             to {
                 transform: translateX(-100%);
                 opacity: 0;
             }
         }
-        
+
         @keyframes checkmark {
             0% {
                 transform: scale(0);
             }
+
             50% {
                 transform: scale(1.2);
             }
+
             100% {
                 transform: scale(1);
             }
         }
-        
+
         .toast-popup {
             animation: slideInRight 0.5s ease-out;
         }
-        
+
         .toast-popup.hiding {
             animation: slideOutRight 0.5s ease-in forwards;
         }
-        
+
         .checkmark-icon {
             animation: checkmark 0.6s ease-out;
         }
-        
+
         .toast-progress {
             animation: progressBar 5s linear forwards;
         }
-        
+
         @keyframes progressBar {
             from {
                 width: 100%;
             }
+
             to {
                 width: 0%;
             }
@@ -103,16 +108,17 @@
             <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-r-4 border-green-500">
                 <!-- Progress Bar -->
                 <div class="h-1 bg-gradient-to-r from-green-500 to-emerald-500 toast-progress"></div>
-                
+
                 <div class="p-6">
                     <div class="flex items-start gap-4">
                         <!-- Icon -->
                         <div class="flex-shrink-0">
-                            <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center checkmark-icon shadow-lg">
+                            <div
+                                class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center checkmark-icon shadow-lg">
                                 <i class="fas fa-check text-white text-xl"></i>
                             </div>
                         </div>
-                        
+
                         <!-- Content -->
                         <div class="flex-1">
                             <h3 class="text-lg font-bold text-gray-900 mb-1">
@@ -123,9 +129,10 @@
                                 {{ session('success') }}
                             </p>
                         </div>
-                        
+
                         <!-- Close Button -->
-                        <button onclick="closeToast()" class="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
+                        <button onclick="closeToast()"
+                            class="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
                             <i class="fas fa-times text-lg"></i>
                         </button>
                     </div>
@@ -216,7 +223,7 @@
                 </div>
             </div>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-r from-orange-100/50 to-orange-200/50"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-orange-100/5 to-orange-200/40"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="text-center">
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
@@ -295,14 +302,23 @@
                             <!-- Date & Time -->
                             <div class="space-y-3">
                                 <div class="flex items-center text-gray-600">
-                                    <i class="fas fa-calendar text-blue-600 ml-3 w-4"></i>
+                                    <i class="fas fa-calendar text-green-600 ml-3 w-4"></i>
                                     <div>
                                         <p class="text-sm font-medium text-gray-900">
                                             {{ $event->start_date->format('M j, Y') }}</p>
                                         <p class="text-xs text-gray-500">{{ $event->start_date->format('g:i A') }} -
                                             {{ $event->end_date->format('g:i A') }}</p>
                                     </div>
+                                    <i class="fas fa-calendar text-blue-600 ml-3 w-4 m-auto"></i>
+                                    <div class="ml-3">
+                                        <p class="text-sm font-medium text-gray-900">
+                                            {{ $event->end_date->format('M j, Y') }}</p>
+                                        <p class="text-xs text-gray-500">{{ $event->end_date->format('g:i A') }} -
+                                            {{ $event->end_date->format('g:i A') }}</p>
+                                    </div>
                                 </div>
+
+
 
                                 @if ($event->location)
                                     <div class="flex items-center text-gray-600">
@@ -506,7 +522,7 @@
             background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
         }
     </style>
-    
+
     <!-- Toast Script -->
     @if (session('success'))
         <script>

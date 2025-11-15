@@ -246,7 +246,7 @@
                                     <input type="tel" maxlength="14" pattern="\+966\d{9}" inputmode="tel"
                                         id="phone" name="phone" value="{{ old('phone') }}"
                                         class="form-control form-control w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                                        placeholder="@lang('Phone Number')" required />
+                                        placeholder="@lang('Please enter your phone number with country code')" required />
                                 </div>
 
                                 @error('phone')
@@ -261,7 +261,7 @@
                                 <input type="text" id="job_title" name="job_title"
                                     value="{{ session('job_title', old('job_title')) }}"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                                    placeholder="أدخل المسمى الوظيفي" required>
+                                    placeholder="@lang('Job title or field of study')" required>
                                 @error('job_title')
                                     <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror

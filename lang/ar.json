@@ -162,5 +162,10 @@
     "Back to home": "العودة إلى الرئيسية",
     "Access Denied": "غير مصرح لك بالوصول إلى هذه الصفحة",
     "You are not authorized to access this page.": "غير مصرح لك بالوصول إلى هذه الصفحة",
-    "Back to Dashboard": "العودة إلى لوحة التحكم"
+    "Back to Dashboard": "العودة إلى لوحة التحكم",
+    "Please enter your phone number with country code": "يرجى إدخال رقم الهاتف مع رمز الدولة",
+    "Job title or field of study": "المسمى الوظيفي او مجال الدراسة",
+    "Contact Email": "البريد الإلكتروني للتواصل",
+    "Youtube": "يوتيوب",
+    "Telegram": "تليجرام"
 }

@@ -3,15 +3,16 @@
 namespace App\Mail;
 
 use App\Models\Event;
+use App\Models\Setting;
 use App\Models\Attendance;
+use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AttendanceConfirmationMail extends Mailable implements ShouldQueue
@@ -30,7 +31,7 @@ class AttendanceConfirmationMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'تأكيد التسجيل في الحدث - ' . $this->event->title,
+            subject: '  تزكرة دخول - ' . $this->event->title,
         );
     }
 
@@ -39,12 +40,14 @@ class AttendanceConfirmationMail extends Mailable implements ShouldQueue
      */
     public function content(): Content
     {
+        $email = Setting::first()->email;
         return new Content(
             view: 'emails.attendance-confirmation',
             with: [
                 'attendance' => $this->attendance,
                 'event' => $this->event,
                 'qrData' => $this->qrData,
+                'email' => $email,
             ],
         );
     }

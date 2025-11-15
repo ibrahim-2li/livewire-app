@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $event->title }} - تفاصيل الحدث</title>
+    <title>{{ $event->title }} - تفاصيل الفعالية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap"
@@ -44,7 +44,7 @@
                 <a href="{{ route('events.index') }}"
                     class="flex items-center text-gray-700 hover:text-orange-600 transition-colors duration-300">
                     <i class="fas fa-arrow-right ml-2"></i>
-                    <span>العودة إلى الأحداث</span>
+                    <span>العودة إلى الفعاليات</span>
                 </a>
                 <div class="flex items-center space-x-4">
                     <span
@@ -67,7 +67,7 @@
                 <div class="lg:col-span-2 space-y-8">
                     <!-- Event Details Card -->
                     <div class="bg-white backdrop-blur-lg rounded-2xl p-8 border border-gray-200 shadow-lg">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">تفاصيل الحدث</h2>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">تفاصيل الفعالية</h2>
 
                         <div class="space-y-6">
                             <!-- Date & Time -->
@@ -86,7 +86,7 @@
 
                                 <div class="flex items-start space-x-4">
                                     <div class="bg-orange-100 p-3 rounded-xl">
-                                        <i class="fas fa-clock text-orange-600 text-xl"></i>
+                                        <i class="fas fa-clock text-orange-600 text-xl m-auto"></i>
                                     </div>
                                     <div>
                                         <h3 class="font-semibold text-gray-900 mb-1">تاريخ النهاية</h3>
@@ -135,13 +135,13 @@
 
                     <!-- About Section -->
                     <div class="bg-white backdrop-blur-lg rounded-2xl p-8 border border-gray-200 shadow-lg">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">حول هذا الحدث</h2>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">حول هذه الفعالية</h2>
                         <div class="prose max-w-none">
                             <p class="text-gray-700 leading-relaxed mb-4">
-                                {{ $event->description ?: 'هذا حدث مثير يجمع المهنيين والمتحمسين والعقول الفضولية من خلفيات مختلفة. سواء كنت تبحث عن التواصل أو تعلم مهارات جديدة أو ببساطة قضاء وقت رائع، هذا الحدث يحتوي على شيء للجميع.' }}
+                                {{ $event->description ?: 'هذه فعالية مثيرة يجمع المهنيين والمتحمسين والعقول الفضولية من خلفيات مختلفة. سواء كنت تبحث عن التواصل أو تعلم مهارات جديدة أو ببساطة قضاء وقت رائع، هذه الفعالية يحتوي على شيء للجميع.' }}
                             </p>
                             <p class="text-gray-700 leading-relaxed">
-                                دعوة للانضمام إلى حدث قيم للتواصل والنمو الشخصي.
+                                دعوة للانضمام إلى فعاليات قيمة للتواصل والنمو الشخصي.
                             </p>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                     <div class="bg-gradient-to-br from-orange-500 to-red-400 rounded-2xl p-8 text-center">
                         <h3 class="text-2xl font-bold text-white mb-4">مستعد للانضمام؟</h3>
                         <p class="text-white mb-6">
-                            سجل الآن لتأمين مكانك في هذا الحدث المذهل!
+                            سجل الآن لتأمين مكانك في هذه الفعالية المذهلة!
                         </p>
 
                         @if (session('success'))
@@ -336,7 +336,7 @@
     <footer class="bg-gray-50 backdrop-blur-lg border-t border-gray-200 mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="text-center">
-                <p class="text-gray-600">© 2024 منصة الأحداث. جميع الحقوق محفوظة.</p>
+                <p class="text-gray-600">© 2025 منصة الفعاليات. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>

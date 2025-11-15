@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تأكيد التسجيل في الحدث</title>
+    <title>تزكرة دخول</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -130,9 +130,9 @@
         </div>
 
         <div class="event-info">
-            <h2>📅 تفاصيل الحدث</h2>
+            <h2>📅 تفاصيل الفعالية</h2>
             <div class="info-row">
-                <span class="info-label">اسم الحدث:</span>
+                <span class="info-label">اسم الفعالية:</span>
                 <span class="info-value">{{ $event->title }}</span>
             </div>
             <div class="info-row">
@@ -145,7 +145,7 @@
             </div>
             <div class="info-row">
                 <span class="info-label">الموقع:</span>
-                <span class="info-value">{{ $event->location }}</span>
+                <span class="info-value"><a href="{{ $event->map }}">{{ $event->location }}</a></span>
             </div>
 
         </div>
@@ -165,7 +165,8 @@
                 <li>احتفظ بهذا البريد الإلكتروني ورمز QR</li>
                 <li>احضر في الوقت المحدد للحدث</li>
                 <li>اعرض رمز QR عند وصولك للتحقق من حضورك</li>
-                <li>في حالة فقدان البريد الإلكتروني، يمكنك الاتصال بنا</li>
+                <li>في حالة فقدان البريد الإلكتروني، يمكنك التواصل معنا على البريد الإلكتروني: {{ $email }}</li>
+
             </ul>
         </div>
 

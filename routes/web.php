@@ -81,11 +81,11 @@ Route::fallback(function () {
 Route::get('/download-qr/{attendance}', function (Attendance $attendance) {
     // Check if authenticated via admin guard (all users use this)
     if (!auth('admin')->check()) {
-        abort(403, 'يجب تسجيل الدخول أولاً');
+        return response()->view('admin.errors.403', [], 403);
     }
 
-    // Load user relationship
-    $attendance->load('user');
+    // Load relationships
+    $attendance->load(['user', 'event']);
 
     $user = auth('admin')->user();
     $userRole = $user->role;
@@ -96,13 +96,14 @@ Route::get('/download-qr/{attendance}', function (Attendance $attendance) {
     }
     // USER role can only download their own QR code (must match admin_id)
     elseif ($userRole === \App\Models\Admin::ROLE_USER) {
-        if ($user->id !== $attendance->admin_id) {
-            abort(403, 'ليس لديك صلاحية لتحميل هذا الرمز');
+        // Use loose comparison to handle type differences (int vs string)
+        if ((int) $user->id !== (int) $attendance->admin_id) {
+            return response()->view('admin.errors.403', [], 403);
         }
     }
     // Unknown role - deny access
     else {
-        abort(403, 'ليس لديك صلاحية لتحميل هذا الرمز');
+        return response()->view('admin.errors.403', [], 403);
     }
 
     $qrData = json_encode([
@@ -124,14 +125,14 @@ Route::get('/download-qr/{attendance}', function (Attendance $attendance) {
         ->header('Content-Disposition', 'attachment; filename="'.$filename.'"');
 })->name('download-qr');
 
-Route::get('/view-qr/{attendance}', function (App\Models\Attendance $attendance) {
+Route::get('/view-qr/{attendance}', function (Attendance $attendance) {
     // Check if authenticated via admin guard (all users use this)
     if (!auth('admin')->check()) {
-        abort(403, 'يجب تسجيل الدخول أولاً');
+        return response()->view('admin.errors.403', [], 403);
     }
 
-    // Load user relationship
-    $attendance->load('user');
+    // Load relationships
+    $attendance->load(['user', 'event']);
 
     $user = auth('admin')->user();
     $userRole = $user->role;
@@ -142,13 +143,14 @@ Route::get('/view-qr/{attendance}', function (App\Models\Attendance $attendance)
     }
     // USER role can only view their own QR code (must match admin_id)
     elseif ($userRole === \App\Models\Admin::ROLE_USER) {
-        if ($user->id !== $attendance->admin_id) {
-            abort(403, 'ليس لديك صلاحية لعرض هذا الرمز');
+        // Use loose comparison to handle type differences (int vs string)
+        if ((int) $user->id !== (int) $attendance->admin_id) {
+            return response()->view('admin.errors.403', [], 403);
         }
     }
     // Unknown role - deny access
     else {
-        abort(403, 'ليس لديك صلاحية لعرض هذا الرمز');
+        return response()->view('admin.errors.403', [], 403);
     }
 
     $qrData = json_encode([
