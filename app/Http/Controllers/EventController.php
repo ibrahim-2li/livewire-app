@@ -28,6 +28,32 @@ class EventController extends Controller
         return view('front.events.index', compact('events','settings'));
     }
 
+    public function about()
+    {
+        $settings = Setting::first();
+        $events = Event::with('admin')
+            ->where('is_active', true)
+            ->where('end_date', '>', now())
+            ->orderBy('start_date', 'asc')
+            ->get();
+
+            // dd($events);
+        return view('front.events.about', compact('events','settings'));
+    }
+
+    public function contact()
+    {
+        $settings = Setting::first();
+        $events = Event::with('admin')
+            ->where('is_active', true)
+            ->where('end_date', '>', now())
+            ->orderBy('start_date', 'asc')
+            ->get();
+
+            // dd($events);
+        return view('front.events.contact', compact('events','settings'));
+    }
+
     public function show(Event $event)
     {
         $settings = Setting::first();
@@ -57,7 +83,7 @@ class EventController extends Controller
 
         // Check if event is active and in the future
         if (! $event->is_active || $event->end_date < now()) {
-            return back()->withErrors(['event' => 'هذا الحدث لم يعد متاحاً للتسجيل.'])->withInput();
+            return back()->withErrors(['event' => 'هذه الفعالية لم تعد متاحاً للتسجيل.'])->withInput();
         }
 
         // Check if admin user exists with this email
@@ -70,7 +96,7 @@ class EventController extends Controller
                 ->first();
 
             if ($existingRegistration) {
-                return back()->withErrors(['email' => 'أنت مسجل بالفعل في هذا الحدث.'])->withInput();
+                return back()->withErrors(['email' => 'أنت مسجل بالفعل في هذه الفعالية.'])->withInput();
             }
         }
 
@@ -103,7 +129,7 @@ class EventController extends Controller
 
         // Check if event is active and in the future
         if (! $event->is_active || $event->end_date < now()) {
-            return back()->withErrors(['event' => 'هذا الحدث لم يعد متاحاً للتسجيل.'])->withInput();
+            return back()->withErrors(['event' => 'هذه الفعالية لم تعد متاحاً للتسجيل.'])->withInput();
         }
 
         // Find or get authenticated admin user
@@ -124,7 +150,7 @@ class EventController extends Controller
             ->first();
 
         if ($existingRegistration) {
-            return back()->withErrors(['email' => 'أنت مسجل بالفعل في هذا الحدث.'])->withInput();
+            return back()->withErrors(['email' => 'أنت مسجل بالفعل في هذه الفعالية.'])->withInput();
         }
 
         // Create attendance record
@@ -152,7 +178,7 @@ class EventController extends Controller
         }
 
         return redirect()->route('events.index')
-            ->with('success', 'تم تسجيلك في الحدث بنجاح! تم إرسال رمز QR إلى بريدك الإلكتروني.');
+            ->with('success', 'تم تسجيلك في الفعالية بنجاح! تم إرسال رمز QR إلى بريدك الإلكتروني.');
     }
 
     /**
@@ -203,7 +229,7 @@ class EventController extends Controller
             if (! $attendance->event->is_active) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'هذا الحدث لم يعد نشطاً',
+                    'message' => 'هذه الفعالية لم تعد نشطاً',
                 ], 400);
             }
 
@@ -211,7 +237,7 @@ class EventController extends Controller
             if ($attendance->event->end_date < now()) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'انتهت فترة هذا الحدث',
+                    'message' => 'انتهت فترة هذه الفعالية',
                 ], 400);
             }
 

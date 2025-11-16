@@ -14,6 +14,8 @@ Route::get('/language/{locale}', [LanguageController::class, 'swap'])->name('lan
 
 require __DIR__.'/auth.php';
 Route::get('/', [EventController::class, 'index'])->name('events.index');
+Route::get('/about', [EventController::class, 'about'])->name('events.about');
+Route::get('/contact', [EventController::class, 'contact'])->name('events.contact');
 Route::post('/events/{event}/register-existing', [EventController::class, 'existing_register'])->name('events.existing_register');
 Route::post('/events/{event}/register', [EventController::class, 'register'])->name('events.register');
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');

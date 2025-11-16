@@ -499,7 +499,7 @@
                     <div class="card">
                         <div class="row row-bordered g-0">
                             <div class="col-md-8">
-                                <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
+                                <h5 class="card-header m-0 me-2 pb-3">@lang('Attendances')</h5>
                                 <div id="totalRevenueChart" class="px-2"
                                     data-total-revenue-series='@json($totalRevenueSeries ?? [])'></div>
                             </div>
@@ -522,7 +522,7 @@
                                 </div>
                                 <div id="growthChart" data-growth-percent="{{ $attendanceGrowthPercent ?? 0 }}"></div>
                                 <div class="text-center fw-semibold pt-3 mb-2">
-                                    {{ $attendanceGrowthPercent ?? 0 }}% Attendance Growth
+                                    {{ $attendanceGrowthPercent ?? 0 }}% @lang('Attendance Growth')
                                 </div>
 
                                 <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
@@ -534,7 +534,7 @@
                                             <small>{{ optional($primaryYearStats)->year ?? '—' }}</small>
                                             <h6 class="mb-0">
                                                 {{ number_format(optional($primaryYearStats)->registrations ?? 0) }}
-                                                Registeraed
+                                                @lang('Registeraed')
                                             </h6>
                                             <span class="text-muted small">
                                                 {{ number_format(optional($primaryYearStats)->check_ins ?? 0) }} Check-ins
@@ -549,7 +549,7 @@
                                             <small>{{ optional($secondaryYearStats)->year ?? '—' }}</small>
                                             <h6 class="mb-0">
                                                 {{ number_format(optional($secondaryYearStats)->registrations ?? 0) }}
-                                                Registeraed
+                                                @lang('Registeraed')
                                             </h6>
                                             <span class="text-muted small">
                                                 {{ number_format(optional($secondaryYearStats)->check_ins ?? 0) }}

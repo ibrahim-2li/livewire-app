@@ -142,7 +142,8 @@
     @endif
 
 
-    <nav class="bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm">
+    {{--
+        <nav class="bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-end rtl:justify-start space-x-2 items-center py-4">
@@ -173,8 +174,9 @@
             </div>
         </div>
     </nav>
+     --}}
 
-    {{-- <nav class="bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm">
+    <nav class="bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-end rtl:justify-start space-x-2 items-center py-4">
                 @auth('admin')
@@ -211,7 +213,7 @@
                 </a>
             </div>
         </div>
-    </nav> --}}
+    </nav>
 
     <!-- Header -->
 
@@ -256,126 +258,6 @@
     </header>
     <!-- Events Section -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        @if ($events->count() > 0)
-            <!-- Events Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach ($events as $event)
-                    <div
-                        class="group relative bg-white backdrop-blur-lg rounded-2xl p-6 border border-gray-200 hover:border-orange-300 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25">
-                        <!-- Event Status Badge -->
-                        <div class="absolute top-4 left-4">
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700 border border-green-200">
-                                <i class="fas fa-circle text-green-500 ml-1 text-xs"></i>
-                                نشط
-                            </span>
-                        </div>
-
-                        <!-- Event Image Placeholder -->
-                        <div
-                            class="w-full h-48 bg-gradient-to-br from-orange-500 to-red-400 rounded-xl mb-6 flex items-center justify-center">
-                            @if ($event->image)
-                                <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}"
-                                    class="w-full h-full object-cover rounded-xl">
-                            @else
-                                <i class="fas fa-calendar-alt text-white text-4xl"></i>
-                            @endif
-                        </div>
-
-                        <!-- Event Content -->
-                        <div class="space-y-4">
-                            <!-- Title -->
-                            <h3
-                                class="text-xl font-bold text-gray-900 group-hover:text-orange-600 transition-colors duration-300">
-                                {{ $event->title }}
-                            </h3>
-
-                            <!-- Organizer -->
-                            <div class="flex items-center text-gray-600">
-                                <i class="fas fa-user-circle text-gray-500 ml-2"></i>
-                                <span class="text-sm">منظم بواسطة {{ $event->admin->name }}</span>
-                            </div>
-
-                            <!-- Description -->
-                            <p class="text-gray-700 text-sm leading-relaxed line-clamp-3">
-                                {{ Str::limit($event->description ?: 'انضم إلينا في حدث مذهل سيلهمك ويوصل вас مع أشخاص متشابهين في التفكير.', 120) }}
-                            </p>
-
-                            <!-- Date & Time -->
-                            <div class="space-y-3">
-                                <div class="flex items-center text-gray-600">
-                                    <i class="fas fa-calendar text-green-600 ml-3 w-4"></i>
-                                    <div>
-                                        <p class="text-sm font-medium text-gray-900">
-                                            {{ $event->start_date->format('M j, Y') }}</p>
-                                        <p class="text-xs text-gray-500">{{ $event->start_date->format('g:i A') }} -
-                                            {{ $event->end_date->format('g:i A') }}</p>
-                                    </div>
-                                    <i class="fas fa-calendar text-blue-600 ml-3 w-4 m-auto"></i>
-                                    <div class="ml-3">
-                                        <p class="text-sm font-medium text-gray-900">
-                                            {{ $event->end_date->format('M j, Y') }}</p>
-                                        <p class="text-xs text-gray-500">{{ $event->end_date->format('g:i A') }} -
-                                            {{ $event->end_date->format('g:i A') }}</p>
-                                    </div>
-                                </div>
-
-
-
-                                @if ($event->location)
-                                    <div class="flex items-center text-gray-600">
-                                        <i class="fas fa-map-marker-alt text-red-600 ml-3 w-4"></i>
-                                        <p class="text-sm text-gray-700">{{ $event->location }}</p>
-                                    </div>
-                                @endif
-                            </div>
-
-                            <!-- Attendees Count -->
-                            <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                                <div class="flex items-center text-gray-600">
-                                    {{-- <i class="fas fa-users text-orange-500 ml-2"></i> --}}
-                                    {{-- <span class="text-sm">{{ $event->total_attendees }} مشارك</span> --}}
-                                </div>
-                                <div class="text-xs text-gray-500">
-                                    {{ $event->start_date->diffForHumans() }}
-                                </div>
-                            </div>
-
-                            <!-- Action Button -->
-                            <div class="pt-4">
-                                <a href="{{ route('events.show', $event) }}"
-                                    class="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center group">
-                                    <span>عرض التفاصيل والتسجيل</span>
-                                    <i
-                                        class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform duration-300"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <!-- No Events State -->
-            <div class="text-center py-16">
-                <div
-                    class="bg-white backdrop-blur-lg rounded-2xl p-12 border border-gray-200 shadow-lg max-w-2xl mx-auto">
-                    <i class="fas fa-calendar-times text-6xl text-gray-400 mb-6"></i>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">لا توجد أحداث نشطة</h2>
-                    <p class="text-gray-700 mb-8">
-                        نحن نعد حالياً بعض الأحداث المذهلة لك. تحقق مرة أخرى قريباً للحصول على فرص مثيرة!
-                    </p>
-                    <button
-                        class="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300">
-                        <i class="fas fa-bell ml-2"></i>
-                        إشعارني
-                    </button>
-                </div>
-            </div>
-        @endif
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-50 backdrop-blur-lg border-t border-gray-200 mt-20">
         <div class="text-center mt-16">
             <div class="bg-white backdrop-blur-lg rounded-2xl p-8 border border-gray-200 shadow-lg max-w-2xl mx-auto">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">@lang('Contact Us')</h2>
@@ -386,6 +268,11 @@
 
             </div>
         </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 backdrop-blur-lg border-t border-gray-200 mt-20">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
             <div class="text-center">
