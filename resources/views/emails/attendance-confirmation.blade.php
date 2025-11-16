@@ -137,7 +137,8 @@
             </div>
             <div class="info-row">
                 <span class="info-label">تاريخ الفعالية:</span>
-                <span class="info-value">{{ $event->start_date->format('Y-m-d H:i') }}</span>
+                <span class="info-value">@lang('from') :{{ $event->start_date->format('Y-m-d H:i') }}</span><span
+                    class="info-value">@lang('to') :{{ $event->end_date->format('Y-m-d H:i') }}</span>
             </div>
             <div class="info-row">
                 <span class="info-label">الدولة:</span>
