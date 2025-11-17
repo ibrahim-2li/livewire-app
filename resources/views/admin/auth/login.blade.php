@@ -23,7 +23,7 @@
                 <div class="flex items-center">
                     <a href="{{ route('events.index') }}" class="text-2xl font-bold text-orange-600">
                         <i class="fas fa-calendar-alt ml-2"></i>
-                        منصة الأحداث
+                        الفعاليات
                     </a>
                 </div>
                 <div class="flex items-center space-x-4 space-x-reverse">
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="flex items-center">
                                     <i class="fas fa-check-circle text-orange-200 ml-3"></i>
-                                    <span class="text-white">متابعة أحداثك</span>
+                                    <span class="text-white">متابعة فعالياتك</span>
                                 </div>
                             </div>
                         </div>

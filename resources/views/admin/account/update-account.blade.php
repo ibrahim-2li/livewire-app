@@ -28,7 +28,7 @@
                         <div class="input-group input-group-merge">
                             <span class="input-group-text">(+)</span>
                             <input class="form-control" wire:model='user.phone' placeholder="+966500 000 000"
-                                type="tel" maxlength="13" pattern="\+966\d{9}" inputmode="tel" />
+                                type="tel" maxlength="13" pattern="\+\d{12}" inputmode="tel" />
                         </div>
                     </div>
                     <div class="mb-3 col-md-6">

@@ -150,7 +150,7 @@
                 <!-- Sidebar -->
                 <div class="space-y-6">
                     <!-- Register Card -->
-                    <div class="bg-gradient-to-br from-orange-500 to-red-400 rounded-2xl p-8 text-center">
+                    <div class="bg-gradient-to-br from-orange-500 to-red-400 rounded-2xl p-4 text-center">
                         <h3 class="text-2xl font-bold text-white mb-4">مستعد للانضمام؟</h3>
                         <p class="text-white mb-6">
                             سجل الآن لتأمين مكانك في هذه الفعالية المذهلة!
@@ -203,22 +203,11 @@
                                         class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                         required>
                                         <option value="">@lang('Where are you joining from?')</option>
-                                        <option value="Sudan" {{ old('country') == 'Sudan' ? 'selected' : '' }}>
-                                            @lang('Sudan')
-                                        </option>
-                                        <option value="Egypt" {{ old('country') == 'Egypt' ? 'selected' : '' }}>
-                                            @lang('Egypt')</option>
-                                        </option>
-                                        <option value="Saudi Arabia"
-                                            {{ old('country') == 'Saudi Arabia' ? 'selected' : '' }}>@lang('Saudi Arabia')
-                                        </option>
+
                                         <option value="Qatar" {{ old('country') == 'Qatar' ? 'selected' : '' }}>
                                             @lang('Qatar')
                                         </option>
-                                        {{-- <option value="United Arab Emirates"
-                                            {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
-                                            @lang('United Arab Emirates')
-                                        </option> --}}
+
                                     </select>
 
                                 </div>
@@ -256,7 +245,7 @@
                                         class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                         required>
                                         <option value="">@lang('Where are you joining from?')</option>
-                                        <option value="Sudan" {{ old('country') == 'Sudan' ? 'selected' : '' }}>
+                                        {{-- <option value="Sudan" {{ old('country') == 'Sudan' ? 'selected' : '' }}>
                                             @lang('Sudan')
                                         </option>
                                         <option value="Egypt" {{ old('country') == 'Egypt' ? 'selected' : '' }}>
@@ -264,7 +253,7 @@
                                         </option>
                                         <option value="Saudi Arabia"
                                             {{ old('country') == 'Saudi Arabia' ? 'selected' : '' }}>@lang('Saudi Arabia')
-                                        </option>
+                                        </option> --}}
                                         <option value="Qatar" {{ old('country') == 'Qatar' ? 'selected' : '' }}>
                                             @lang('Qatar')
                                         </option>

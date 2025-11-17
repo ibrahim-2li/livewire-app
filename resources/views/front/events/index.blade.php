@@ -307,17 +307,13 @@
                                     <i class="fas fa-calendar text-green-600 ml-3 w-4"></i>
                                     <div>
                                         <p class="text-sm font-medium text-gray-900">
-                                            {{ $event->start_date->format('M j, Y') }}</p>
-                                        <p class="text-xs text-gray-500">{{ $event->start_date->format('g:i A') }} -
-                                            {{ $event->end_date->format('g:i A') }}</p>
+                                            {{ $event->start_date->translatedFormat('l, F j, Y') }}
+                                        </p>
+                                        <p class="text-xs text-gray-500">
+                                            {{ $event->start_date->translatedFormat('g:i A') }}
+                                        </p>
                                     </div>
-                                    <i class="fas fa-calendar text-blue-600 ml-3 w-4 m-auto"></i>
-                                    <div class="ml-3">
-                                        <p class="text-sm font-medium text-gray-900">
-                                            {{ $event->end_date->format('M j, Y') }}</p>
-                                        <p class="text-xs text-gray-500">{{ $event->end_date->format('g:i A') }} -
-                                            {{ $event->end_date->format('g:i A') }}</p>
-                                    </div>
+                                    {{-- <p class="text-xs text-gray-500"> {{ $event->end_date->diffForHumans() }}</p> --}}
                                 </div>
 
 
