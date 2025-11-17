@@ -238,18 +238,18 @@
                     </span>
                 </h1>
                 <p class="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
-                    انضم إلى آلاف الحضور في مجموعتنا المختارة من الأحداث المثيرة.
-                    من المؤتمرات التقنية إلى اللقاءات المهنية، اكتشف مغامرتك القادمة.
+                    انضم إلى مجتمع يضم آلاف المهتمين بالبيانات، واستكشف فعاليات
+                    تجمع بين التعلم العملي، والتواصل المهني، وصناعة الأثر. اكتشف تجربتك القادمة
                 </p>
                 <div class="flex justify-center space-x-4 rtl:space-x-reverse">
                     <div class="flex items-center text-gray-600">
                         <i class="fas fa-calendar-check text-green-600 ml-2"></i>
                         <span>{{ $events->count() }} حدث نشط</span>
                     </div>
-                    <div class="flex items-center text-gray-600">
+                    {{-- <div class="flex items-center text-gray-600">
                         <i class="fas fa-users text-blue-600 ml-2"></i>
                         <span>مجتمع متنامي</span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

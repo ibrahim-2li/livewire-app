@@ -14,32 +14,21 @@
         <input type="text" class="form-control" placeholder="@lang('Event Direction')" wire:model='map' />
         @include('admin.errors', ['property' => 'map'])
     </div>
-    {{-- <div class="col-md-6 mb-0">
-        <label class="form-label">Image</label>
-        <input type="file" class="form-control" wire:model='image' />
-        @include('admin.errors', ['property' => 'image'])
-    </div>
-
-    <div class="d-flex justify-content-center align-items-center">
-        @if ($image)
-            <img src="{{ $image->temporaryUrl() }}" width="auto" height="150px">
-        @endif
-    </div> --}}
-    <div class="col-md-6 mb-0">
-        <label class="form-label">@lang('Start Date')</label>
-        <input type="date" class="form-control" wire:model='start_date' />
-        @include('admin.errors', ['property' => 'start_date'])
-    </div>
-    <div class="col-md-6 mb-0">
-        <label class="form-label">@lang('End Date')</label>
-        <input type="date" class="form-control" wire:model='end_date' />
-        @include('admin.errors', ['property' => 'end_date'])
-    </div>
 
     <div class="col-md-12 mb-0 mt-2">
         <label class="form-label">@lang('Description')</label>
         <textarea type="text" class="form-control" placeholder="@lang('Event Description')" wire:model='description'></textarea>
         @include('admin.errors', ['property' => 'description'])
+    </div>
+    <div class="col-md-6 mb-0">
+        <label class="form-label">@lang('Start Date')</label>
+        <input type="datetime-local" class="form-control" wire:model='start_date' />
+        @include('admin.errors', ['property' => 'start_date'])
+    </div>
+    <div class="col-md-6 mb-0">
+        <label class="form-label">@lang('End Date')</label>
+        <input type="datetime-local" class="form-control" wire:model='end_date' />
+        @include('admin.errors', ['property' => 'end_date'])
     </div>
     <div class="form-check form-switch mb-2">
         <input class="form-check-input" type="checkbox" wire:model="is_active" id="is_active">
