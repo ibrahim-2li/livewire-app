@@ -737,7 +737,7 @@
                                 @lang('Phone Number') </label>
 
                                 <div class="input-group input-group-merge">
-                                    <input type="tel" maxlength="15" pattern="\+\d{7,14}" inputmode="tel"
+                                    <input type="tel" maxlength="15" pattern="\+\00\d{7,14}" inputmode="tel"
                                         id="phone" name="phone" value="{{ old('phone') }}"
                                         class="form-control form-control w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                         placeholder="@lang('Please enter your phone number with country code')" required />

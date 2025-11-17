@@ -6,6 +6,11 @@
         <hr class="my-0" />
         <div class="card-body">
             <form wire:submit.prevent='submit'>
+                @if (session()->has('message'))
+                    <div class="alert alert-success my-success-alert">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label class="form-label">@lang('Name')</label>
@@ -28,7 +33,7 @@
                         <div class="input-group input-group-merge">
                             <span class="input-group-text">(+)</span>
                             <input class="form-control" wire:model='user.phone' placeholder="+966500 000 000"
-                                type="tel" maxlength="13" pattern="\+\d{12}" inputmode="tel" />
+                                type="tel" maxlength="13" pattern="\+\00\d{7,14}" inputmode="tel" />
                         </div>
                     </div>
                     <div class="mb-3 col-md-6">

@@ -66,7 +66,7 @@ class UpdateAccount extends Component
 
         $this->user->update($updateData);
 
-        session()->flash('message', 'Account Updated Successfully!');
+        session()->flash('message', __('Account Updated Successfully!'));
     }
 
     public function render()

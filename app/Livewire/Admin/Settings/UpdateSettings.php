@@ -51,7 +51,7 @@ class UpdateSettings extends Component
         $this->validate($this->rules(), [],
         $this->attributes());
         $this->settings->save();
-        session()->flash('message','Settings Updated Successfuly');
+        session()->flash('message', __('Settings Updated Successfuly'));
 
     }
 
