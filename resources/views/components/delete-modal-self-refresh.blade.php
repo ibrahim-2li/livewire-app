@@ -10,17 +10,17 @@
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="col mb-0">
-                                Are you sure you want to delete this account? This action cannot be undone!
+                                @lang('Are you Soure you want to delete this record !!')
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                            Close
+                            @lang('Close')
                         </button>
                         <button type="submit" class="btn btn-danger" wire:loading.attr="disabled" wire:target="submit"
-                                :disabled="!$wire.confirmDeletion">
-                            Delete
+                            :disabled="!$wire.confirmDeletion">
+                            @lang('Delete')
                         </button>
                     </div>
                 </div>

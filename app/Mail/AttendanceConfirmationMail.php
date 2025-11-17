@@ -31,7 +31,7 @@ class AttendanceConfirmationMail extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '  تزكرة دخول - ' . $this->event->title,
+            subject: '  تذكرة دخول - ' . $this->event->title,
         );
     }
 
