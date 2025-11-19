@@ -79,6 +79,7 @@
     </div>
     <!-- / Layout wrapper -->
     @include('admin.partials.scripts')
+    @stack('page-scripts')
 </body>
 
 </html>

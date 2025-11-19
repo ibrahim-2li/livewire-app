@@ -144,12 +144,12 @@
     "Checked By": "سجل بـ",
     "Events Platform": "منصة الفعاليات",
     "Attendances for": "سجل الحضور لـ",
-    "Where are you joining from?": "في أي دولة ستنضم إلينا؟",
+    "Where are you joining from?": "من أي دولة ستنضم إلينا؟",
     "Sudan": "السودان",
     "Egypt": "مصر",
     "Saudi Arabia": "المملكة العربية السعودية",
     "Qatar": "قطر",
-    "United Arab Emirates": "الإمارة العربية المتحدة",
+    "United Arab Emirates": "الإمارات العربية المتحدة",
     "Country": "الدولة",
     "Select Country": "اختر الدولة",
     "All Events": "جميع الفعاليات",
@@ -366,5 +366,6 @@
     "to": "إلى",
     "from": "من",
     "Settings Updated Successfuly": "تم تعديل البيانات بنجاح",
-    "Account Updated Successfully!": "تم تعديل بيانات  الحساب بنجاح"
+    "Account Updated Successfully!": "تم تعديل بيانات  الحساب بنجاح",
+    "Event Not Available" :"هذه الفعالية لم تعد متاحة للتسجيل."
 }

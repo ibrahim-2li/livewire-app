@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\AttendanceConfirmationMail;
+use Carbon\Carbon;
 use App\Models\Admin;
-use App\Models\Attendance;
 use App\Models\Event;
 use App\Models\Setting;
-use App\Services\QrCodeService;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
+use App\Services\QrCodeService;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\AttendanceConfirmationMail;
 use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
@@ -19,8 +20,7 @@ class EventController extends Controller
     {
         $settings = Setting::first();
         $events = Event::with('admin')
-            ->where('is_active', true)
-            ->where('end_date', '>', now())
+            ->where('end_date', '>', Carbon::now())
             ->orderBy('start_date', 'asc')
             ->get();
 
@@ -82,8 +82,8 @@ class EventController extends Controller
         }
 
         // Check if event is active and in the future
-        if (! $event->is_active || $event->end_date < now()) {
-            return back()->withErrors(['event' => 'هذه الفعالية لم تعد متاحاً للتسجيل.'])->withInput();
+        if (! $event->is_active || $event->end_date < now() || $event->attendances()->count() >= $event->limits ) {
+            return back()->withErrors(['event' => __('Event Not Available')])->withInput();
         }
 
         // Check if admin user exists with this email
@@ -128,8 +128,8 @@ class EventController extends Controller
         }
 
         // Check if event is active and in the future
-        if (! $event->is_active || $event->end_date < now()) {
-            return back()->withErrors(['event' => 'هذه الفعالية لم تعد متاحاً للتسجيل.'])->withInput();
+        if (! $event->is_active || $event->end_date < now() || $event->attendances()->count() >= $event->limits) {
+            return back()->withErrors(['event' =>  __('Event Not Available')])->withInput();
         }
 
         // Find or get authenticated admin user

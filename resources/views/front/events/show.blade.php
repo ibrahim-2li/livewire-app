@@ -203,9 +203,53 @@
                                         class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                         required>
                                         <option value="">@lang('Where are you joining from?')</option>
+                                        <option value="Saudi Arabia"
+                                            {{ old('nationality') == 'Saudi Arabia' ? 'selected' : '' }}>
+                                            @lang('Saudi Arabia')</option>
+                                        <option value="Jordan" {{ old('nationality') == 'Jordan' ? 'selected' : '' }}>
+                                            @lang('Jordan')</option>
+                                        <option value="Egypt" {{ old('nationality') == 'Egypt' ? 'selected' : '' }}>
+                                            @lang('Egypt')</option>
+                                        <option value="Qatar" {{ old('nationality') == 'Qatar' ? 'selected' : '' }}>
+                                            @lang('Qatar')</option>
+                                        <option value="Sudan" {{ old('nationality') == 'Sudan' ? 'selected' : '' }}>
+                                            @lang('Sudan')</option>
+                                        <option value="Kuwait" {{ old('nationality') == 'Kuwait' ? 'selected' : '' }}>
+                                            @lang('Kuwait')</option>
+                                        <option value="Bahrain"
+                                            {{ old('nationality') == 'Bahrain' ? 'selected' : '' }}>
+                                            @lang('Bahrain')</option>
+                                        <option value="Tunisia"
+                                            {{ old('nationality') == 'Tunisia' ? 'selected' : '' }}>
+                                            @lang('Tunisia')</option>
+                                        <option value="Algeria"
+                                            {{ old('nationality') == 'Algeria' ? 'selected' : '' }}>
+                                            @lang('Algeria')</option>
+                                        <option value="Syria" {{ old('nationality') == 'Syria' ? 'selected' : '' }}>
+                                            @lang('Syria')</option>
+                                        <option value="Somalia"
+                                            {{ old('nationality') == 'Somalia' ? 'selected' : '' }}>
+                                            @lang('Somalia')</option>
+                                        <option value="Iraq" {{ old('nationality') == 'Iraq' ? 'selected' : '' }}>
+                                            @lang('Iraq')</option>
+                                        <option value="Oman" {{ old('nationality') == 'Oman' ? 'selected' : '' }}>
+                                            @lang('Oman')</option>
+                                        <option value="Palestine"
+                                            {{ old('nationality') == 'Palestine' ? 'selected' : '' }}>
+                                            @lang('Palestine')</option>
 
-                                        <option value="Qatar" {{ old('country') == 'Qatar' ? 'selected' : '' }}>
-                                            @lang('Qatar')
+                                        <option value="Lebanon"
+                                            {{ old('nationality') == 'Lebanon' ? 'selected' : '' }}>
+                                            @lang('Lebanon')</option>
+                                        <option value="Libya" {{ old('nationality') == 'Libya' ? 'selected' : '' }}>
+                                            @lang('Libya')</option>
+
+                                        <option value="Morocco"
+                                            {{ old('nationality') == 'Morocco' ? 'selected' : '' }}>
+                                            @lang('Morocco')</option>
+                                        <option value="United Arab Emirates"
+                                            {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
+                                            @lang('United Arab Emirates')
                                         </option>
 
                                     </select>
@@ -247,20 +291,65 @@
                                         <option value="">@lang('Where are you joining from?')</option>
                                         {{-- <option value="Sudan" {{ old('country') == 'Sudan' ? 'selected' : '' }}>
                                             @lang('Sudan')
-                                        </option>
-                                        <option value="Egypt" {{ old('country') == 'Egypt' ? 'selected' : '' }}>
+                                        </option> --}}
+                                        <option value="Saudi Arabia"
+                                            {{ old('nationality') == 'Saudi Arabia' ? 'selected' : '' }}>
+                                            @lang('Saudi Arabia')</option>
+                                        <option value="Jordan" {{ old('nationality') == 'Jordan' ? 'selected' : '' }}>
+                                            @lang('Jordan')</option>
+                                        <option value="Egypt" {{ old('nationality') == 'Egypt' ? 'selected' : '' }}>
+                                            @lang('Egypt')</option>
+                                        <option value="Qatar" {{ old('nationality') == 'Qatar' ? 'selected' : '' }}>
+                                            @lang('Qatar')</option>
+                                        <option value="Sudan" {{ old('nationality') == 'Sudan' ? 'selected' : '' }}>
+                                            @lang('Sudan')</option>
+                                        <option value="Kuwait" {{ old('nationality') == 'Kuwait' ? 'selected' : '' }}>
+                                            @lang('Kuwait')</option>
+                                        <option value="Bahrain"
+                                            {{ old('nationality') == 'Bahrain' ? 'selected' : '' }}>
+                                            @lang('Bahrain')</option>
+                                        <option value="Tunisia"
+                                            {{ old('nationality') == 'Tunisia' ? 'selected' : '' }}>
+                                            @lang('Tunisia')</option>
+                                        <option value="Algeria"
+                                            {{ old('nationality') == 'Algeria' ? 'selected' : '' }}>
+                                            @lang('Algeria')</option>
+                                        <option value="Syria" {{ old('nationality') == 'Syria' ? 'selected' : '' }}>
+                                            @lang('Syria')</option>
+                                        <option value="Somalia"
+                                            {{ old('nationality') == 'Somalia' ? 'selected' : '' }}>
+                                            @lang('Somalia')</option>
+                                        <option value="Iraq" {{ old('nationality') == 'Iraq' ? 'selected' : '' }}>
+                                            @lang('Iraq')</option>
+                                        <option value="Oman" {{ old('nationality') == 'Oman' ? 'selected' : '' }}>
+                                            @lang('Oman')</option>
+                                        <option value="Palestine"
+                                            {{ old('nationality') == 'Palestine' ? 'selected' : '' }}>
+                                            @lang('Palestine')</option>
+
+                                        <option value="Lebanon"
+                                            {{ old('nationality') == 'Lebanon' ? 'selected' : '' }}>
+                                            @lang('Lebanon')</option>
+                                        <option value="Libya" {{ old('nationality') == 'Libya' ? 'selected' : '' }}>
+                                            @lang('Libya')</option>
+
+                                        <option value="Morocco"
+                                            {{ old('nationality') == 'Morocco' ? 'selected' : '' }}>
+                                            @lang('Morocco')</option>
+                                        {{-- <option value="Egypt" {{ old('country') == 'Egypt' ? 'selected' : '' }}>
                                             @lang('Egypt')</option>
                                         </option>
                                         <option value="Saudi Arabia"
                                             {{ old('country') == 'Saudi Arabia' ? 'selected' : '' }}>@lang('Saudi Arabia')
-                                        </option> --}}
+                                        </option>
                                         <option value="Qatar" {{ old('country') == 'Qatar' ? 'selected' : '' }}>
                                             @lang('Qatar')
                                         </option>
-                                        {{-- <option value="United Arab Emirates"
+                                        --}}
+                                        <option value="United Arab Emirates"
                                             {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
                                             @lang('United Arab Emirates')
-                                        </option> --}}
+                                        </option>
                                     </select>
 
                                 </div>

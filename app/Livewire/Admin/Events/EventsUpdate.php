@@ -10,7 +10,7 @@ use App\Livewire\Admin\Events\EventsData;
 class EventsUpdate extends Component
 {
     use WithFileUploads;
-    public $event, $title, $location, $image, $map,  $description,$start_date,$end_date,$is_active;
+    public $event, $title, $location, $image, $map,  $description,$start_date,$end_date,$is_active ,$limits;
 
 
     protected $listeners = ['eventsUpdate'];
@@ -23,6 +23,7 @@ class EventsUpdate extends Component
         $this->description = $this->event->description;
         $this->location = $this->event->location;
         $this->map = $this->event->map;
+        $this->limits = $this->event->limits;
         $this->start_date = $this->event->start_date;
         $this->end_date = $this->event->end_date;
         $this->is_active = $this->event->is_active;
@@ -43,6 +44,7 @@ class EventsUpdate extends Component
             'description' => 'required|string',
             'start_date' => 'required',
             'end_date' => 'required',
+            'limits'    => 'required|integer|min:1'
             // 'is_active' => 'required',
             // 'qr_token' => 'required',
         ];

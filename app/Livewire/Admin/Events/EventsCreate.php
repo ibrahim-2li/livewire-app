@@ -11,7 +11,7 @@ use App\Livewire\Admin\Events\EventsData;
 class EventsCreate extends Component
 {
     use WithFileUploads;
-    public $title, $location, $map, $description, $start_date, $end_date, $is_active = 1;
+    public $title, $location, $map, $description, $start_date, $end_date, $is_active = 1, $limits;
 
 
     public function rules ()
@@ -24,6 +24,7 @@ class EventsCreate extends Component
             'start_date' => 'required',
             'end_date' => 'required',
             'is_active' => 'required|in:0,1',
+            'limits'    => 'required|integer|min:1'
             // 'qr_token' => 'required',
         ];
     }
@@ -36,7 +37,7 @@ class EventsCreate extends Component
         $data['is_active'] = $this->is_active ? 1 : 0;
 
         Event::create($data);
-        $this->reset(['title','description','location','start_date','end_date','is_active','map']);
+        $this->reset(['title','description','location','start_date','end_date','is_active','map','limits']);
         // hide image
         $this->dispatch('createModalToggle');
         // refresh projects data component

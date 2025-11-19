@@ -93,6 +93,7 @@ class DashboardController extends Controller
             ->selectRaw('country, COUNT(*) as count')
             ->groupBy('country')
             ->orderBy('count', 'desc')
+            ->take(6)
             ->get();
 
         $countryNames = $countryStats->pluck('country')->toArray();

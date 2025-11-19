@@ -67,6 +67,7 @@ class Event extends Model
         'qr_token',
         'is_active',
         'map',
+        'limits'
     ];
 
     protected static function boot()

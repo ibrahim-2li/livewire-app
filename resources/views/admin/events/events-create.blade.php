@@ -14,6 +14,12 @@
         <input type="text" class="form-control" placeholder="@lang('Event Direction')" wire:model='map' />
         @include('admin.errors', ['property' => 'map'])
     </div>
+    <div class="col-md-6 mb-0">
+        <label class="form-label">@lang('Limits')</label>
+        <input type="number" inputmode="numeric" class="form-control" placeholder="@lang('Event Registration Limits')"
+            wire:model='limits' />
+        @include('admin.errors', ['property' => 'limits'])
+    </div>
 
     <div class="col-md-12 mb-0 mt-2">
         <label class="form-label">@lang('Description')</label>

@@ -17,54 +17,55 @@
             <div class="row">
                 <!-- Events Statistics -->
                 {{-- <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4"> --}}
-                <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-                    <div class="card h-100">
-                        <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                            <div class="card-title mb-0">
-                                <h5 class="m-0 me-2">@lang('Attendance statistics from countries')</h5>
-                                <small class="text-muted">@lang('Total Countries') {{ count($countryNames ?? []) }}</small>
-                            </div>
 
+                <!--/ Order Statistics -->
+                <!-- Attend by Countries -->
+                <div class="col-md-6 col-lg-4 order-1 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h5 class="card-title m-0 me-2">Attend by Countries</h5>
+                            <div class="dropdown">
+                                <button class="btn text-body-secondary p-0" type="button" id="saleStatus"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-base ri ri-more-2-line icon-24px"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="saleStatus">
+                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="d-flex flex-column align-items-center gap-1">
-                                    <h2 class="mb-2">{{ array_sum($countryCounts ?? []) }}</h2>
-                                    <span>@lang('Total')</span>
-                                </div>
-
-                                <div id="orderStatisticsChart" data-event-titles="{{ json_encode($countryNames ?? []) }}"
-                                    data-event-attendees="{{ json_encode($countryCounts ?? []) }}">
-                                </div>
-                            </div>
-                            {{-- <ul class="p-0 m-0">
-                                @if (isset($countryNames) && isset($countryCounts) && count($countryNames) === count($countryCounts))
-                                    @foreach (array_combine($countryNames, $countryCounts) as $country => $count)
-                                        <li class="d-flex mb-4 pb-1">
-                                            <div class="avatar flex-shrink-0 me-3">
-                                                <span class="avatar-initial rounded bg-label-primary">
-                                                    <i class="bx bx-globe"></i>
-                                                </span>
+                            @if (isset($countryNames) && isset($countryCounts) && count($countryNames) === count($countryCounts))
+                                @foreach (array_combine($countryNames, $countryCounts) as $country => $count)
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex align-items-center mb-4">
+                                            <div class="avatar me-4">
+                                                <span
+                                                    class="avatar-initial bg-label-secondary rounded-circle">{{ Str::limit($country, 2, '') }}</span>
                                             </div>
-                                            <div
-                                                class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                                <div class="me-2">
-                                                    <h6 class="mb-0">{{ $country }}</h6>
+                                            <div>
+                                                <div class="d-flex align-items-center gap-1 mb-1">
+                                                    <h6 class="mb-0">$745k</h6>
+                                                    <i class="icon-base ri ri-arrow-down-s-line icon-24px text-danger"></i>
+                                                    <span class="text-danger">11.9%</span>
                                                 </div>
-                                                <div class="user-progress">
-                                                    <small class="fw-semibold">{{ $count }}</small>
-                                                </div>
+                                                <p class="mb-0">{{ $country }}</p>
                                             </div>
-                                        </li>
-                                    @endforeach
-                                @endif
+                                        </div>
+                                        <div class="text-end">
+                                            <h6 class="mb-1">{{ $count }}</h6>
+                                            <small class="text-body-secondary">User</small>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
 
-                            </ul> --}}
                         </div>
                     </div>
                 </div>
-                <!--/ Order Statistics -->
-
+                <!--/ Sales by Countries -->
                 <!-- Expense Overview -->
                 <div class="col-md-6 col-lg-4 order-1 mb-4">
                     <div class="card h-100">
@@ -120,10 +121,10 @@
                                                         gradientUnits="userSpaceOnUse" />
                                                 </defs>
                                                 <sodipodi:namedview id="base" bordercolor="#666666"
-                                                    inkscape:pageshadow="2" inkscape:window-width="1916" pagecolor="#ffffff"
-                                                    inkscape:zoom="0.47746872" inkscape:window-x="4" borderopacity="1.0"
-                                                    inkscape:current-layer="Layer_1" inkscape:cx="408.80447"
-                                                    inkscape:cy="46.448836" inkscape:window-y="1"
+                                                    inkscape:pageshadow="2" inkscape:window-width="1916"
+                                                    pagecolor="#ffffff" inkscape:zoom="0.47746872" inkscape:window-x="4"
+                                                    borderopacity="1.0" inkscape:current-layer="Layer_1"
+                                                    inkscape:cx="408.80447" inkscape:cy="46.448836" inkscape:window-y="1"
                                                     inkscape:window-height="1035" inkscape:pageopacity="0.0"
                                                     showgrid="false" fit-margin-top="0" fit-margin-left="0"
                                                     fit-margin-right="0" fit-margin-bottom="0"
@@ -624,6 +625,127 @@
                 </div>
             </div>
         </div>
+
     @endif
 
 @endsection
+
+@push('page-scripts')
+    <script>
+        (function initPolarChart() {
+            const countryLabels = @json($countryNames ?? []);
+            const countryData = @json($countryCounts ?? []);
+            const colorPalette = [
+                '#836AF9',
+                '#ffe800',
+                '#28dac6',
+                '#FF8132',
+                '#299AFF',
+                '#4F5D70',
+                '#F8766D',
+                '#00CFE8',
+                '#FF66C3',
+                '#FFB400',
+                '#1E90FF',
+                '#00A676'
+            ];
+            const init = () => {
+                if (typeof Chart === 'undefined') {
+                    return false;
+                }
+
+                const polarChartEl = document.getElementById('polarChart');
+                if (!polarChartEl || polarChartEl.dataset.chartInitialized) {
+                    return true;
+                }
+
+                polarChartEl.dataset.chartInitialized = 'true';
+
+                const resolvedColors = countryLabels.map((_, idx) => colorPalette[idx % colorPalette.length]);
+
+                let cardColor;
+                let headingColor;
+                let labelColor;
+                let borderColor;
+                let legendColor;
+
+                if (window.isDarkStyle) {
+                    cardColor = config.colors_dark.cardColor;
+                    headingColor = config.colors_dark.headingColor;
+                    labelColor = config.colors_dark.textMuted;
+                    legendColor = config.colors_dark.bodyColor;
+                    borderColor = config.colors_dark.borderColor;
+                } else {
+                    cardColor = config.colors.cardColor;
+                    headingColor = config.colors.headingColor;
+                    labelColor = config.colors.textMuted;
+                    legendColor = config.colors.bodyColor;
+                    borderColor = config.colors.borderColor;
+                }
+
+                new Chart(polarChartEl, {
+                    type: 'polarArea',
+                    data: {
+                        labels: countryLabels,
+                        datasets: countryLabels.length ? [{
+                            label: '{{ __('Attendances') }}',
+                            backgroundColor: resolvedColors,
+                            data: countryData,
+                            borderWidth: 0
+                        }] : []
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 500
+                        },
+                        scales: {
+                            r: {
+                                ticks: {
+                                    display: false,
+                                    color: labelColor
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                rtl: window.isRtl,
+                                backgroundColor: cardColor,
+                                titleColor: headingColor,
+                                bodyColor: legendColor,
+                                borderWidth: 1,
+                                borderColor: borderColor
+                            },
+                            legend: {
+                                rtl: window.isRtl,
+                                position: 'right',
+                                labels: {
+                                    usePointStyle: true,
+                                    padding: 25,
+                                    boxWidth: 8,
+                                    boxHeight: 8,
+                                    color: legendColor
+                                }
+                            }
+                        }
+                    }
+                });
+
+                return true;
+            };
+
+            const tryInit = () => {
+                const ready = init();
+                if (!ready) {
+                    setTimeout(tryInit, 100);
+                }
+            };
+
+            document.addEventListener('DOMContentLoaded', tryInit);
+        })(); <
+        /scrip>
+    @endpush

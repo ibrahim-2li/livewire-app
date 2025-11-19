@@ -272,13 +272,13 @@
                         </div>
 
                         <!-- Event Image Placeholder -->
-                        <div
-                            class="w-full h-48 bg-gradient-to-br from-orange-500 to-red-400 rounded-xl mb-6 flex items-center justify-center">
+                        <div class="w-full h-48 bg-blue-950 rounded-xl mb-6 flex items-center justify-center">
                             @if ($event->image)
                                 <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}"
                                     class="w-full h-full object-cover rounded-xl">
                             @else
-                                <i class="fas fa-calendar-alt text-white text-4xl"></i>
+                                {{-- <i class="fas fa-calendar-alt text-white text-4xl"></i> --}}
+                                <img src="{{ asset('admin-assets/img/elements/1.png') }}">
                             @endif
                         </div>
 
@@ -338,13 +338,23 @@
                             </div>
 
                             <!-- Action Button -->
+                            @php
+                                $isFull = $event->attendances->count() >= $event->limits;
+                            @endphp
+
                             <div class="pt-4">
-                                <a href="{{ route('events.show', $event) }}"
-                                    class="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center group">
-                                    <span>عرض التفاصيل والتسجيل</span>
+                                @if ($event->is_active && !$isFull)
+                                    <a href="{{ route('events.show', $event) }}"
+                                        class="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center group">
+                                        <span>عرض التفاصيل والتسجيل</span>
+                                        <i
+                                            class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform duration-300"></i>
+                                    </a>
+                                @else
+                                    <span>تم حجز جميع المقاعد</span>
                                     <i
                                         class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform duration-300"></i>
-                                </a>
+                                @endif
                             </div>
                         </div>
                     </div>
