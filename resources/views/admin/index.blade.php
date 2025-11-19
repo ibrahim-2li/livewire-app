@@ -23,21 +23,14 @@
                 <div class="col-md-6 col-lg-4 order-1 mb-4">
                     <div class="card h-100">
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="card-title m-0 me-2">Attend by Countries</h5>
-                            <div class="dropdown">
-                                <button class="btn text-body-secondary p-0" type="button" id="saleStatus"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="icon-base ri ri-more-2-line icon-24px"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="saleStatus">
-                                    <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                                </div>
+                            <h5 class="card-title m-0 me-2">@lang('Attend by Countries')</h5>
+                            <div id="orderStatisticsChart" data-event-titles="{{ json_encode($countryNames ?? []) }}"
+                                data-event-attendees="{{ json_encode($countryCounts ?? []) }}">
                             </div>
                         </div>
                         <div class="card-body">
                             @if (isset($countryNames) && isset($countryCounts) && count($countryNames) === count($countryCounts))
+
                                 @foreach (array_combine($countryNames, $countryCounts) as $country => $count)
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center mb-4">
@@ -47,16 +40,14 @@
                                             </div>
                                             <div>
                                                 <div class="d-flex align-items-center gap-1 mb-1">
-                                                    <h6 class="mb-0">$745k</h6>
-                                                    <i class="icon-base ri ri-arrow-down-s-line icon-24px text-danger"></i>
-                                                    <span class="text-danger">11.9%</span>
+
                                                 </div>
                                                 <p class="mb-0">{{ $country }}</p>
                                             </div>
                                         </div>
                                         <div class="text-end">
                                             <h6 class="mb-1">{{ $count }}</h6>
-                                            <small class="text-body-secondary">User</small>
+                                            <small class="text-body-secondary">@lang('Registeraed')</small>
                                         </div>
                                     </div>
                                 @endforeach
@@ -121,10 +112,10 @@
                                                         gradientUnits="userSpaceOnUse" />
                                                 </defs>
                                                 <sodipodi:namedview id="base" bordercolor="#666666"
-                                                    inkscape:pageshadow="2" inkscape:window-width="1916"
-                                                    pagecolor="#ffffff" inkscape:zoom="0.47746872" inkscape:window-x="4"
-                                                    borderopacity="1.0" inkscape:current-layer="Layer_1"
-                                                    inkscape:cx="408.80447" inkscape:cy="46.448836" inkscape:window-y="1"
+                                                    inkscape:pageshadow="2" inkscape:window-width="1916" pagecolor="#ffffff"
+                                                    inkscape:zoom="0.47746872" inkscape:window-x="4" borderopacity="1.0"
+                                                    inkscape:current-layer="Layer_1" inkscape:cx="408.80447"
+                                                    inkscape:cy="46.448836" inkscape:window-y="1"
                                                     inkscape:window-height="1035" inkscape:pageopacity="0.0"
                                                     showgrid="false" fit-margin-top="0" fit-margin-left="0"
                                                     fit-margin-right="0" fit-margin-bottom="0"

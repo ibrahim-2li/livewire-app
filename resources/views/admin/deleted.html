@@ -43,3 +43,22 @@
     </div>
 
 </div>
+
+
+
+
+<div class="card h-100">
+    <div class="card-header d-flex align-items-center justify-content-between pb-0">
+        <div class="card-title mb-0">
+            <h5 class="m-0 me-2">@lang('Attendance statistics from countries')</h5>
+            <small class="text-muted">@lang('Total Countries') {{ count($countryNames ?? []) }}</small>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex flex-column align-items-center gap-1">
+                    <h2 class="mb-2">{{ array_sum($countryCounts ?? []) }}</h2>
+                    <span>@lang('Total')</span>
+                </div>
+
+                <div id="orderStatisticsChart" data-event-titles="{{ json_encode($countryNames ?? []) }}"
+                    data-event-attendees="{{ json_encode($countryCounts ?? []) }}">
+                </div>
+            </div>
