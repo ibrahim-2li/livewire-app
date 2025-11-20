@@ -256,6 +256,9 @@
                                         <option value="Morocco"
                                             {{ old('nationality') == 'Morocco' ? 'selected' : '' }}>
                                             @lang('Morocco')</option>
+                                        <option value="Morocco"
+                                            {{ old('nationality') == 'Morocco' ? 'selected' : '' }}>
+                                            @lang('Morocco')</option>
                                         <option value="United Arab Emirates"
                                             {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
                                             @lang('United Arab Emirates')
@@ -342,9 +345,8 @@
                                         <option value="Libya" {{ old('nationality') == 'Libya' ? 'selected' : '' }}>
                                             @lang('Libya')</option>
 
-                                        <option value="Morocco"
-                                            {{ old('nationality') == 'Morocco' ? 'selected' : '' }}>
-                                            @lang('Morocco')</option>
+                                        <option value="Yemen" {{ old('nationality') == 'Yemen' ? 'selected' : '' }}>
+                                            @lang('Yemen')</option>
                                         {{-- <option value="Egypt" {{ old('country') == 'Egypt' ? 'selected' : '' }}>
                                             @lang('Egypt')</option>
                                         </option>
@@ -359,6 +361,15 @@
                                             {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
                                             @lang('United Arab Emirates')
                                         </option>
+                                        <option value="Djibouti"
+                                            {{ old('nationality') == 'Djibouti' ? 'selected' : '' }}>
+                                            @lang('Djibouti')</option>
+                                        <option value="Mauritania"
+                                            {{ old('nationality') == 'Mauritania' ? 'selected' : '' }}>
+                                            @lang('Mauritania')</option>
+                                        <option value="Comoros"
+                                            {{ old('nationality') == 'Comoros' ? 'selected' : '' }}>
+                                            @lang('Comoros')</option>
                                     </select>
 
                                 </div>
