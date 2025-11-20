@@ -78,9 +78,15 @@
                                     </div>
                                     <div>
                                         <h3 class="font-semibold text-gray-900 mb-1">تاريخ البداية</h3>
-                                        <p class="text-gray-700 text-lg">{{ $event->start_date->format('l, F j, Y') }}
+                                        <p class="text-gray-700 text-lg">
+                                            {{ $event->start_date->translatedFormat('l, F j, Y') }}
                                         </p>
-                                        <p class="text-gray-500">{{ $event->start_date->format('g:i A') }}</p>
+                                        <p class=" text-gray-500">
+                                            {{ $event->start_date->translatedFormat('g:i A') }}
+                                        </p>
+                                        {{-- <p class="text-gray-700 text-lg">{{ $event->start_date->format('l, F j, Y') }}
+                                        </p>
+                                        <p class="text-gray-500">{{ $event->start_date->format('g:i A') }}</p> --}}
                                     </div>
                                 </div>
 
@@ -90,9 +96,12 @@
                                     </div>
                                     <div>
                                         <h3 class="font-semibold text-gray-900 mb-1">تاريخ النهاية</h3>
-                                        <p class="text-gray-700 text-lg">{{ $event->end_date->format('l, F j, Y') }}
+                                        <p class="text-gray-700 text-lg">
+                                            {{ $event->end_date->translatedFormat('l, F j, Y') }}
                                         </p>
-                                        <p class="text-gray-500">{{ $event->end_date->format('g:i A') }}</p>
+                                        <p class=" text-gray-500">
+                                            {{ $event->end_date->translatedFormat('g:i A') }}
+                                        </p>
                                     </div>
                                 </div>
 
@@ -126,7 +135,7 @@
                                 <div>
                                     <h3 class="font-semibold text-gray-900 mb-1">المدة</h3>
                                     <p class="text-gray-700 text-lg">
-                                        {{ $event->start_date->diffForHumans($event->end_date, true) }}
+                                        {{ $event->start_date->diff($event->end_date)->format('%h ساعات و %i دقيقة') }}
                                     </p>
                                 </div>
                             </div>

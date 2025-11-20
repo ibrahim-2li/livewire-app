@@ -34,9 +34,16 @@
         </div>
     </div>
     <div class="mb-3">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" wire:model="remember" />
-            <label class="form-check-label"> تزكرني </label>
+        <div class="flex items-center justify-between">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" wire:model="remember" />
+                <label class="form-check-label"> تزكرني </label>
+            </div>
+            <div class="text-sm">
+                <a href="{{ route('admin.password.request') }}" class="font-medium text-orange-600 hover:text-orange-500">
+                    نسيت كلمة المرور؟
+                </a>
+            </div>
         </div>
     </div>
     <div class="mb-3">

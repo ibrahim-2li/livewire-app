@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Event;
 use App\Models\Attendance;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\AdminResetPasswordNotification;
 
 class Admin extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
 
     const ROLE_USER = 'USER';
@@ -117,6 +119,19 @@ class Admin extends Authenticatable
     public function attendances(): HasMany
     {
         return $this->hasMany(Attendance::class);
+    }
+
+    /**
+     * Send the password reset notification.
+     */
+    public function sendPasswordResetNotification($token): void
+    {
+        $url = url(route('password.reset', [
+            'token' => $token,
+            'email' => $this->email,
+        ], false));
+
+        $this->notify(new AdminResetPasswordNotification($url));
     }
 
 

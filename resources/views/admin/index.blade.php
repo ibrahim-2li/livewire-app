@@ -24,13 +24,10 @@
                     <div class="card h-100">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h5 class="card-title m-0 me-2">@lang('Attend by Countries')</h5>
-                            <div id="orderStatisticsChart" data-event-titles="{{ json_encode($countryNames ?? []) }}"
-                                data-event-attendees="{{ json_encode($countryCounts ?? []) }}">
-                            </div>
+
                         </div>
                         <div class="card-body">
                             @if (isset($countryNames) && isset($countryCounts) && count($countryNames) === count($countryCounts))
-
                                 @foreach (array_combine($countryNames, $countryCounts) as $country => $count)
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center mb-4">
@@ -620,123 +617,3 @@
     @endif
 
 @endsection
-
-@push('page-scripts')
-    <script>
-        (function initPolarChart() {
-            const countryLabels = @json($countryNames ?? []);
-            const countryData = @json($countryCounts ?? []);
-            const colorPalette = [
-                '#836AF9',
-                '#ffe800',
-                '#28dac6',
-                '#FF8132',
-                '#299AFF',
-                '#4F5D70',
-                '#F8766D',
-                '#00CFE8',
-                '#FF66C3',
-                '#FFB400',
-                '#1E90FF',
-                '#00A676'
-            ];
-            const init = () => {
-                if (typeof Chart === 'undefined') {
-                    return false;
-                }
-
-                const polarChartEl = document.getElementById('polarChart');
-                if (!polarChartEl || polarChartEl.dataset.chartInitialized) {
-                    return true;
-                }
-
-                polarChartEl.dataset.chartInitialized = 'true';
-
-                const resolvedColors = countryLabels.map((_, idx) => colorPalette[idx % colorPalette.length]);
-
-                let cardColor;
-                let headingColor;
-                let labelColor;
-                let borderColor;
-                let legendColor;
-
-                if (window.isDarkStyle) {
-                    cardColor = config.colors_dark.cardColor;
-                    headingColor = config.colors_dark.headingColor;
-                    labelColor = config.colors_dark.textMuted;
-                    legendColor = config.colors_dark.bodyColor;
-                    borderColor = config.colors_dark.borderColor;
-                } else {
-                    cardColor = config.colors.cardColor;
-                    headingColor = config.colors.headingColor;
-                    labelColor = config.colors.textMuted;
-                    legendColor = config.colors.bodyColor;
-                    borderColor = config.colors.borderColor;
-                }
-
-                new Chart(polarChartEl, {
-                    type: 'polarArea',
-                    data: {
-                        labels: countryLabels,
-                        datasets: countryLabels.length ? [{
-                            label: '{{ __('Attendances') }}',
-                            backgroundColor: resolvedColors,
-                            data: countryData,
-                            borderWidth: 0
-                        }] : []
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        animation: {
-                            duration: 500
-                        },
-                        scales: {
-                            r: {
-                                ticks: {
-                                    display: false,
-                                    color: labelColor
-                                },
-                                grid: {
-                                    display: false
-                                }
-                            }
-                        },
-                        plugins: {
-                            tooltip: {
-                                rtl: window.isRtl,
-                                backgroundColor: cardColor,
-                                titleColor: headingColor,
-                                bodyColor: legendColor,
-                                borderWidth: 1,
-                                borderColor: borderColor
-                            },
-                            legend: {
-                                rtl: window.isRtl,
-                                position: 'right',
-                                labels: {
-                                    usePointStyle: true,
-                                    padding: 25,
-                                    boxWidth: 8,
-                                    boxHeight: 8,
-                                    color: legendColor
-                                }
-                            }
-                        }
-                    }
-                });
-
-                return true;
-            };
-
-            const tryInit = () => {
-                const ready = init();
-                if (!ready) {
-                    setTimeout(tryInit, 100);
-                }
-            };
-
-            document.addEventListener('DOMContentLoaded', tryInit);
-        })(); <
-        /scrip>
-    @endpush

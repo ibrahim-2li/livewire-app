@@ -75,6 +75,8 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
     // ========================================== register index
     Route::get('/register', [authController::class, 'register'])->middleware('guest:admin')->name('register');
     Route::post('/register', [authController::class, 'store'])->middleware('guest:admin')->name('register.store');
+    // ========================================== forgot password
+    Route::view('/forgot-password', 'admin.auth.forgot-password')->middleware('guest:admin')->name('password.request');
 });
 Route::fallback(function () {
     return view('admin.errors.error');
