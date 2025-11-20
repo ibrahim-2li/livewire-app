@@ -185,8 +185,8 @@
                 <!-- Right Side - Registration Form -->
                 <div class="p-8 lg:p-12">
                     <div class="max-w-md mx-auto">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-2">إنشاء حساب جديد</h2>
-                        <p class="text-gray-600 mb-8">أكمل إنشاء حسابك للوصول إلى جميع الميزات</p>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">@lang('Create a new account')</h2>
+                        <p class="text-gray-600 mb-8">@lang('Complete your account creation to access all features')</p>
 
                         <form class="space-y-6" method="POST" action="{{ route('admin.register.store') }}">
                             @csrf
@@ -199,11 +199,11 @@
                             <input type="hidden" name="country" value="{{ $prefillCountry }}">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700 mb-2">الاسم
-                                    الكامل</label>
+                                    @lang('Full name')</label>
                                 <input type="text" id="name" name="name"
                                     value="{{ session('name', old('name')) }}" autofocus
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                                    placeholder="أدخل اسمك الكامل" required>
+                                    placeholder="@lang('Please enter your full name in Arabic')" required>
                                 @error('name')
                                     <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
@@ -215,7 +215,7 @@
                                 <input type="email" id="email" name="email"
                                     value="{{ session('email', old('email')) }}"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                                    placeholder="أدخل بريدك الإلكتروني" required />
+                                    placeholder="@lang('Please enter your email')" required />
                                 <div class="text-orange-600 hover:text-orange-700 font-medium">
                                     @error('email')
                                         {{ $message }}
@@ -751,7 +751,7 @@
                             <!-- Job Title Field -->
                             <div>
                                 <label for="job_title" class="block text-sm font-medium text-gray-700 mb-2">المسمى
-                                    الوظيفي</label>
+                                    @lang('Job title')</label>
                                 <input type="text" id="job_title" name="job_title"
                                     value="{{ session('job_title', old('job_title')) }}"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
@@ -764,14 +764,16 @@
                             <!-- Gender Field -->
                             <div>
                                 <label for="gender"
-                                    class="block text-sm font-medium text-gray-700 mb-2">الجنس</label>
+                                    class="block text-sm font-medium text-gray-700 mb-2">@lang('Gender')</label>
                                 <select id="gender" name="gender"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                     required>
-                                    <option value="">اختر الجنس</option>
-                                    <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>ذكر
+                                    <option value="">@lang('Select gender')</option>
+                                    <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>
+                                        @lang('Male')</option>
                                     </option>
-                                    <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>أنثى
+                                    <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>
+                                        @lang('Female')</option>
                                     </option>
                                 </select>
                                 @error('gender')
@@ -782,10 +784,10 @@
                             <!-- Password Field -->
                             <div>
                                 <label for="password" class="block text-sm font-medium text-gray-700 mb-2">كلمة
-                                    المرور</label>
+                                    @lang('Password')</label>
                                 <input type="password" id="password" name="password"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                                    placeholder="أدخل كلمة المرور" required>
+                                    placeholder="@lang('Please enter your password')" required>
                                 @error('password')
                                     <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
@@ -794,11 +796,10 @@
                             <!-- Confirm Password Field -->
                             <div>
                                 <label for="password_confirmation"
-                                    class="block text-sm font-medium text-gray-700 mb-2">تأكيد كلمة
-                                    المرور</label>
+                                    class="block text-sm font-medium text-gray-700 mb-2">@lang('Confirm password')</label>
                                 <input type="password" id="password_confirmation" name="password_confirmation"
                                     class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
-                                    placeholder="أعد إدخال كلمة المرور" required>
+                                    placeholder="@lang('Please enter your password again')" required>
                                 @error('password_confirmation')
                                     <p class="text-orange-600 hover:text-orange-700 font-medium">{{ $message }}</p>
                                 @enderror
@@ -807,7 +808,7 @@
                             <button type="submit"
                                 class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-colors duration-300 transform hover:scale-105 shadow-lg">
                                 <i class="fas fa-user-plus ml-2"></i>
-                                إنشاء الحساب
+                                @lang('Create account')
                             </button>
 
 
@@ -817,10 +818,10 @@
                         <!-- Login Link -->
                         <div class="mt-8 text-center">
                             <p class="text-gray-600">
-                                لديك حساب بالفعل؟
+                                @lang('Already have an account?')
                                 <a href="{{ route('admin.login') }}"
                                     class="text-orange-600 hover:text-orange-700 font-medium">
-                                    تسجيل الدخول
+                                    @lang('Login')
                                 </a>
                             </p>
                         </div>
@@ -834,7 +835,7 @@
     <footer class="bg-white border-t border-gray-200 mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="text-center">
-                <p class="text-gray-600">© 2024 منصة الفعاليات . جميع الحقوق محفوظة.</p>
+                <p class="text-gray-600">© 2025 @lang('Events platform') . @lang('All rights reserved')</p>
             </div>
         </div>
     </footer>

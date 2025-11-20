@@ -185,7 +185,8 @@
                         {{-- Debug: Check authentication status --}}
                         @if (auth('admin')->check())
                             <div class="mb-4 p-2 bg-green-100 text-green-800 rounded text-sm">
-                                Logged in as: {{ auth('admin')->user()->name }} ({{ auth('admin')->user()->email }})
+                                @lang('Logged in as'): {{ auth('admin')->user()->name }}
+                                ({{ auth('admin')->user()->email }})
                             </div>
                             <form action="{{ route('events.existing_register', $event) }}" method="POST"
                                 class="space-y-4">
@@ -259,10 +260,21 @@
                                         <option value="Morocco"
                                             {{ old('nationality') == 'Morocco' ? 'selected' : '' }}>
                                             @lang('Morocco')</option>
+                                        <option value="Yemen" {{ old('nationality') == 'Yemen' ? 'selected' : '' }}>
+                                            @lang('Yemen')</option>
                                         <option value="United Arab Emirates"
                                             {{ old('country') == 'United Arab Emirates' ? 'selected' : '' }}>
                                             @lang('United Arab Emirates')
                                         </option>
+                                        <option value="Djibouti"
+                                            {{ old('nationality') == 'Djibouti' ? 'selected' : '' }}>
+                                            @lang('Djibouti')</option>
+                                        <option value="Mauritania"
+                                            {{ old('nationality') == 'Mauritania' ? 'selected' : '' }}>
+                                            @lang('Mauritania')</option>
+                                        <option value="Comoros"
+                                            {{ old('nationality') == 'Comoros' ? 'selected' : '' }}>
+                                            @lang('Comoros')</option>
 
                                     </select>
 
@@ -275,7 +287,7 @@
                             </form>
                         @else
                             <div class="mb-4 p-2 bg-yellow-100 text-yellow-800 rounded text-sm">
-                                Not logged in
+                                @lang('Not logged in')
                             </div>
                             <form action="{{ route('events.register', $event) }}" method="POST" class="space-y-4">
                                 @csrf
