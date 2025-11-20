@@ -115,6 +115,15 @@
             margin: 20px 0;
             border-left: 4px solid #28a745;
         }
+
+        .yellow-message {
+            background-color: #d6f5f6;
+            color: #012021;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #00fbff;
+        }
     </style>
 </head>
 
@@ -128,6 +137,17 @@
             <strong>مرحباً {{ $attendance->user->name }}!</strong><br>
             تم تأكيد تسجيلك في الفعالية بنجاح. يرجى الاحتفاظ بهذا البريد الإلكتروني ورمز الدخول للمراجعة عند الحضور.
         </div>
+        {{-- @if ($event->message)
+            <div class="alert alert-primary">
+                {{ $event->message }}
+            </div>
+        @endif --}}
+
+        @if ($event->message)
+            <div class="yellow-message">
+                <strong> {{ $event->message }}</strong>
+            </div>
+        @endif
 
         <div class="event-info">
             <h2>📅 تفاصيل الفعالية</h2>
@@ -172,7 +192,6 @@
         </div>
 
         <div class="footer">
-            <p>شكراً لك على التسجيل في حدثنا!</p>
             <p>هذا بريد إلكتروني تلقائي، يرجى عدم الرد عليه.</p>
         </div>
     </div>

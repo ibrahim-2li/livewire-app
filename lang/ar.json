@@ -393,5 +393,7 @@
     "Select gender": "اختر الجنس",
     "Job title": "المسمى الوظيفي",
     "Please enter your job title": "يرجى إدخال المسمى الوظيفي",
-    "Please enter your gender": "يرجى إدخال الجنس"
+    "Please enter your gender": "يرجى إدخال الجنس",
+    "Event Message Sent with Email": "رسالة الفعالية سيتم إرسالها بالبريد الإلكتروني",
+    "Event Message": "رسالة الفعالية"
 }

@@ -42,5 +42,9 @@
         <label class="form-check-label" for="is_active">@lang('Is Active')</label>
         @include('admin.errors', ['property' => 'is_active'])
     </div>
-
+    <div class="col-md-12 mb-0 mt-2">
+        <label class="form-label">@lang('Message')</label>
+        <textarea type="text" class="form-control" placeholder="@lang('Event Message Sent with  Email')" wire:model='message'></textarea>
+        @include('admin.errors', ['property' => 'message'])
+    </div>
 </x-update-modal>
