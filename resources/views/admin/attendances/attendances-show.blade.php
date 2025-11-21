@@ -16,7 +16,7 @@
             <p class="m-0">{{ $phone }}</p>
             <p class="m-0">{{ $job_title }}</p>
             {{-- <p class="m-0">{{ $qr_token }}</p> --}}
-            @if ($qrcodes && $qrcodes->count() > 0 && $used_at == null)
+            @if ($qrcodes && $qrcodes->count() > 0 && $used_at === null)
                 @foreach ($qrcodes as $qr)
                     <tr>
                         <td>

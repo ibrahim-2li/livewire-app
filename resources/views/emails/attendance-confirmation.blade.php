@@ -14,6 +14,8 @@
             margin: 0 auto;
             padding: 20px;
             background-color: #f8f9fa;
+            direction: rtl;
+            text-align: right;
         }
 
         .container {
@@ -127,7 +129,7 @@
     </style>
 </head>
 
-<body>
+<body dir="rtl">
     <div class="container">
         <div class="header">
             <h1>🎉 تم تأكيد تسجيلك بنجاح!</h1>
