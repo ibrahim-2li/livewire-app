@@ -23,14 +23,58 @@
                 <div class="col-md-6 col-lg-4 order-1 mb-4">
                     <div class="card h-100">
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="card-title m-0 me-2">@lang('Attend by Countries')</h5>
+                            <div class="card-body">
+                                <h5 class="card-title m-0 me-2">@lang('Attend by Countries')</h5>
+                                <canvas id="countriesChart"></canvas>
+                            </div>
 
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                            <script>
+                                const countryLabels = @json($countryNames ?? []);
+                                const countryData = @json($countryCounts ?? []);
+
+                                if (countryLabels.length && countryData.length) {
+                                    const ctx = document.getElementById('countriesChart').getContext('2d');
+                                    new Chart(ctx, {
+                                        type: 'doughnut', // 👈 change chart type to doughnut
+                                        data: {
+                                            labels: countryLabels,
+                                            datasets: [{
+                                                label: 'Registered',
+                                                data: countryData,
+                                                backgroundColor: [
+                                                    '#42A5F5', '#66BB6A', '#FFA726',
+                                                    '#AB47BC', '#26C6DA', '#FF7043',
+                                                    '#9CCC65', '#EF5350', '#29B6F6'
+                                                ],
+                                                borderColor: '#fff',
+                                                borderWidth: 2
+                                            }]
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            plugins: {
+                                                legend: {
+                                                    position: 'right', // legend on the side
+                                                },
+                                                title: {
+                                                    display: true,
+                                                    text: ''
+                                                }
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    console.warn("No country data available");
+                                }
+                            </script>
                         </div>
-                        <div class="card-body">
+
+                        {{-- <div class="card-body">
                             @if (isset($countryNames) && isset($countryCounts) && count($countryNames) === count($countryCounts))
                                 @foreach (array_combine($countryNames, $countryCounts) as $country => $count)
                                     <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center mb-4">
+                                        <div class="d-flex align-items-center mb-2">
                                             <div class="avatar me-4">
                                                 <span
                                                     class="avatar-initial bg-label-secondary rounded-circle">{{ Str::limit($country, 2, '') }}</span>
@@ -50,7 +94,7 @@
                                 @endforeach
                             @endif
 
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!--/ Sales by Countries -->
@@ -67,10 +111,6 @@
                                 <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
                                     <div class="d-flex p-4 pt-3">
                                         <div class="avatar flex-shrink-0 me-3">
-                                            {{-- <img src="{{ asset('admin-assets') }}/img/icons/unicons/wallet.png"
-                                                alt="User" /> --}}
-                                            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                                            <!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 51448)  -->
 
                                             <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
                                                 xmlns:cc="http://creativecommons.org/ns#"

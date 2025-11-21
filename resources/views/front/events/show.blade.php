@@ -212,7 +212,7 @@
                                     <select id="country" name="country"
                                         class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                         required>
-                                        <option value="">@lang('Where are you joining from?')</option>
+                                        <option value="">@lang('Where are you currently living?')</option>
                                         <option value="Saudi Arabia"
                                             {{ old('nationality') == 'Saudi Arabia' ? 'selected' : '' }}>
                                             @lang('Saudi Arabia')</option>
@@ -312,7 +312,7 @@
                                     <select id="country" name="country"
                                         class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
                                         required>
-                                        <option value="">@lang('Where are you joining from?')</option>
+                                        <option value="">@lang('Where are you currently living?')</option>
                                         {{-- <option value="Sudan" {{ old('country') == 'Sudan' ? 'selected' : '' }}>
                                             @lang('Sudan')
                                         </option> --}}

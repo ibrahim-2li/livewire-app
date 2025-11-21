@@ -10,7 +10,7 @@ use App\Livewire\Admin\Attendances\AttendancesData;
 class AttendancesUpdate extends Component
 {
 
-    public $attendee_name, $attendee_email, $event_id, $events, $attendance, $country;
+    public $name, $email, $event_id, $events, $attendance, $country;
 
     protected $listeners = ['attendancesUpdate'];
 
@@ -24,8 +24,8 @@ class AttendancesUpdate extends Component
     {
         $this->attendance = Attendance::find($id);
 
-        $this->attendee_name = $this->attendance->attendee_name;
-        $this->attendee_email = $this->attendance->attendee_email;
+        $this->name = $this->attendance->user->name;
+        $this->email = $this->attendance->user->email;
         $this->event_id = $this->attendance->event_id;
         $this->country = $this->attendance->country;
         // $this->qr_token = $this->event->qr_token;
@@ -38,8 +38,8 @@ class AttendancesUpdate extends Component
     public function rules ()
     {
         return [
-            'attendee_name' => 'required',
-            'attendee_email' => 'required',
+            'name' => 'required',
+            'email' => 'required',
             'event_id' => 'required',
             'country' => 'required',
         ];

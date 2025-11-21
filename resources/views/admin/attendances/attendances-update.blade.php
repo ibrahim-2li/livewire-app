@@ -1,13 +1,13 @@
 <x-update-modal title='تعديل '>
     <div class="col-md-6 mb-0">
         <label for="emailBasic" class="form-label">@lang('Name')</label>
-        <input type="text" class="form-control" placeholder="@lang('Name')" wire:model='attendee_name' />
-        @include('admin.errors', ['property' => 'attendee_name'])
+        <input type="text" class="form-control" placeholder="@lang('Name')" wire:model='name' />
+        @include('admin.errors', ['property' => 'name'])
     </div>
     <div class="col-md-6 mb-0">
         <label class="form-label">@lang('Email')</label>
-        <input type="text" class="form-control" placeholder="@lang('Email')" wire:model='attendee_email' />
-        @include('admin.errors', ['property' => 'attendee_email'])
+        <input type="text" class="form-control" placeholder="@lang('Email')" wire:model='email' />
+        @include('admin.errors', ['property' => 'email'])
     </div>
 
     <div class="col-md-6 mb-0">

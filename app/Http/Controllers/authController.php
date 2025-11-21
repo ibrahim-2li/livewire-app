@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Attendance;
 use App\Models\Event;
+use App\Mail\NewUserMail;
+use App\Models\Attendance;
 use Illuminate\Http\Request;
+use App\Services\QrCodeService;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AttendanceConfirmationMail;
-use App\Services\QrCodeService;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class authController extends Controller
@@ -43,6 +44,9 @@ class authController extends Controller
             'gender' => $validated['gender'],
             'role' => Admin::ROLE_USER,
         ]);
+        if(!$admin->attendances()->exists() && !$request->boolean('attendance')){
+            Mail::to($admin->email)->queue(new NewUserMail($admin));
+        }
 
         if ($request->boolean('attendance') && $request->filled('event_id')) {
             $event = Event::find($request->input('event_id'));

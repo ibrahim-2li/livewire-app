@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تزكرة دخول</title>
+    <title>مرحباً بك في منصة الفعاليات - {{ $admin->name }}</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -132,59 +132,18 @@
 <body dir="rtl">
     <div class="container">
         <div class="header">
-            <h1>🎉 تم تأكيد تسجيلك بنجاح!</h1>
+            <h1>مرحباً بك في منصة الفعاليات</h1>
         </div>
 
         <div class="success-message">
-            <strong>مرحباً {{ $attendance->user->name }}!</strong><br>
-            تم تأكيد تسجيلك في الفعالية بنجاح. يرجى الاحتفاظ بهذا البريد الإلكتروني ورمز الدخول للمراجعة عند الحضور.
-        </div>
-
-        @if ($event->message)
-            <div class="yellow-message">
-                <strong> {{ $event->message }}</strong>
-            </div>
-        @endif
-
-        <div class="event-info">
-            <h2>📅 تفاصيل الفعالية</h2>
-            <div class="info-row">
-                <span class="info-label">اسم الفعالية:</span>
-                <span class="info-value">{{ $event->title }}</span>
-            </div>
-            <div class="info-row">
-                <span class="info-label">تاريخ الفعالية:</span>
-                <span class="info-value">@lang('from') :{{ $event->start_date->format('Y-m-d H:i') }}</span><span
-                    class="info-value">@lang('to') :{{ $event->end_date->format('Y-m-d H:i') }}</span>
-            </div>
-            <div class="info-row">
-                <span class="info-label">الدولة:</span>
-                <span class="info-value">{{ $attendance->country }}</span>
-            </div>
-            <div class="info-row">
-                <span class="info-label">الموقع:</span>
-                <span class="info-value"><a href="{{ $event->map }}">{{ $event->location }}</a></span>
-            </div>
-
+            <strong>مرحباً {{ $admin->name }}!</strong><br>
+            تم تسجيل حسابك بنجاح. يرجى الاحتفاظ بهذا البريد الإلكتروني للمراجعة عند الحاجة.
         </div>
 
         <div class="qr-section items-center">
-            @php($qrPayload = urlencode(json_encode($qrData)))
-            <div style="margin:16px 0;">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data={{ $qrPayload }}"
-                    alt="Event QR Code" width="300" height="300"
-                    style="display:block;border:0;outline:none;text-decoration:none;" />
-            </div>
-        </div>
-
-        <div class="instructions">
-            <h3>📋 تعليمات مهمة</h3>
             <ul>
-                <li>احتفظ بهذا البريد الإلكتروني ورمز QR</li>
-                <li>احضر في الوقت المحدد للحدث</li>
-                <li>اعرض رمز QR عند وصولك للتحقق من حضورك</li>
                 <li>في حالة فقدان البريد الإلكتروني، يمكنك التواصل معنا على البريد الإلكتروني: {{ $email }}</li>
-
+                <li>يمكنك الدخول للمنصة عن طريق الرابط التالي: <a href="{{ route('admin.login') }}">الدخول</a></li>
             </ul>
         </div>
 
