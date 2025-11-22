@@ -19,7 +19,10 @@
             <tbody class="table-border-bottom-0">
                 @foreach ($data as $record)
                     <tr>
-                        <td width="25%"><strong>{{ $record->name }}</strong></td>
+                        <td width="25%">
+                             <a class="dropdown-item" href="#"
+                                        wire:click.prevent="$dispatch('usersShow',{id: {{ $record->id }}})">
+                                        <strong>{{ $record->name }}</strong></a></td>
                         <td><strong>{{ $record->email }}</strong></td>
                         <td class="d-none d-sm-table-cell col-sm-2 col-md-2"><strong>{{ $record->phone }}</strong></td>
                         <td class="d-none d-sm-table-cell col-sm-2 col-md-2"><strong>{{ $record->job_title }}</strong>

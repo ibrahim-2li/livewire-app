@@ -8,18 +8,20 @@ use App\Livewire\Admin\Messages\MessagesData;
 
 class MessagesShow extends Component
 {
-    public  $name ,$email, $subject ,$message ,$status;
+    public  $name ,$email, $subject ,$message ,$status, $message_id, $created_at;
     protected $listeners = ['messagesShow'];
 
     public function messagesShow($id)
     {
         $record = Message::find($id);
 
+        $this->message_id = $record->id;
         $this->name = $record->name;
         $this->email = $record->email;
         $this->subject = $record->subject;
         $this->message = $record->message;
         $this->status = $record->status;
+        $this->created_at = $record->created_at?->diffForHumans();
 
         $this->dispatch('showModalToggle');
         $record->Update(['status'=>'1']);

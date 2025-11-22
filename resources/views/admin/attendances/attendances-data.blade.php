@@ -81,7 +81,10 @@
                         <tbody class="table-border-bottom-0">
                             @foreach ($data as $record)
                                 <tr>
-                                    <td><strong>{{ $record->user->name }}</strong></td>
+                                    <td>
+                                        <a class="dropdown-item" href="#"
+                                            wire:click.prevent="$dispatch('attendancesShow',{id: {{ $record->id }}})">
+                                            <strong>{{ $record->user->name }}</strong></a></td>
                                     <td width="25%" class="d-none d-sm-table-cell">
                                         <strong>{{ $record->user->phone }}</strong>
                                     </td>

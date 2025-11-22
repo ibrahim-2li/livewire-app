@@ -13,7 +13,7 @@ use App\Models\Admin;
 class AttendancesCreate extends Component
 {
     use WithFileUploads;
-    public $name, $email, $event_id, $qr_token, $used_at, $checked_in_by, $events, $users, $country;
+    public $name, $email, $event_id, $admin_id, $qr_token, $used_at, $checked_in_by, $events, $users, $country;
 
     public function mount()
     {
@@ -27,6 +27,7 @@ class AttendancesCreate extends Component
             'country' => 'required',
             'event_id' => 'required',
             'used_at' => 'nullable',
+            'admin_id' => 'required',
             'checked_in_by' => 'nullable',
         ];
     }
@@ -42,7 +43,7 @@ class AttendancesCreate extends Component
     public function submit()
     {
         $data = $this->validate($this->rules());
-        $data['admin_id'] = Auth::user()->id;
+        // $data['admin_id'] = Auth::user()->id;
         $data['qr_token'] = 'attend_' . bin2hex(random_bytes(16));
 
         Attendance::create($data);

@@ -16,7 +16,11 @@
             <tbody class="table-border-bottom-0">
                 @foreach ($data as $record)
                     <tr>
-                        <td><strong>{{ $record->name }}</strong></td>
+                        <td>
+                            <a class="dropdown-item" href="#"
+                                        wire:click.prevent="$dispatch('messagesShow',{id: {{ $record->id }}})"><strong>{{ $record->name }}</strong>
+                                        </a>
+                        </td>
                         <td>{{ $record->email }}</td>
                         <td>{{ $record->subject }}</td>
                         <td>
