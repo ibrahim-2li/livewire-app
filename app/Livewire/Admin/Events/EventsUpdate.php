@@ -11,7 +11,7 @@ class EventsUpdate extends Component
 {
     use WithFileUploads;
     public $event, $title, $location, $image, $map,  $description,$start_date,$end_date,$is_active ,$limits, $message;
-
+    public $newImage;
 
     protected $listeners = ['eventsUpdate'];
 
@@ -28,6 +28,8 @@ class EventsUpdate extends Component
         $this->end_date = $this->event->end_date;
         $this->is_active = $this->event->is_active;
         $this->message = $this->event->message;
+        $this->image = $this->event->image;
+        $this->newImage = null;
         // $this->qr_token = $this->event->qr_token;
 
         $this->resetValidation();
@@ -40,8 +42,8 @@ class EventsUpdate extends Component
         return [
             'title' => 'required',
             'location' => 'nullable',
-            'image' => 'nullable',
-            'map' => 'required|url',
+            'newImage' => 'nullable|image|max:2048',
+            'map' => 'required|url',    
             'description' => 'required|string',
             'start_date' => 'required',
             'end_date' => 'required',
@@ -59,6 +61,20 @@ class EventsUpdate extends Component
 
     // Convert boolean to integer explicitly
     $data['is_active'] = $this->is_active ? 1 : 0;
+
+      if ($this->newImage) {
+    // delete old file if exists
+    if ($this->event->image && file_exists(public_path($this->event->image))) {
+        unlink(public_path($this->event->image));
+    }
+
+    $imageName = time() . '.' . $this->newImage->getClientOriginalExtension();
+    $this->newImage->storeAs('images', $imageName, 'public');
+    $data['image'] = 'storage/images/' . $imageName;
+        } else {
+            unset($data['image']); // keep old image
+        }
+
 
     $this->event->update($data);
     $this->dispatch('editModalToggle');

@@ -11,8 +11,7 @@ use App\Livewire\Admin\Events\EventsData;
 class EventsCreate extends Component
 {
     use WithFileUploads;
-    public $title, $location, $map, $description, $start_date, $end_date, $is_active = 1, $limits, $message;
-
+    public $title, $location, $map, $description, $start_date, $end_date, $is_active = 1, $limits, $message,$image;
 
     public function rules ()
     {
@@ -26,6 +25,7 @@ class EventsCreate extends Component
             'is_active' => 'required|in:0,1',
             'limits'    => 'required|integer|min:1',
             'message'   => 'nullable',
+            'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             // 'qr_token' => 'required',
         ];
     }
@@ -36,9 +36,14 @@ class EventsCreate extends Component
         $data = $this->validate($this->rules());
         $data['admin_id'] = Auth::user()->id;
         $data['is_active'] = $this->is_active ? 1 : 0;
-
+        if ($this->image) {
+               $imageName = time() . '.' . $this->image->getClientOriginalExtension();
+            $this->image->storeAs('images',$imageName, 'public');
+            //save data in db
+            $data['image'] = 'storage/images/' . $imageName;
+        }
         Event::create($data);
-        $this->reset(['title','description','location','start_date','end_date','is_active','map','limits','message']);
+        $this->reset(['title','description','location','start_date','end_date','is_active','map','limits','message','image']);
         // hide image
         $this->dispatch('createModalToggle');
         // refresh projects data component

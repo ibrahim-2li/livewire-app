@@ -68,7 +68,8 @@ class Event extends Model
         'is_active',
         'map',
         'limits',
-        'message'
+        'message',
+        'image',
     ];
 
     protected static function boot()

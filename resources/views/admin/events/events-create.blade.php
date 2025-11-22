@@ -21,6 +21,12 @@
         @include('admin.errors', ['property' => 'limits'])
     </div>
 
+    <div class="col-md-6 mb-0">
+        <label class="form-label">@lang('Image')</label>
+        <input type="file" class="form-control" wire:model='image' />
+        @include('admin.errors', ['property' => 'image'])
+    </div>
+
     <div class="col-md-12 mb-0 mt-2">
         <label class="form-label">@lang('Description')</label>
         <textarea type="text" class="form-control" placeholder="@lang('Event Description')" wire:model='description'></textarea>

@@ -274,8 +274,7 @@
                         <!-- Event Image Placeholder -->
                         <div class="w-full h-48 bg-blue-950 rounded-xl mb-6 flex items-center justify-center">
                             @if ($event->image)
-                                <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}"
-                                    class="w-full h-full object-cover rounded-xl">
+                                <img src="{{ asset($event->image) }}" alt="{{ $event->title }}" class="w-full h-full object-cover rounded-xl">
                             @else
                                 {{-- <i class="fas fa-calendar-alt text-white text-4xl"></i> --}}
                                 <img src="{{ asset('admin-assets/img/elements/1.png') }}">
