@@ -19,7 +19,7 @@ class UsersCreate extends Component
             'name' => 'required',
             'email' => 'required|email|unique:admins,email',
             'password' => 'required',
-            'role' => 'required|in:USER,ADMIN,SCANNER',
+            'role' => 'required|in:USER,ADMIN,SCANNER,SUPERVISOR',
             'phone' => 'nullable',
             'job_title' => 'nullable',
             'gender' => 'required|in:male,female',
@@ -29,6 +29,12 @@ class UsersCreate extends Component
     public function submit()
     {
         $data = $this->validate();
+
+        if (auth('admin')->user()->isSupervisor() && $this->role === Admin::ROLE_ADMIN) {
+            $this->addError('role', 'Supervisors cannot create Admin users.');
+            return;
+        }
+
         $data['password'] = Hash::make($this->password);
         // save image on my project
         Admin::create($data);

@@ -44,7 +44,7 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
     });
 
     // Routes accessible only by ADMIN role
-    Route::middleware(['auth:admin', 'admin.role:ADMIN'])->group(function () {
+    Route::middleware(['auth:admin', 'admin.role:ADMIN,SUPERVISOR'])->group(function () {
         // ========================================== All Attendances (Admin only)
         Route::view('attendances', 'admin.attendances.index')->name('attendances');
 
@@ -63,7 +63,7 @@ Route::prefix('/admin/')->name('admin.')->group(function (){
 
     // Routes accessible by ADMIN and SCANNER roles
     Route::middleware(['auth:admin'])->group(function () {
-        Route::middleware('admin.role:ADMIN,SCANNER')->group(function () {
+        Route::middleware('admin.role:ADMIN,SCANNER,SUPERVISOR')->group(function () {
             // ========================================== QR Scanner (Admin + Scanner only)
             Route::get('qr-scanner', [App\Http\Controllers\QRScannerController::class, 'index'])->name('qr-scanner');
             Route::post('validate-qr', [App\Http\Controllers\QRScannerController::class, 'validateQR'])->name('validate-qr');
@@ -95,7 +95,7 @@ Route::get('/download-qr/{attendance}', function (Attendance $attendance) {
     $userRole = $user->role;
 
     // ADMIN and SCANNER roles can download any QR code
-    if ($userRole === \App\Models\Admin::ROLE_ADMIN || $userRole === \App\Models\Admin::ROLE_SCANNER) {
+    if ($userRole === \App\Models\Admin::ROLE_ADMIN || $userRole === \App\Models\Admin::ROLE_SCANNER || $userRole === \App\Models\Admin::ROLE_SUPERVISOR) {
         // Allow access - continue
     }
     // USER role can only download their own QR code (must match admin_id)
@@ -142,7 +142,7 @@ Route::get('/view-qr/{attendance}', function (Attendance $attendance) {
     $userRole = $user->role;
 
     // ADMIN and SCANNER roles can view any QR code
-    if ($userRole === \App\Models\Admin::ROLE_ADMIN || $userRole === \App\Models\Admin::ROLE_SCANNER) {
+    if ($userRole === \App\Models\Admin::ROLE_ADMIN || $userRole === \App\Models\Admin::ROLE_SCANNER || $userRole === \App\Models\Admin::ROLE_SUPERVISOR) {
         // Allow access - continue
     }
     // USER role can only view their own QR code (must match admin_id)

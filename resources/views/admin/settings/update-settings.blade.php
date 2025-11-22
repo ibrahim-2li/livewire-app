@@ -75,7 +75,9 @@
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
+    @if(!auth()->user()->isSupervisor())
     <div class="col-md-12 mt-3">
         <button class="btn btn-primary">@lang('Submit')</button>
     </div>
+    @endif
 </form>

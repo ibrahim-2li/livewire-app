@@ -14,10 +14,10 @@
 
         <!-- Role selection dropdown -->
         <select class="form-control" wire:model="role">
-            <option value="">اختر صلاحية</option>
-            <option value="USER">USER</option>
-            <option value="ADMIN">ADMIN</option>
-            <option value="SCANNER">SCANNER</option>
+              <option value="">اختر صلاحية</option>
+            @foreach (\App\Models\Admin::ROLES as $key => $label)
+                <option value="{{ $key }}">{{ $label }}</option>
+            @endforeach
         </select>
 
         @include('admin.errors', ['property' => 'role'])

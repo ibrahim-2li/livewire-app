@@ -16,6 +16,9 @@
         <select class="form-control" wire:model="role">
             <option value="">اختر صلاحية</option>
             @foreach (\App\Models\Admin::ROLES as $key => $label)
+                @if(auth('admin')->user()->isSupervisor() && $key === \App\Models\Admin::ROLE_ADMIN)
+                    @continue
+                @endif
                 <option value="{{ $key }}">{{ $label }}</option>
             @endforeach
         </select>

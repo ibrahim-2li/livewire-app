@@ -32,7 +32,7 @@ class UsersUpdate extends Component
         return [
             'name' => 'required',
             'email' => 'required|email|unique:admins,email,' . $this->user->id,
-            'role' => 'required|in:USER,ADMIN,SCANNER',
+            'role' => 'required|in:USER,ADMIN,SCANNER,SUPERVISOR',
             'phone' => 'nullable',
             'job_title' => 'nullable',
             'gender' => 'required|in:male,female',

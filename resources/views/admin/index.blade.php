@@ -6,7 +6,7 @@
 
 @section('content')
 
-    @if (auth('admin')->user()->isAdmin())
+    @if (auth('admin')->user()->isAdmin() || auth('admin')->user()->isScanner() || auth('admin')->user()->isSupervisor())
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="mt-0 mb-3 d-flex justify-content-end diaplay-inline">
                 <!-- QR Scanner Button -->

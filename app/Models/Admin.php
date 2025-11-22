@@ -20,11 +20,13 @@ class Admin extends Authenticatable
     const ROLE_USER = 'USER';
     const ROLE_ADMIN = 'ADMIN';
     const ROLE_SCANNER = 'SCANNER';
+    const ROLE_SUPERVISOR = 'SUPERVISOR';
 
     const ROLES = [
         self::ROLE_USER => 'User',
         self::ROLE_ADMIN => 'Admin',
         self::ROLE_SCANNER => 'Scanner',
+        self::ROLE_SUPERVISOR => 'Supervisor',
     ];
 
     protected function avatar(): Attribute
@@ -109,6 +111,11 @@ class Admin extends Authenticatable
     public function isScanner(): bool
     {
         return $this->role === self::ROLE_SCANNER;
+    }
+
+    public function isSupervisor(): bool
+    {
+        return $this->role === self::ROLE_SUPERVISOR;
     }
 
     public function events(): HasMany

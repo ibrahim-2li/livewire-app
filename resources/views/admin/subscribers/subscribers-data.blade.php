@@ -25,10 +25,12 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
+                                    @if(!auth()->user()->isSupervisor())
                                     <a class="dropdown-item" href="#"
                                         wire:click.prevent="$dispatch('subscribersDelete',{id: {{ $record->id }}})"><i
                                             class="bx bx-trash me-1"></i>
                                         Delete</a>
+                                    @endif
                                 </div>
                             </div>
                         </td>

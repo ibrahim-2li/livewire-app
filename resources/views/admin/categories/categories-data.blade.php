@@ -22,6 +22,7 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
+                                    @if(!auth()->user()->isSupervisor())
                                     <a class="dropdown-item" href="#"
                                         wire:click.prevent="$dispatch('categoriesUpdate',{id: {{ $record->id }}})"><i
                                             class="bx bx-edit-alt me-1"></i>
@@ -30,6 +31,7 @@
                                         wire:click.prevent="$dispatch('categoriesDelete',{id: {{ $record->id }}})"><i
                                             class="bx bx-trash me-1"></i>
                                         Delete</a>
+                                    @endif
                                     <a class="dropdown-item" href="#"
                                         wire:click.prevent="$dispatch('categoriesShow',{id: {{ $record->id }}})"><i
                                             class="bx bx-show me-1"></i>

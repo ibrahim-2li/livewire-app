@@ -39,10 +39,12 @@
                                         wire:click.prevent="$dispatch('messagesShow',{id: {{ $record->id }}})"><i
                                             class="bx bx-show me-1"></i>
                                         @lang('Show')</a>
+                                    @if(!auth()->user()->isSupervisor())
                                     <a class="dropdown-item" href="#"
                                         wire:click.prevent="$dispatch('messagesDelete',{id: {{ $record->id }}})"><i
                                             class="bx bx-trash me-1"></i>
                                         @lang('Delete')</a>
+                                    @endif
                                 </div>
                             </div>
                         </td>

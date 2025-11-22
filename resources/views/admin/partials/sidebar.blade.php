@@ -106,7 +106,7 @@
             </a>
         </li> --}}
 
-        @if (auth('admin')->user()->isAdmin())
+        @if (auth('admin')->user()->isAdmin() || auth('admin')->user()->isScanner() || auth('admin')->user()->isSupervisor())
             <!-- Events (Admin only) -->
             <li class="menu-item @yield('events-active')">
                 <a href="{{ route('admin.events') }}" class="menu-link">
@@ -149,7 +149,7 @@
             </a>
         </li>
 
-        @if (auth('admin')->user()->isAdmin() || auth('admin')->user()->isScanner())
+        @if (auth('admin')->user()->isAdmin() || auth('admin')->user()->isScanner() || auth('admin')->user()->isSupervisor())
             <!-- QR Scanner (Admin + Scanner only) -->
             <li class="menu-item @yield('qr-scanner-active')">
                 <a href="{{ route('admin.qr-scanner') }}" class="menu-link">
