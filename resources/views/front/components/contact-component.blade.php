@@ -1,8 +1,48 @@
 <form wire:submit.prevent='submit' class='space-y-5 text-right'>
     @if (session()->has('message'))
-        <div class="alert alert-primary alert-dismissible fade show bg-green-600" role="alert">
-            {{ session('message') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div x-data="{ show: true }" 
+             x-init="setTimeout(() => show = false, 3000)" 
+             x-show="show"
+             x-transition:enter="transition ease-out duration-500"
+             x-transition:enter-start="transform -translate-x-full opacity-0"
+             x-transition:enter-end="transform translate-x-0 opacity-100"
+             x-transition:leave="transition ease-in duration-500"
+             x-transition:leave-start="transform translate-x-0 opacity-100"
+             x-transition:leave-end="transform -translate-x-full opacity-0"
+             class="fixed top-6 left-6 z-50 max-w-md w-full">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-r-4 border-green-500">
+                <!-- Progress Bar -->
+                <div class="h-1 bg-gradient-to-r from-green-500 to-emerald-500 toast-progress" style="animation-duration: 3s;"></div>
+
+                <div class="p-6">
+                    <div class="flex items-start gap-4">
+                        <!-- Icon -->
+                        <div class="flex-shrink-0">
+                            <div
+                                class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center checkmark-icon shadow-lg">
+                                <i class="fas fa-check text-white text-xl"></i>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-gray-900 mb-1">
+                                <i class="fas fa-check-circle text-green-500 ml-2"></i>
+                                @lang('Success')
+                            </h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                {{ session('message') }}
+                            </p>
+                        </div>
+
+                        <!-- Close Button -->
+                        <button @click="show = false" type="button"
+                            class="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors">
+                            <i class="fas fa-times text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     @endif
     <div>
