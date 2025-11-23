@@ -23,4 +23,5 @@ jobs:
           username: ${{secrets.FTP_USERNAME}}
           # ftp password
           password: ${{secrets.FTP_PASSWORD}}
+          server-dir: /website-b82e359f.bhz.ayr.mybluehost.me
           
