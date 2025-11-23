@@ -413,5 +413,6 @@
     "Role": "Role",
     "ADMIN": "ADMIN",
     "USER": "USER",
-    "SCANNER": "SCANNER"
+    "SCANNER": "SCANNER",
+    "Account": "Account"
 }

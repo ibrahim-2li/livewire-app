@@ -2,7 +2,7 @@
 
 @section('my-attendances-active', 'active')
 
-@section('title', 'my-attendances')
+@section('title', __('My Attendances'))
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">

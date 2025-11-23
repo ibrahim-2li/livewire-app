@@ -2,7 +2,7 @@
 
 @section('index-active', 'active')
 
-@section('title', 'Home')
+@section('title', __('Home'))
 
 @section('content')
 
