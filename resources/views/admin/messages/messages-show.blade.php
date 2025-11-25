@@ -28,12 +28,13 @@
                         <div class="col-md-6">
                             <label class="small text-muted d-block mb-1">@lang('Recipient')</label>
                             @php
-                                $email = App\Models\Setting::first()->email;
+                                $RecipientEmail = App\Models\Setting::first()->email;
                             @endphp
-                            <div class="fw-bold text-dark">{{ $email }}</div>
+                            <div class="fw-bold text-dark">{{ $RecipientEmail }}</div>
                         </div>
                         <div class="col-md-6">
                             <label class="small text-muted d-block mb-1">@lang('Sender')</label>
+                            <div class="fw-bold text-dark">{{ $name }}</div>
                             <div class="fw-bold text-dark">{{ $email }}</div>
                         </div>
                         <div class="col-md-6">

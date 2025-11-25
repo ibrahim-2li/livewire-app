@@ -7,8 +7,8 @@
             <thead>
                 <tr>
                     <th width="30%">@lang('Name')</th>
-                    <th width="30%">@lang('Email')</th>
-                    <th width="20%">@lang('Subject')</th>
+                    <th width="30%" class="d-none d-sm-table-cell col-sm-2 col-md-1">@lang('Email')</th>
+                    <th width="30%">@lang('Subject')</th>
                     <th width="10%">@lang('Status')</th>
                     <th>@lang('Actions')</th>
                 </tr>
@@ -17,11 +17,11 @@
                 @foreach ($data as $record)
                     <tr>
                         <td>
-                            <a class="dropdown-item" href="#"
+                            <a href="#"
                                         wire:click.prevent="$dispatch('messagesShow',{id: {{ $record->id }}})"><strong>{{ $record->name }}</strong>
                                         </a>
                         </td>
-                        <td>{{ $record->email }}</td>
+                        <td class="d-none d-sm-table-cell col-sm-2 col-md-1">{{ $record->email }}</td>
                         <td>{{ $record->subject }}</td>
                         <td>
                             <span class="{{ $record->status == '0' ? 'badge bg-success' : 'badge bg-danger' }}">
