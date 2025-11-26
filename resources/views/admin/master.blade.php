@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default"
+<html lang="ar" class="light-style layout-menu-fixed" dir="rtl" data-theme="theme-default"
     data-assets-path="{{ asset('admin-assets') }}/" data-template="vertical-menu-template-free">
 @include('admin.partials.head')
 
@@ -24,8 +24,8 @@
                 <div class="content-wrapper">
                     <!-- Success Toast Popup -->
                     @if (session('success'))
-                        <div id="successToast" class="toast-popup" style="position: fixed; top: 24px; left: 24px; z-index: 9999; max-width: 400px; width: 90%;">
-                            <div style="background: white; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); overflow: hidden; border-right: 4px solid #10b981;">
+                        <div id="successToast" class="toast-popup" style="position: fixed; top: 24px; right: 24px; z-index: 9999; max-width: 400px; width: 90%;">
+                            <div style="background: white; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); overflow: hidden; border-left: 4px solid #10b981;">
                                 <!-- Progress Bar -->
                                 <div class="toast-progress" style="height: 4px; background: linear-gradient(to right, #10b981, #059669);"></div>
                                 

@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="{{ asset('admin-assets') }}/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
+    <link rel="stylesheet" href="{{ asset('admin-assets') }}/css/rtl.css" />
 
     <!-- Helpers -->
     <script src="{{ asset('admin-assets') }}/vendor/js/helpers.js"></script>
@@ -47,7 +48,7 @@
     <style>
         @keyframes slideInRight {
             from {
-                transform: translateX(-100%);
+                transform: translateX(100%);
                 opacity: 0;
             }
             to {
@@ -62,7 +63,7 @@
                 opacity: 1;
             }
             to {
-                transform: translateX(-100%);
+                transform: translateX(100%);
                 opacity: 0;
             }
         }

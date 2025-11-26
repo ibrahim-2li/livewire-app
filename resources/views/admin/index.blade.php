@@ -23,10 +23,10 @@
                 <div class="col-md-6 col-lg-4 order-1 mb-4">
                     <div class="card h-100">
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <div class="card-body">
-                                <h5 class="card-title m-0 me-2">@lang('Attend by Countries')</h5>
+                            
+                                <!-- <h5 class="card-title m-0 me-2">@lang('Attend by Countries')</h5> -->
                                 <canvas id="countriesChart"></canvas>
-                            </div>
+                           
 
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                             <script>
@@ -55,7 +55,7 @@
                                             responsive: true,
                                             plugins: {
                                                 legend: {
-                                                    position: 'right', // legend on the side
+                                                    position: 'bottom', // legend on the side
                                                 },
                                                 title: {
                                                     display: true,
@@ -70,31 +70,6 @@
                             </script>
                         </div>
 
-                        {{-- <div class="card-body">
-                            @if (isset($countryNames) && isset($countryCounts) && count($countryNames) === count($countryCounts))
-                                @foreach (array_combine($countryNames, $countryCounts) as $country => $count)
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center mb-2">
-                                            <div class="avatar me-4">
-                                                <span
-                                                    class="avatar-initial bg-label-secondary rounded-circle">{{ Str::limit($country, 2, '') }}</span>
-                                            </div>
-                                            <div>
-                                                <div class="d-flex align-items-center gap-1 mb-1">
-
-                                                </div>
-                                                <p class="mb-0">{{ $country }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="text-end">
-                                            <h6 class="mb-1">{{ $count }}</h6>
-                                            <small class="text-body-secondary">@lang('Registeraed')</small>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @endif
-
-                        </div> --}}
                     </div>
                 </div>
                 <!--/ Sales by Countries -->
