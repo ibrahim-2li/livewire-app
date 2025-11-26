@@ -35,7 +35,9 @@
     <link rel="stylesheet" href="{{ asset('admin-assets') }}/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
-    <link rel="stylesheet" href="{{ asset('admin-assets') }}/css/rtl.css" />
+    @if (app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="{{ asset('admin-assets') }}/css/rtl.css" />
+    @endif
 
     <!-- Helpers -->
     <script src="{{ asset('admin-assets') }}/vendor/js/helpers.js"></script>

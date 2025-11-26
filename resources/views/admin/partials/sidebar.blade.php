@@ -50,7 +50,7 @@
                 $settings = App\Models\Setting::first();
             @endphp
             <span
-                class="app-brand-text demo menu-text fw-bolder ms-0">{{ \Illuminate\Support\Str::words($settings->name, 1, '') }}
+                class="app-brand-text demo menu-text fw-bolder ms-2">{{ \Illuminate\Support\Str::words($settings->name, 1, '') }}
             </span>
         </a>
 

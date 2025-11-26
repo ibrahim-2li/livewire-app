@@ -17,7 +17,20 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin.role' => CheckAdminRole::class,
         ]);
+        
+        // Exclude locale cookie from encryption
+        $middleware->encryptCookies(except: [
+            'locale',
+        ]);
+        
+        // Add to web middleware group with priority after session
         $middleware->web(append: [
+            \App\Http\Middleware\LanguageManager::class,
+        ]);
+        
+        // Set priority to run after StartSession
+        $middleware->priority([
+            \Illuminate\Session\Middleware\StartSession::class,
             \App\Http\Middleware\LanguageManager::class,
         ]);
     })->withMiddleware(function (Middleware $middleware) {

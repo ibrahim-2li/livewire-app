@@ -10,12 +10,16 @@ class LanguageManager
 {
     public function handle(Request $request, Closure $next)
     {
-        $locale = session('locale');
-        if (!$locale) {
-            $locale = $request->cookie('locale');
-        }
-        if ($locale) {
+        if ($request->session()->has('locale')) {
+            $locale = $request->session()->get('locale');
+            \Illuminate\Support\Facades\Log::info('LanguageManager: Setting locale from session', ['locale' => $locale]);
             App::setLocale($locale);
+        } elseif ($request->cookie('locale')) {
+            $locale = $request->cookie('locale');
+            \Illuminate\Support\Facades\Log::info('LanguageManager: Setting locale from cookie', ['locale' => $locale]);
+            App::setLocale($locale);
+        } else {
+             \Illuminate\Support\Facades\Log::info('LanguageManager: No locale found in session or cookie');
         }
 
         return $next($request);
