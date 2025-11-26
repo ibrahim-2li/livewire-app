@@ -18,7 +18,7 @@
                     <tr>
                         <td>
                             <a href="#"
-                                        wire:click.prevent="$dispatch('messagesShow',{id: {{ $record->id }}})"><strong>{{ $record->name }}</strong>
+                                        wire:click.prevent="$dispatch('messagesShow',{id: {{ $record->id }}})"><strong class="{{ $record->status == '0' ? 'text-success' : 'text-gray' }}">{{ $record->name }}</strong>
                                         </a>
                         </td>
                         <td class="d-none d-sm-table-cell col-sm-2 col-md-1">{{ $record->email }}</td>

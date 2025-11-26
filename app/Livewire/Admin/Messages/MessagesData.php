@@ -21,6 +21,6 @@ class MessagesData extends Component
     public function render()
     {
         return view('admin.messages.messages-data',
-        ['data'=>Message::where('name','like','%'. $this->serarch .'%')->paginate(10)]);
+        ['data'=>Message::where('name','like','%'. $this->serarch .'%')->latest()->paginate(10)]);
     }
 }

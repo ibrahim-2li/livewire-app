@@ -83,7 +83,7 @@ class AttendancesData extends Component
     public function render()
     {
         // Use filtered query which already includes all filters
-        $data = $this->filteredQuery->paginate(10);
+        $data = $this->filteredQuery->paginate(15);
 
         // Get distinct countries for dropdown
         $countries = Attendance::whereNotNull('country')
