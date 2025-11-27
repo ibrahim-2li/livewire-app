@@ -58,11 +58,11 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <strong>@lang('Attendee') :</strong><br>
-                                                        <span v-text="scanResult.attendance.attendee_name"></span>
+                                                        <span v-text="scanResult.attendance.name"></span>
                                                     </div>
                                                     <div class="col-6">
                                                         <strong>@lang('Email') :</strong><br>
-                                                        <span v-text="scanResult.attendance.attendee_email"></span>
+                                                        <span v-text="scanResult.attendance.email"></span>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -105,7 +105,7 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <strong>@lang('Attendee') :</strong><br>
-                                                            <span v-text="scanResult.attendance.attendee_name"></span>
+                                                            <span v-text="scanResult.attendance.name"></span>
                                                         </div>
                                                         <div class="col-6">
                                                             <strong>@lang('Already Used At') :</strong><br>
@@ -340,8 +340,8 @@
                         type: 'attendance',
                         event_id: 1,
                         token: 'attend_402ad7bd2e3c7565c6b539611aed468f',
-                        attendee_name: 'Admin',
-                        attendee_email: 'admin@admin.com'
+                        name: 'Admin',
+                        email: 'admin@admin.com'
                     });
 
                     console.log('Simulating scan with real data:', testData);
@@ -356,8 +356,8 @@
                     <div style="font-family: Arial, sans-serif; padding: 20px;">
                         <h2>@lang('Attendance Confirmation')</h2>
                         <hr>
-                        <p><strong>@lang('Attendee') :</strong> ${this.scanResult.attendance.attendee_name}</p>
-                        <p><strong>@lang('Email') :</strong> ${this.scanResult.attendance.attendee_email}</p>
+                        <p><strong>@lang('Attendee') :</strong> ${this.scanResult.attendance.name}</p>
+                        <p><strong>@lang('Email') :</strong> ${this.scanResult.attendance.email}</p>
                         <p><strong>@lang('Event') :</strong> ${this.scanResult.attendance.event_title}</p>
                         <p><strong>@lang('Location') :</strong> ${this.scanResult.attendance.event_location}</p>
                         <p><strong>@lang('Date') :</strong> ${this.scanResult.attendance.event_date}</p>

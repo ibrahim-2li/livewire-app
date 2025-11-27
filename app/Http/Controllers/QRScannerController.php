@@ -43,8 +43,8 @@ class QRScannerController extends Controller
                     'success' => false,
                     'message' => 'QR code already used',
                     'attendance' => [
-                        'attendee_name' => $attendance->attendee_name,
-                        'attendee_email' => $attendance->attendee_email,
+                        'name' => $attendance->name,
+                        'email' => $attendance->email,
                         'event_title' => $attendance->event->title,
                         'used_at' => $attendance->used_at,
                         'checked_in_by' => $attendance->checked_in_by
@@ -70,8 +70,8 @@ class QRScannerController extends Controller
                 'success' => true,
                 'message' => 'Attendance validated successfully',
                 'attendance' => [
-                    'attendee_name' => $attendance->attendee_name,
-                    'attendee_email' => $attendance->attendee_email,
+                    'name' => $attendance->name,
+                    'email' => $attendance->email,
                     'event_title' => $attendance->event->title,
                     'event_location' => $attendance->event->location,
                     'event_date' => $attendance->event->start_date,
