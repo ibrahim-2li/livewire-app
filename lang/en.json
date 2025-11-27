@@ -414,5 +414,7 @@
     "ADMIN": "ADMIN",
     "USER": "USER",
     "SCANNER": "SCANNER",
-    "Account": "Account"
+    "Account": "Account",
+    "Light Mode": "Light Mode",
+    "Dark Mode": "Dark Mode"
 }

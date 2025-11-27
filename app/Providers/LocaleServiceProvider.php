@@ -43,5 +43,23 @@ class LocaleServiceProvider extends ServiceProvider
         } else {
             \Illuminate\Support\Facades\Log::info('LocaleServiceProvider: Using default locale', ['default' => config('app.locale')]);
         }
+        
+        // Set theme from session or cookie
+        $theme = null;
+        
+        if (Session::has('theme')) {
+            $theme = Session::get('theme');
+        } elseif (request()->hasCookie('theme')) {
+            $theme = request()->cookie('theme');
+            Session::put('theme', $theme);
+        }
+        
+        // Default to light theme if not set
+        if (!$theme || !in_array($theme, ['light', 'dark'], true)) {
+            $theme = 'light';
+        }
+        
+        // Share theme with all views
+        view()->share('currentTheme', $theme);
     }
 }

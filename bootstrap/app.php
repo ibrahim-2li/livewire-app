@@ -21,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Exclude locale cookie from encryption
         $middleware->encryptCookies(except: [
             'locale',
+            'theme',
         ]);
         
         // Add to web middleware group with priority after session

@@ -27,20 +27,16 @@
 
             </div>
         </div>
-
-
     </div>
-
     <!-- Available QR Codes Card -->
     <div class="card mb-4 shadow-sm">
-        <div class="card-header bg-white d-flex justify-content-center align-items-center">
+        <div class="card-header bg-primary d-flex justify-content-center align-items-center">
             <div>
-                <h5 class="mb-0 font-weight-bold">@lang('Available QR Codes')</h5>
+                <h5 class="mb-0 font-weight-bold text-white">@lang('Available QR Codes')</h5>
 
             </div>
 
         </div>
-
         <div class="card-body p-0">
             <table class="table table-hover mb-0 text-center">
                 <thead class="thead-light">
@@ -57,7 +53,7 @@
                             <tr>
                                 <td>{{ $qr->event->title }}</td>
                                 <td>
-                                    <a href="{{ route('view-qr', $qr->id) }}" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('view-qr', $qr->id) }}" class="btn btn-sm btn-primary text-white">
                                         <i class="fas fa-qrcode"></i> @lang('Show QR')
                                     </a>
                                 </td>
@@ -78,19 +74,14 @@
                 </tbody>
             </table>
         </div>
-
-
     </div>
-
     <!-- Attendance Records Card -->
     <div class="card shadow-sm">
-        <div class="card-header bg-white d-flex justify-content-center align-items-center">
+        <div class="card-header bg-primary d-flex justify-content-center align-items-center">
             <div>
-                <h5 class="mb-0 font-weight-bold">@lang('Attendance Records')</h5>
+                <h5 class="mb-0 font-weight-bold text-white">@lang('Attendance Records')</h5>
             </div>
-
         </div>
-
         <div class="card-body p-0">
             <table class="table table-hover mb-0 text-center">
                 <thead class="thead-light">
@@ -101,15 +92,12 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @if ($qrcodesUsed && $qrcodesUsed->count() > 0)
                         @foreach ($qrcodesUsed as $qrused)
                             <tr>
                                 <td>{{ $qrused->event->title }}</td>
-
                                 <td>{{ $qrused->event->location }}</td>
                                 <td>{{ $qrused->used_at }}</td>
-
                             </tr>
                         @endforeach
                     @else
@@ -123,14 +111,8 @@
                             </td>
                         </tr>
                     @endif
-
-
-
                 </tbody>
             </table>
         </div>
-
-
     </div>
-
 </div>

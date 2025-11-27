@@ -38,6 +38,10 @@
     @if (app()->getLocale() == 'ar')
         <link rel="stylesheet" href="{{ asset('admin-assets') }}/css/rtl.css" />
     @endif
+    
+    @if (isset($currentTheme) && $currentTheme == 'dark')
+        <link rel="stylesheet" href="{{ asset('admin-assets') }}/css/dark-mode.css" />
+    @endif
 
     <!-- Helpers -->
     <script src="{{ asset('admin-assets') }}/vendor/js/helpers.js"></script>

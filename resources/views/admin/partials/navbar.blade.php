@@ -5,7 +5,6 @@
             <i class="bx bx-menu bx-sm"></i>
         </a>
     </div>
-
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <!-- Search -->
         <div class="navbar-nav align-items-center">
@@ -37,6 +36,32 @@
                 </ul>
             </li>
             <!--/ Language -->
+            
+            <!-- Theme Switcher -->
+            <li class="nav-item dropdown me-2 me-xl-0">
+                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    @if($currentTheme == 'dark')
+                        <i class='bx bx-moon bx-sm'></i>
+                    @else
+                        <i class='bx bx-sun bx-sm'></i>
+                    @endif
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item {{ $currentTheme == 'light' ? 'active' : '' }}" href="{{ route('theme.swap', 'light') }}">
+                            <i class='bx bx-sun me-2'></i>
+                            <span class="align-middle">@lang('Light Mode')</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item {{ $currentTheme == 'dark' ? 'active' : '' }}" href="{{ route('theme.swap', 'dark') }}">
+                            <i class='bx bx-moon me-2'></i>
+                            <span class="align-middle">@lang('Dark Mode')</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!--/ Theme Switcher -->
 
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">

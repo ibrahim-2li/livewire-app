@@ -10,7 +10,7 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="mt-0 mb-3 d-flex justify-content-end diaplay-inline">
                 <!-- QR Scanner Button -->
-                <a href="{{ route('admin.qr-scanner') }}" class="btn btn-primary">
+                <a href="{{ route('admin.qr-scanner') }}" class="btn btn-primary text-white">
                     <i class="fas fa-qrcode"></i> @lang('Scan QR Code')
                 </a>
             </div>
@@ -621,7 +621,7 @@
                     <p class="card-text">@lang('You are logged in as a user. You can scan QR codes to check in for events.')</p>
                     <div class="mt-0 mb-3 d-flex justify-content-end diaplay-inline">
                         <!-- QR Scanner Button -->
-                        <a href="{{ route('admin.my-attendances') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.my-attendances') }}" class="btn btn-primary text-white">
                             <i class="fas fa-qrcode"></i> @lang('Go to QR Code')
                         </a>
                     </div>

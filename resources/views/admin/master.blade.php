@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" class="light-style layout-menu-fixed" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" data-theme="theme-default"
+<html lang="{{ app()->getLocale() }}" class="{{ $currentTheme }}-style layout-menu-fixed" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" data-theme="theme-default"
     data-assets-path="{{ asset('admin-assets') }}/" data-template="vertical-menu-template-free">
 @include('admin.partials.head')
 

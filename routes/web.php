@@ -10,6 +10,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/language/{locale}', [LanguageController::class, 'swap'])->name('language.swap');
+Route::get('/theme/{theme}', [App\Http\Controllers\ThemeController::class, 'swap'])->name('theme.swap');
 
 
 require __DIR__.'/auth.php';
