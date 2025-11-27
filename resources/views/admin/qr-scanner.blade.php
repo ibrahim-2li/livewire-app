@@ -57,7 +57,7 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <strong>@lang('Attendee') :</strong><br>
+                                                        <strong>@lang('Name') :</strong><br>
                                                         <span v-text="scanResult.attendance.name"></span>
                                                     </div>
                                                     <div class="col-6">
@@ -104,7 +104,7 @@
                                                     <hr>
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <strong>@lang('Attendee') :</strong><br>
+                                                            <strong>@lang('Name') :</strong><br>
                                                             <span v-text="scanResult.attendance.name"></span>
                                                         </div>
                                                         <div class="col-6">
@@ -356,7 +356,7 @@
                     <div style="font-family: Arial, sans-serif; padding: 20px;">
                         <h2>@lang('Attendance Confirmation')</h2>
                         <hr>
-                        <p><strong>@lang('Attendee') :</strong> ${this.scanResult.attendance.name}</p>
+                        <p><strong>@lang('Name') :</strong> ${this.scanResult.attendance.name}</p>
                         <p><strong>@lang('Email') :</strong> ${this.scanResult.attendance.email}</p>
                         <p><strong>@lang('Event') :</strong> ${this.scanResult.attendance.event_title}</p>
                         <p><strong>@lang('Location') :</strong> ${this.scanResult.attendance.event_location}</p>
