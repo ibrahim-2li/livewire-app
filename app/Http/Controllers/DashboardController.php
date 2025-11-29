@@ -83,7 +83,7 @@ class DashboardController extends Controller
         $usersGrowthClass = $usersGrowthPercent > 0 ? 'text-success' : ($usersGrowthPercent < 0 ? 'text-danger' : 'text-secondary');
         $usersGrowthIcon = $usersGrowthPercent > 0 ? 'bx-chevron-up' : ($usersGrowthPercent < 0 ? 'bx-chevron-down' : 'bx-minus');
 
-        $attendances = Attendance::with('event')->whereNotNull('used_at')->latest()->take(6)->get();
+        $attendances = Attendance::with('event')->whereNotNull('used_at')->latest('used_at')->limit(6)->get();
 
         $todayEvent = Event::with('attendances')->whereDate('start_date', now())->first();
 
