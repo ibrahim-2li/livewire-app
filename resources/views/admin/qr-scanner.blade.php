@@ -12,121 +12,123 @@
             </h4>
         </div>
 
-        <div class="row g-4">
-            <!-- Scanner Section -->
-            <div class="col-lg-6">
-                <div class="card h-100">
-                    <div class="card-header">
-                        <h5 class="mb-0">
-                            <i class="bx bx-camera me-2"></i>
-                            @lang('Camera Scanner')
-                        </h5>
-                    </div>
-                    <div class="card-body text-center">
-                        <div id="qr-reader" style="width: 100%;"></div>
-                        
-                        <div v-if="scanning" class="mt-3">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">@lang('Processing...')</span>
-                            </div>
-                            <p class="mt-2 text-muted">@lang('Processing QR code...')</p>
+        <div id="qr-scanner-app">
+            <div class="row g-4">
+                <!-- Scanner Section -->
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="bx bx-camera me-2"></i>
+                                @lang('Camera Scanner')
+                            </h5>
                         </div>
-                        
-                        <div class="mt-3">
-                            <small class="text-muted">
-                                @lang('Scanner Status'): <span id="scanner-status" class="fw-semibold">@lang('Initializing...')</span>
-                            </small>
+                        <div class="card-body text-center">
+                            <div id="qr-reader" style="width: 100%;"></div>
+                            
+                            <div v-if="scanning" class="mt-3">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">@lang('Processing...')</span>
+                                </div>
+                                <p class="mt-2 text-muted">@lang('Processing QR code...')</p>
+                            </div>
+                            
+                            <div class="mt-3">
+                                <small class="text-muted">
+                                    @lang('Scanner Status'): <span id="scanner-status" class="fw-semibold">@lang('Initializing...')</span>
+                                </small>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Results Section -->
-            <div class="col-lg-6">
-                <div class="card h-100">
-                    <div class="card-header">
-                        <h5 class="mb-0">
-                            <i class="bx bx-check-shield me-2"></i>
-                            @lang('Scan Results')
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <!-- Success Result -->
-                        <div v-if="scanResult && scanResult.success" class="alert alert-success">
-                            <h6 class="alert-heading">
-                                <i class="fas fa-check-circle me-2"></i>@lang('Attendance Validated!')
-                            </h6>
-                            <hr>
-                            <div class="row g-3">
-                                <div class="col-6">
-                                    <strong>@lang('Name'):</strong><br>
-                                    <span v-text="scanResult.attendance.name"></span>
-                                </div>
-                                <div class="col-6">
-                                    <strong>@lang('Email'):</strong><br>
-                                    <span v-text="scanResult.attendance.email"></span>
-                                </div>
-                                <div class="col-12">
-                                    <strong>@lang('Event'):</strong><br>
-                                    <span v-text="scanResult.attendance.event_title"></span>
-                                </div>
-                                <div class="col-6">
-                                    <strong>@lang('Location'):</strong><br>
-                                    <span v-text="scanResult.attendance.event_location"></span>
-                                </div>
-                                <div class="col-6">
-                                    <strong>@lang('Date'):</strong><br>
-                                    <span v-text="scanResult.attendance.event_date"></span>
-                                </div>
-                                <div class="col-6">
-                                    <strong>@lang('Checked In At'):</strong><br>
-                                    <span v-text="scanResult.attendance.checked_in_at"></span>
-                                </div>
-                                <div class="col-6">
-                                    <strong>@lang('Checked In By'):</strong><br>
-                                    <span v-text="scanResult.attendance.checked_in_by"></span>
-                                </div>
-                            </div>
+                <!-- Results Section -->
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="bx bx-check-shield me-2"></i>
+                                @lang('Scan Results')
+                            </h5>
                         </div>
-
-                        <!-- Error Result -->
-                        <div v-if="scanResult && !scanResult.success" class="alert alert-danger">
-                            <h6 class="alert-heading">
-                                <i class="fas fa-exclamation-triangle me-2"></i>@lang('Validation Failed')
-                            </h6>
-                            <p v-text="scanResult.message" class="mb-0"></p>
-                            <div v-if="scanResult.attendance" class="mt-3">
+                        <div class="card-body">
+                            <!-- Success Result -->
+                            <div v-if="scanResult && scanResult.success" class="alert alert-success">
+                                <h6 class="alert-heading">
+                                    <i class="fas fa-check-circle me-2"></i>@lang('Attendance Validated!')
+                                </h6>
                                 <hr>
-                                <div class="row">
+                                <div class="row g-3">
                                     <div class="col-6">
                                         <strong>@lang('Name'):</strong><br>
                                         <span v-text="scanResult.attendance.name"></span>
                                     </div>
                                     <div class="col-6">
-                                        <strong>@lang('Already Used At'):</strong><br>
-                                        <span v-text="scanResult.attendance.used_at"></span>
+                                        <strong>@lang('Email'):</strong><br>
+                                        <span v-text="scanResult.attendance.email"></span>
+                                    </div>
+                                    <div class="col-12">
+                                        <strong>@lang('Event'):</strong><br>
+                                        <span v-text="scanResult.attendance.event_title"></span>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong>@lang('Location'):</strong><br>
+                                        <span v-text="scanResult.attendance.event_location"></span>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong>@lang('Date'):</strong><br>
+                                        <span v-text="scanResult.attendance.event_date"></span>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong>@lang('Checked In At'):</strong><br>
+                                        <span v-text="scanResult.attendance.checked_in_at"></span>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong>@lang('Checked In By'):</strong><br>
+                                        <span v-text="scanResult.attendance.checked_in_by"></span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- No Scan Yet -->
-                        <div v-if="!scanResult" class="text-center text-muted py-5">
-                            <div class="avatar avatar-xl bg-label-secondary rounded-circle mb-3 mx-auto">
-                                <i class="bx bx-qr-scan fs-1"></i>
+                            <!-- Error Result -->
+                            <div v-if="scanResult && !scanResult.success" class="alert alert-danger">
+                                <h6 class="alert-heading">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>@lang('Validation Failed')
+                                </h6>
+                                <p v-text="scanResult.message" class="mb-0"></p>
+                                <div v-if="scanResult.attendance" class="mt-3">
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <strong>@lang('Name'):</strong><br>
+                                            <span v-text="scanResult.attendance.name"></span>
+                                        </div>
+                                        <div class="col-6">
+                                            <strong>@lang('Already Used At'):</strong><br>
+                                            <span v-text="scanResult.attendance.used_at"></span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h5 class="mb-2">@lang('Ready to Scan')</h5>
-                            <p class="mb-0">@lang('Scan a QR code to see results here')</p>
-                        </div>
 
-                        <!-- Action Buttons -->
-                        <div v-if="scanResult" class="mt-4 text-center">
-                            <button @click="clearResult" class="btn btn-outline-secondary me-2">
-                                <i class="bx bx-refresh me-1"></i>@lang('Scan Another')
-                            </button>
-                            <button v-if="scanResult.success" @click="printResult" class="btn btn-primary">
-                                <i class="bx bx-printer me-1"></i>@lang('Print Receipt')
-                            </button>
+                            <!-- No Scan Yet -->
+                            <div v-if="!scanResult" class="text-center text-muted py-5">
+                                <div class="avatar avatar-xl bg-label-secondary rounded-circle mb-3 mx-auto">
+                                    <i class="bx bx-qr-scan fs-1"></i>
+                                </div>
+                                <h5 class="mb-2">@lang('Ready to Scan')</h5>
+                                <p class="mb-0">@lang('Scan a QR code to see results here')</p>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div v-if="scanResult" class="mt-4 text-center">
+                                <button @click="clearResult" class="btn btn-outline-secondary me-2">
+                                    <i class="bx bx-refresh me-1"></i>@lang('Scan Another')
+                                </button>
+                                <button v-if="scanResult.success" @click="printResult" class="btn btn-primary">
+                                    <i class="bx bx-printer me-1"></i>@lang('Print Receipt')
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
