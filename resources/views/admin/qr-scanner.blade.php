@@ -232,17 +232,21 @@
                             })
                         })
                         .then(response => {
-                            if (!response.ok) {
-                                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                            }
-                            return response.json();
+                            // Parse JSON regardless of status code
+                            return response.json().then(data => {
+                                return {
+                                    ok: response.ok,
+                                    status: response.status,
+                                    data: data
+                                };
+                            });
                         })
-                        .then(data => {
-                            this.scanResult = data;
+                        .then(result => {
+                            this.scanResult = result.data;
                             this.validating = false;
                             this.scanning = false;
 
-                            if (data.success) {
+                            if (result.data.success) {
                                 this.updateScannerStatus('@lang('Validation successful!')');
                             } else {
                                 this.updateScannerStatus('@lang('Validation failed')');
