@@ -11,6 +11,4 @@
         @livewire('admin.account.update-account')
     </div>
 
-    </div>
-
 @endsection

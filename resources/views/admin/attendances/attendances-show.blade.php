@@ -62,7 +62,7 @@
                                     <label class="small text-muted d-block mb-1">@lang('QR Code')</label>
                                     @if ($qrcodes && $qrcodes->count() > 0 && $used_at === null)
                                             @foreach ($qrcodes as $qr)
-                                                <a href="{{ route('view-qr', $qr->id) }}" class="btn btn-sm btn-primary">
+                                                <a href="{{ route('view-qr', $qr->id) }}" target="_blank" class="btn btn-sm btn-primary">
                                                     <i class="fas fa-qrcode"></i> @lang('Show QR')
                                                 </a>
                                             @endforeach

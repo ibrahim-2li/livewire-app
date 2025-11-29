@@ -416,5 +416,17 @@
     "ADMIN": "مدير النظام",
     "USER": "مستخدم",
     "SCANNER": "ماسح QR",
-    "Account": "الحساب"
+    "Account": "الحساب",
+    "Old Password": "كلمة المرور القديمة",
+    "New Password": "كلمة المرور الجديدة",
+    "Confirm New Password": "تأكيد كلمة المرور الجديدة",
+    "Update Password": "تعديل كلمة المرور",
+    "Current Password": "كلمة المرور الحالية",
+    "Update Password Successful": "تم تعديل كلمة المرور بنجاح",
+    "Update Password Failed": "فشل تعديل كلمة المرور",
+    "Password updated successfully.": "تم تعديل كلمة المرور بنجاح",
+    "Password updated failed.": "فشل تعديل كلمة المرور",
+    "current password": "كلمة المرور الحالية",
+    "new password": "كلمة المرور الجديدة",
+    "confirm new password": "تأكيد كلمة المرور الجديدة"
 }

@@ -42,9 +42,9 @@ class UsersUpdate extends Component
     public function submit()
     {
         $data = $this->validate();
-        if($this->password){
-            $data['password'] = Hash::make($this->password);
-        }
+        // if($this->password){
+        //     $data['password'] = Hash::make($this->password);
+        // }
         $this->user->update($data);
         $this->dispatch('editModalToggle');
         $this->dispatch('refreshData')->to(UsersData::class);

@@ -654,5 +654,5 @@
         </div>
         <!-- /Account -->
     </div>
-    @livewire('admin.account.delete-account')
+    @livewire('admin.account.update-password')
 </div>
