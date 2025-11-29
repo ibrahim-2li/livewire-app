@@ -428,5 +428,19 @@
     "Password updated failed.": "فشل تعديل كلمة المرور",
     "current password": "كلمة المرور الحالية",
     "new password": "كلمة المرور الجديدة",
-    "confirm new password": "تأكيد كلمة المرور الجديدة"
+    "confirm new password": "تأكيد كلمة المرور الجديدة",
+    "Event Image": "صورة الفعالية",
+    "Active": "نشط",
+    "Inactive": "غير نشط",
+    "Search events...": "بحث عن الفعاليات...",
+    "No attendances found": "لا يوجد حضور",
+    "Try adjusting your search or filters.": "حاول تعديل البحث أو الفلاتر.",
+    "Search messages...": "بحث في الرسائل...",
+    "No messages found": "لا توجد رسائل",
+    "Try adjusting your search.": "حاول تعديل البحث.",
+    "New": "جديدة",
+    "Read": "مقروءة",
+    "Search users...": "بحث في المستخدمين...",
+    "No users found": "لا يوجد مستخدمين",
+    "User Name": "اسم المستخدم"
 }

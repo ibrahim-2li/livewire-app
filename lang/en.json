@@ -426,5 +426,19 @@
     "Password updated failed.": "Password updated failed.",
     "current password": "current password",
     "new password": "new password",
-    "confirm new password": "confirm new password"
+    "confirm new password": "confirm new password",
+    "Event Image": "Event Image",
+    "Active": "Active",
+    "Inactive": "Inactive",
+    "Search events...": "Search events...",
+    "No attendances found": "No attendances found",
+    "Try adjusting your search or filters.": "Try adjusting your search or filters.",
+    "Search messages...": "Search messages...",
+    "No messages found": "No messages found",
+    "Try adjusting your search.": "Try adjusting your search.",
+    "New": "New",
+    "Read": "Read",
+    "Search users...": "Search users...",
+    "No users found": "No users found",
+    "User Name": "User Name"
 }

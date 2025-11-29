@@ -21,6 +21,6 @@ class UsersData extends Component
     public function render()
     {
         return view('admin.users.users-data',
-        ['data'=>Admin::where('name','like','%'. $this->serarch .'%')->paginate(10)]);
+        ['data'=>Admin::where('name','like','%'. $this->serarch .'%')->orWhere('email','like','%'. $this->serarch .'%')->paginate(10)]);
     }
 }

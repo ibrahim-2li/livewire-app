@@ -61,72 +61,124 @@
                 </div>
 
                 @if (count($data) > 0)
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th width="30%">@lang('Name')</th>
-                                <th width="25%" class="d-none d-sm-table-cell">@lang('Phone')</th>
-                                <th width="25%" class="d-none d-sm-table-cell">@lang('Email')</th>
-                                <!-- Hide on mobile -->
-                                {{-- <th width="25%">@lang('Events')</th> --}}
-                                <th width="20%">@lang('Country')</th>
-                                <th width="15%">@lang('Arrived At')</th>
-                                <th width="25%" class="d-none d-sm-table-cell">@lang('Checked By')</th>
-                                <!-- Hide on mobile -->
-                                <th class="col-12 col-sm-1">
-                                    <i class="menu-icon tf-icons bx bx-cog"></i>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-border-bottom-0">
-                            @foreach ($data as $record)
-                                <tr>
-                                    <td>
-                                        <a class="dropdown-item" href="#"
-                                            wire:click.prevent="$dispatch('attendancesShow',{id: {{ $record->id }}})">
-                                            <strong>{{ $record->user->name }}</strong></a></td>
-                                    <td width="25%" class="d-none d-sm-table-cell">
-                                        <strong>{{ $record->user->phone }}</strong>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell"><strong>{{ $record->user->email }}</strong>
-                                    </td> <!-- Hide on mobile -->
-                                    {{-- <td><strong>{{ $record->event->title }}</strong></td> --}}
-                                    <td><strong>{{ __($record->country) }}</strong></td>
-                                    <td><strong class="text-success">{{ $record->used_at }}</strong></td>
-                                    <td class="d-none d-sm-table-cell"><strong>{{ $record->checked_in_by }}</strong>
-                                    </td> <!-- Hide on mobile -->
+                    <div class="row g-3">
+                        @foreach ($data as $record)
+                            <div class="col-12">
+                                <div class="card border shadow-none hover-shadow transition-all">
+                                    <div class="card-body p-3 p-md-4">
+                                        <div class="row align-items-center g-3">
+                                            <!-- User Info -->
+                                            <div class="col-12 col-md-4">
+                                                <div class="d-flex align-items-center justify-content-between mb-2 mb-md-0">
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <div class="avatar avatar-sm bg-label-primary rounded p-2 d-flex align-items-center justify-content-center">
+                                                            <i class="bx bx-user fs-4"></i>
+                                                        </div>
+                                                        <div>
+                                                            <a href="#" class="text-heading fw-bold mb-0" wire:click.prevent="$dispatch('attendancesShow',{id: {{ $record->id }}})">
+                                                                {{ $record->user->name }}
+                                                            </a>
+                                                            <div class="d-md-none mt-1 text-muted small">
+                                                                <i class="bx bx-phone me-1"></i>{{ $record->user->phone }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Mobile Actions Dropdown -->
+                                                    <div class="d-md-none">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                                <i class="bx bx-dots-vertical-rounded fs-4 text-muted"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                @if(!auth()->user()->isSupervisor())
+                                                                    <a class="dropdown-item" href="#" wire:click.prevent="$dispatch('attendancesUpdate',{id: {{ $record->id }}})"><i class="bx bx-edit-alt me-2"></i> @lang('Edit')</a>
+                                                                    <a class="dropdown-item text-danger" href="#" wire:click.prevent="$dispatch('attendancesDelete',{id: {{ $record->id }}})"><i class="bx bx-trash me-2"></i> @lang('Delete')</a>
+                                                                @endif
+                                                                <a class="dropdown-item" href="#" wire:click.prevent="$dispatch('attendancesShow',{id: {{ $record->id }}})"><i class="bx bx-show me-2"></i> @lang('Show')</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                    <td>
-                                        <div class="dropdown">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                data-bs-toggle="dropdown">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                @if(!auth()->user()->isSupervisor())
-                                                <a class="dropdown-item" href="#"
-                                                    wire:click.prevent="$dispatch('attendancesUpdate',{id: {{ $record->id }}})"><i
-                                                        class="bx bx-edit-alt me-1"></i>
-                                                    @lang('Edit')</a>
-                                                <a class="dropdown-item" href="#"
-                                                    wire:click.prevent="$dispatch('attendancesDelete',{id: {{ $record->id }}})"><i
-                                                        class="bx bx-trash me-1"></i>
-                                                    @lang('Delete')</a>
+                                            <!-- Contact Info (Desktop) -->
+                                            <div class="col-md-3 d-none d-md-block">
+                                                <div class="d-flex flex-column gap-1">
+                                                    <div class="d-flex align-items-center text-muted small">
+                                                        <i class="bx bx-phone me-2"></i>
+                                                        <span>{{ $record->user->phone }}</span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center text-muted small">
+                                                        <i class="bx bx-envelope me-2"></i>
+                                                        <span>{{ $record->user->email }}</span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center text-muted small">
+                                                        <i class="bx bx-user me-2"></i>
+                                                        <span>{{ $record->user->job_title }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Location & Status -->
+                                            <div class="col-12 col-md-2">
+                                                <div class="d-flex flex-column gap-1">
+                                                    <div class="d-flex align-items-center text-muted">
+                                                        <i class="bx bx-globe me-2"></i>
+                                                        <span>{{ __($record->country) }}</span>
+                                                    </div>
+                                                    @if($record->used_at)
+                                                        <div class="d-flex align-items-center text-success small">
+                                                            <i class="bx bx-check-circle me-2"></i>
+                                                            <span>{{ $record->used_at }}</span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <!-- Checked By (Desktop) -->
+                                            <div class="col-md-2 d-none d-md-block">
+                                                @if($record->checked_in_by)
+                                                    <div class="d-flex align-items-center text-muted small" title="@lang('Checked By')">
+                                                        <i class="bx bx-user-check me-2"></i>
+                                                        <span>{{ $record->checked_in_by }}</span>
+                                                    </div>
                                                 @endif
-                                                <a class="dropdown-item" href="#"
-                                                    wire:click.prevent="$dispatch('attendancesShow',{id: {{ $record->id }}})"><i
-                                                        class="bx bx-show me-1"></i>
-                                                    @lang('Show')</a>
+                                            </div>
+
+                                            <!-- Desktop Actions -->
+                                            <div class="col-md-1 d-none d-md-flex justify-content-end">
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-icon btn-text-secondary rounded-pill dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        @if(!auth()->user()->isSupervisor())
+                                                            <a class="dropdown-item" href="#" wire:click.prevent="$dispatch('attendancesUpdate',{id: {{ $record->id }}})"><i class="bx bx-edit-alt me-2"></i> @lang('Edit')</a>
+                                                            <a class="dropdown-item text-danger" href="#" wire:click.prevent="$dispatch('attendancesDelete',{id: {{ $record->id }}})"><i class="bx bx-trash me-2"></i> @lang('Delete')</a>
+                                                        @endif
+                                                        <a class="dropdown-item" href="#" wire:click.prevent="$dispatch('attendancesShow',{id: {{ $record->id }}})"><i class="bx bx-show me-2"></i> @lang('Show')</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $data->links() }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="mt-4">
+                        {{ $data->links() }}
+                    </div>
                 @else
-                    <div class="text-danger">@lang('No Results Found')</div>
+                    <div class="card">
+                        <div class="card-body text-center p-5">
+                            <div class="avatar avatar-xl bg-label-secondary rounded-circle mb-3 mx-auto">
+                                <i class="bx bx-search fs-1"></i>
+                            </div>
+                            <h5 class="mb-2">@lang('No attendances found')</h5>
+                            <p class="text-muted mb-0">@lang('Try adjusting your search or filters.')</p>
+                        </div>
+                    </div>
                 @endif
 
 

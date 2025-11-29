@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-6 mb-0">
         <label class="form-label">@lang('Email')</label>
-        <input type="text" class="form-control" placeholder="@lang('Email')" wire:model='email' />
+        <input type="email" class="form-control" placeholder="@lang('Email')" wire:model='email' />
         @include('admin.errors', ['property' => 'email'])
     </div>
     <div class="col-md-8 mb-0">
