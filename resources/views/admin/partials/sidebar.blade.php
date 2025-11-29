@@ -69,44 +69,9 @@
                 <div data-i18n="Analytics">@lang('Dashboard')</div>
             </a>
         </li>
+   
 
-        {{-- <li class="menu-header small text-uppercase">
-        <span class="menu-header-text">Components</span>
-      </li> --}}
-
-        <!-- Skills -->
-        {{-- <li class="menu-item @yield('skills-active')">
-            <a href="{{ route('admin.skills') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-analyse"></i>
-                <div data-i18n="Analytics">Skills</div>
-            </a>
-        </li> --}}
-
-        <!-- Subscribers -->
-        {{-- <li class="menu-item @yield('subscribers-active')">
-            <a href="{{ route('admin.subscribers') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-crown"></i>
-                <div data-i18n="Analytics">Subscribers</div>
-            </a>
-        </li> --}}
-
-        <!-- Counters -->
-        {{-- <li class="menu-item @yield('counters-active')">
-            <a href="{{ route('admin.counters') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Analytics">Counters</div>
-            </a>
-        </li> --}}
-
-        <!-- Services -->
-        {{-- <li class="menu-item @yield('services-active')">
-            <a href="{{ route('admin.services') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-wrench"></i>
-                <div data-i18n="Analytics">Services</div>
-            </a>
-        </li> --}}
-
-        @if (auth('admin')->user()->isAdmin() || auth('admin')->user()->isScanner() || auth('admin')->user()->isSupervisor())
+        @if (auth('admin')->user()->isAdmin() || auth('admin')->user()->isSupervisor())
             <!-- Events (Admin only) -->
             <li class="menu-item @yield('events-active')">
                 <a href="{{ route('admin.events') }}" class="menu-link">
@@ -159,31 +124,6 @@
             </li>
         @endif
 
-        <!-- Categories -->
-        {{-- <li class="menu-item @yield('categories-active')">
-            <a href="{{ route('admin.categories') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-category"></i>
-                <div data-i18n="Analytics">Categories</div>
-            </a>
-        </li> --}}
-
-
-
-        <!-- Projects -->
-        {{-- <li class="menu-item @yield('projects-active')">
-            <a href="{{ route('admin.projects') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-folder-minus"></i>
-                <div data-i18n="Analytics">Projects</div>
-            </a>
-        </li> --}}
-
-        <!-- Members -->
-        {{-- <li class="menu-item @yield('members-active')">
-            <a href="{{ route('admin.members') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-                <div data-i18n="Analytics">Members</div>
-            </a>
-        </li> --}}
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">@lang('Configration')</span>
